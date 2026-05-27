@@ -1,6 +1,6 @@
 # Project Nexus
 
-**Measurement Dashboard** for a VMware migration demand generation program.
+**Measurement Dashboard** for a demand generation program.
 
 Single-file HTML dashboard hosted on GitHub Pages. No build step, no dependencies, no server. Update the JSON data block, push to main, and the live dashboard reflects the changes.
 
@@ -119,17 +119,17 @@ If you prefer not to touch the file directly, use Edit Mode in the live dashboar
 
 ### Which fields to update and who owns them
 
-| Field | Owner | When |
-|---|---|---|
-| Funnel counts (Known, Validation, MEL, PO, Recycled, DQ) | Justin / Allison | Weekly, after Eloqua pipeline pull |
-| PO delivered (`q1_delivered`, `total_delivered`) | Justin / John | As soon as ACE uploads are confirmed |
-| Weeks remaining (`q1_weeks_remaining`) | Justin / John | Weekly |
-| NLPearl call stats (attempts, pickup rate, signals) | Justin / Daniel | Weekly, from NLPearl export |
-| Trend chart arrays (`mel`, `mqp`, `po`, `rates`) | Justin / John | Weekly — append one value per array |
-| Campaign totals (`total_leads`, `spend_to_date`) | Justin | When new batch arrives |
-| Open gaps text (`open_gaps_text`) | Justin | When open items change status |
-| Summary hero subtitle | Justin | Weekly or when key numbers shift |
-| Report date and as-of label | Justin | Each update cycle |
+| Field | When |
+|---|---|
+| Funnel counts (Known, Validation, MEL, PO, Recycled, DQ) | Weekly, after Eloqua pipeline pull |
+| PO delivered (`q1_delivered`, `total_delivered`) | As soon as ACE uploads are confirmed |
+| Weeks remaining (`q1_weeks_remaining`) | Weekly |
+| NLPearl call stats (attempts, pickup rate, signals) | Weekly, from NLPearl export |
+| Trend chart arrays (`mel`, `mqp`, `po`, `rates`) | Weekly — append one value per array |
+| Campaign totals (`total_leads`, `spend_to_date`) | When new batch arrives |
+| Open gaps text (`open_gaps_text`) | When open items change status |
+| Summary hero subtitle | Weekly or when key numbers shift |
+| Report date and as-of label | Each update cycle |
 
 Fields not listed (audience intelligence tables, geographic data, industry breakdowns) are updated only when a new content syndication batch arrives. Those require a full batch regeneration rather than a manual edit.
 
@@ -158,7 +158,247 @@ Word will corrupt the HTML. Always use a plain text editor. If you accidentally 
 
 ---
 
-## Architecture
+## Developer reference: JSON data block
+
+The entire dashboard state is driven by a single JSON object embedded in `index.html` inside a `<script id="nexus-data" type="application/json">` tag. The dashboard reads this on load and renders all values from it. Nothing is hardcoded in the HTML.
+
+### Finding it
+
+Search the file for:
+```
+NEXUS DASHBOARD - DATA BLOCK
+```
+
+The block starts immediately after that comment and ends before the closing `</script>` tag. Everything between those points is the data object.
+
+### Structure overview
+
+```
+{
+  "meta"          — version, report date, revenue assumption
+  "funnel"        — Eloqua stage counts and dwell times
+  "targets"       — quarterly PO targets and delivered counts
+  "calls"         — NLPearl attempt/connect/signal data
+  "campaign"      — content syndication batch totals and offer breakdown
+  "gaps"          — free-text fields for hero subtitles and open items
+  "chart_trend"   — weekly MEL/MQP/PO arrays for the trend chart
+  "chart_pickup"  — weekly pickup rate array
+  "chart_age"     — stage average dwell hours for the age chart
+}
+```
+
+### Section reference
+
+#### `meta`
+```json
+"meta": {
+  "version": 15,
+  "report_date": "May 26, 2026",
+  "report_as_of": "As of May 26, 2026",
+  "topbar_label": "MVP Launch · As of May 26, 2026",
+  "q1_weeks_remaining": 2,
+  "revenue_assumption_per_vm": 2500,
+  "revenue_assumption_label": "$2,500 = 1 VM migrated (program-standard assumption)"
+}
+```
+`report_as_of` drives the data footer. `topbar_label` drives the topbar right side. `revenue_assumption_per_vm` feeds the revenue model calculation.
+
+---
+
+#### `funnel`
+Source: Eloqua pipeline pull.
+```json
+"funnel": {
+  "total_in_funnel": 264,
+  "eloqua_pipeline": 169,
+  "cs_intake_recent": 95,
+  "cs_intake_label": "May 7–12",
+
+  "stage_known_wip": 16,
+  "stage_known_alltime": 71,
+  "stage_known_avg_age_h": 19.2,
+
+  "stage_validation_wip": 28,
+  "stage_validation_alltime": 70,
+  "stage_validation_avg_age_h": 28.8,
+
+  "stage_mel_wip": 43,
+  "stage_mel_alltime": 41,
+  "stage_mel_avg_age_h": 9.6,
+
+  "stage_po_wip": 0,
+  "stage_po_alltime": 0,
+
+  "recycled": 1,
+  "disqualified": 0,
+
+  "attrition_unknown_to_known": [153, 71],
+  "attrition_known_to_validation": [71, 70],
+  "attrition_validation_to_mel": [70, 41],
+  "attrition_mel_to_po": [41, 0]
+}
+```
+Attrition arrays are `[entries, exits_to_next_stage]`. The dashboard computes the loss percentage from these.
+
+---
+
+#### `targets`
+Source: Program agreement. Static except for delivered counts.
+```json
+"targets": {
+  "q1_target": 160,
+  "q1_due": "Jun 12, 2026",
+  "q1_delivered": 0,
+  "q1_required_per_week": 40,
+
+  "q2_target": 225,
+  "q2_due": "Sep 11, 2026",
+  "q2_delivered": 0,
+
+  "q3_target": 255,
+  "q3_due": "Dec 11, 2026",
+  "q3_delivered": 0,
+
+  "q4_target": 260,
+  "q4_due": "Feb 20, 2027",
+  "q4_delivered": 0,
+
+  "total_program_target": 900,
+  "total_delivered": 0
+}
+```
+`q1_required_per_week` is manually calculated. Update it when weeks remaining changes.
+
+---
+
+#### `calls`
+Source: NLPearl export.
+```json
+"calls": {
+  "total_attempts": 239,
+  "best_week_label": "Apr 27 week",
+  "best_week_attempts": 183,
+  "best_week_connected": 44,
+  "pickup_rate_pct": 24,
+  "sla_compliance_pct": 100,
+  "avg_duration_min": null,
+
+  "signal_strong": 17,
+  "signal_weak": 20,
+  "signal_negative": 0,
+  "signal_no_connect": 6
+}
+```
+`avg_duration_min` accepts a number or `null`. When `null`, the tile renders a placeholder.
+
+---
+
+#### `campaign`
+Source: TechTarget/NetLine batch files.
+```json
+"campaign": {
+  "total_leads": 940,
+  "report_period": "May 7–26, 2026",
+  "spend_to_date": 79900,
+  "budget_total": 99960,
+  "budget_remaining": 20060,
+  "cpl": 85,
+  "email_opted_out_flag": true,
+  "email_opted_out_note": "Pending confirmation with Allison",
+
+  "offer_1_id": "w_awsi224",
+  "offer_1_leads": 590,
+  "offer_1_impressions": 173790,
+
+  "offer_2_id": "w_awsi225",
+  "offer_2_leads": 350,
+  "offer_2_impressions": 46497,
+
+  "consent_q5_pct": 100,
+  "consent_q6_pct": 100,
+  "c_level_pct": 66
+}
+```
+Do not use commas inside numbers (`79900` not `79,900`). `email_opted_out_flag` is boolean — use `true` or `false`, not a string.
+
+---
+
+#### `gaps`
+Free-text fields. Plain strings only — no HTML.
+```json
+"gaps": {
+  "summary_hero_subtitle": "264 contacts in funnel · 0 POs delivered · ...",
+  "open_gaps_text": "0 POs to ACE as of May 26. ...",
+  "ai_section_hero_sub": "239 total attempts · 24% peak pickup rate · ...",
+  "ace_upload_status": "In prep",
+  "po_bottleneck_note": "17 Strong signal calls, 0 POs. ..."
+}
+```
+`·` (middle dot) is used as a separator in hero subtitle strings. Use it consistently.
+
+---
+
+#### `chart_trend`
+Weekly MEL, MQP, and PO volume. Append one value to each array each week.
+```json
+"chart_trend": {
+  "weeks": ["Apr 13", "Apr 20", "Apr 27", "May 4", "May 12"],
+  "mel":   [0, 0, 41, 41, 41],
+  "mqp":   [0, 30, 70, 70, 43],
+  "po":    [0, 0, 0, 0, 0]
+}
+```
+All four arrays must be the same length. Week labels are the Monday of each week in `Mon DD` format.
+
+---
+
+#### `chart_pickup`
+Weekly NLPearl pickup rate. Use `0` for weeks with no data.
+```json
+"chart_pickup": {
+  "weeks": ["Apr 13", "Apr 20", "Apr 27", "May 4", "May 12"],
+  "rates": [0, 0, 24, 0, 0]
+}
+```
+`weeks` must match `chart_trend.weeks` in length and labels.
+
+---
+
+#### `chart_age`
+Average stage dwell in hours. Updated from the Eloqua stage age report.
+```json
+"chart_age": {
+  "known_h": 19.2,
+  "validation_h": 28.8,
+  "mel_h": 9.6,
+  "po_h": 0
+}
+```
+`po_h: 0` renders as no bar. Set to actual hours once POs are flowing.
+
+---
+
+### JSON rules
+
+- Field names are case-sensitive. Do not rename them.
+- Numbers: no quotes, no commas (`79900` not `"79,900"`).
+- Strings: always wrapped in double quotes.
+- Booleans: `true` or `false` — no quotes, no capitals.
+- Null values: `null` — no quotes.
+- Every line except the last in a section needs a trailing comma.
+- Arrays must keep all elements the same length across related sections (`chart_trend` and `chart_pickup` weeks arrays must match).
+
+### Validating JSON before committing
+
+Paste the data block into [jsonlint.com](https://jsonlint.com) to validate before uploading. A syntax error will render the dashboard as a blank page.
+
+### Version incrementing
+
+`meta.version` is incremented automatically when using Save and Export in Edit Mode. If editing the file manually, increment it yourself so the data footer reflects the correct version number.
+
+---
+
+
 
 Single self-contained HTML file. No external JS libraries. No build tooling.
 
