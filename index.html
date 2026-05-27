@@ -397,11 +397,7 @@ body.edit-mode .ef:focus{background:rgba(99,102,241,.12);border-bottom:1.5px sol
     "signal_strong": 17,                  
     "signal_weak": 20,                    
     "signal_negative": 0,                 
-    "signal_no_connect": 6,               
-    "avg_duration_min": null,             
-    "opt_outs": null,                     
-    "avg_sentiment": null,                
-    "credits_used": null                  
+    "signal_no_connect": 6                
   },
 
   "campaign": {
@@ -697,19 +693,19 @@ const AG = ND.chart_age;
         <div class="sl"><span>Stage Attrition — All Time Entries</span></div>
         <div class="atr-row">
           <div><div style="font-size:11px;color:var(--text)">Unknown to Known</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3)" id="atr-u2k-label"></div></div>
-          <div><div class="atr-pct" style="color:var(--gold)" id="atr-u2k-pct"></div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);text-align:right">lost</div></div>
+          <div><div class="atr-pct" style="color:var(--gold)">54%</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);text-align:right">lost</div></div>
         </div>
         <div class="atr-row">
           <div><div style="font-size:11px;color:var(--text)">Known to Validation</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3)" id="atr-k2v-label"></div></div>
-          <div><div class="atr-pct" style="color:var(--teal)" id="atr-k2v-pct"></div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);text-align:right">lost</div></div>
+          <div><div class="atr-pct" style="color:var(--teal)">1%</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);text-align:right">lost</div></div>
         </div>
         <div class="atr-row">
           <div><div style="font-size:11px;color:var(--text)">Validation to MEL</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3)" id="atr-v2m-label"></div></div>
-          <div><div class="atr-pct" style="color:var(--gold)" id="atr-v2m-pct"></div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);text-align:right">lost</div></div>
+          <div><div class="atr-pct" style="color:var(--gold)">41%</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);text-align:right">lost</div></div>
         </div>
         <div class="atr-row">
           <div><div style="font-size:11px;color:var(--text)">MEL to Partner Opportunity</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3)" id="atr-m2p-label"></div></div>
-          <div><div class="atr-pct" style="color:var(--red)" id="atr-m2p-pct"></div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);text-align:right" id="atr-m2p-txt">none converted</div></div>
+          <div><div class="atr-pct" style="color:var(--red)">100%</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);text-align:right">none converted</div></div>
         </div>
       </div>
       <div class="card">
@@ -726,13 +722,13 @@ const AG = ND.chart_age;
   <div class="g3">
     <div class="card teal-hi">
       <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--teal);letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px">Healthy Age Signal</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--teal)" id="spot-mel-age"></div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--teal)">9.6h</div>
       <div style="font-size:11px;color:var(--text);margin-top:2px">MEL Classification</div>
       <div style="font-size:10px;color:var(--text3);margin-top:4px;line-height:1.6">Fast post-call classification. NLPearl result processing is working. Once a call resolves, MEL scoring is applied quickly.</div>
     </div>
     <div class="card gold-hi">
       <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px">Watch — Near SLA Ceiling</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--gold)" id="spot-val-age"></div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--gold)">28.8h</div>
       <div style="font-size:11px;color:var(--text);margin-top:2px">In Validation</div>
       <div style="font-size:10px;color:var(--text3);margin-top:4px;line-height:1.6">SLA is 24h. Avg age exceeding it means some contacts are breaching. 28 WIP here — if pickup rate is low, contacts stall waiting for a connection.</div>
     </div>
@@ -795,7 +791,7 @@ const AG = ND.chart_age;
   <div class="g4">
     <div class="card"><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--px)" id="ai-attempts"></div><div style="font-size:11px;color:var(--text)">Calls Attempted</div><div style="font-size:10px;color:var(--text3);margin-top:2px">MET055 — all weeks</div><div class="bm"><span class="bm-lbl">Avg dials to reach DM</span><span class="bm-val">8 attempts</span></div></div>
     <div class="card"><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--gold)" id="ai-pickup"></div><div style="font-size:11px;color:var(--text)">Pickup Rate</div><div style="font-size:10px;color:var(--text3);margin-top:2px">MET056 — peak week Apr 27</div><div class="bm"><span class="bm-lbl">B2B outbound avg</span><span class="bm-val">3–10%</span></div></div>
-    <div class="card"><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--text2)" id="ai-avg-dur"></div><div style="font-size:11px;color:var(--text)">Avg Call Duration</div><div style="font-size:10px;color:var(--text3);margin-top:2px">MET057 — data pending</div><div class="bm"><span class="bm-lbl">B2B avg productive call</span><span class="bm-val">3–5 min</span></div></div>
+    <div class="card"><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--text2)">—</div><div style="font-size:11px;color:var(--text)">Avg Call Duration</div><div style="font-size:10px;color:var(--text3);margin-top:2px">MET057 — data pending</div><div class="bm"><span class="bm-lbl">B2B avg productive call</span><span class="bm-val">3–5 min</span></div></div>
     <div class="card"><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--teal)" id="ai-sla"></div><div style="font-size:11px;color:var(--text)">SLA Compliance</div><div style="font-size:10px;color:var(--text3);margin-top:2px">All calls within 24h SLA</div><div class="bm"><span class="bm-lbl">Ideal speed-to-lead</span><span class="bm-val">&lt;1h (53% CVR)</span></div></div>
   </div>
 
@@ -847,9 +843,9 @@ const AG = ND.chart_age;
   </div>
 
   <div class="g3" style="margin-top:14px">
-    <div class="card"><div class="kpi-meta">MET058 — Opt-Outs <span class="dot warn"></span></div><div class="kv" id="ai-opt-outs" style="color:var(--text2)">—</div><div class="kl" style="color:var(--text2)">AI Call Opt-Outs</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Count of opt-out events from NLPearl calls. Data pending confirmation.</div></div>
-    <div class="card"><div class="kpi-meta">MET059 — Sentiment <span class="dot warn"></span></div><div class="kv" id="ai-sentiment" style="color:var(--text2)">—</div><div class="kl" style="color:var(--text2)">Avg Sentiment Score</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Avg or distribution of sentiment per connected call. Model inference pending.</div></div>
-    <div class="card"><div class="kpi-meta">MET060 — Credits <span class="dot warn"></span></div><div class="kv" id="ai-credits" style="color:var(--text2)">—</div><div class="kl" style="color:var(--text2)">NLPearl Credits Used</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Sum of credits consumed by call, minute, or action. Reconciliation may lag 24–48h.</div></div>
+    <div class="card"><div class="kpi-meta">MET058 — Opt-Outs <span class="dot warn"></span></div><div class="kv" style="color:var(--text2)">—</div><div class="kl" style="color:var(--text2)">AI Call Opt-Outs</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Count of opt-out events from NLPearl calls. Data pending confirmation.</div></div>
+    <div class="card"><div class="kpi-meta">MET059 — Sentiment <span class="dot warn"></span></div><div class="kv" style="color:var(--text2)">—</div><div class="kl" style="color:var(--text2)">Avg Sentiment Score</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Avg or distribution of sentiment per connected call. Model inference pending.</div></div>
+    <div class="card"><div class="kpi-meta">MET060 — Credits <span class="dot warn"></span></div><div class="kv" style="color:var(--text2)">—</div><div class="kl" style="color:var(--text2)">NLPearl Credits Used</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Sum of credits consumed by call, minute, or action. Reconciliation may lag 24–48h.</div></div>
   </div>
 
 </section>
@@ -1067,9 +1063,9 @@ const AG = ND.chart_age;
           <tr><td>Start Date</td><td>05/06/2026</td><td>Campaign active since early May</td></tr>
           <tr><td>End Date</td><td>09/30/2026</td><td>~18 weeks remaining</td></tr>
           <tr><td>Cost Per Lead</td><td>$85</td><td>Fixed CPL model</td></tr>
-          <tr><td>Campaign Budget</td><td id="camp-budget-total">$99,960</td><td>Total approved spend</td></tr>
-          <tr><td>Spend to Date</td><td id="camp-spend">$79,900</td><td id="camp-spend-note">940 leads x $85</td></tr>
-          <tr><td>Budget Remaining</td><td id="camp-budget-rem">$20,060</td><td id="camp-budget-rem-note">Covers 236 additional leads</td></tr>
+          <tr><td>Campaign Budget</td><td>$99,960</td><td>Total approved spend</td></tr>
+          <tr><td>Spend to Date</td><td>$79,900</td><td>940 leads x $85</td></tr>
+          <tr><td>Budget Remaining</td><td>$20,060</td><td>Covers 236 additional leads</td></tr>
           <tr><td style="color:var(--px2);font-weight:700">Q1 PO Target</td><td style="color:var(--red)">0 / 160</td><td style="color:var(--red)">Due Jun 12, 2026 — Behind · 40 POs/week required</td></tr>
           <tr><td style="color:var(--text3)">Q2 PO Target</td><td>225</td><td style="color:var(--text3)">Due Sep 11, 2026 — Upcoming</td></tr>
           <tr><td style="color:var(--text3)">Q3 PO Target</td><td>255</td><td style="color:var(--text3)">Due Dec 11, 2026 — Upcoming</td></tr>
@@ -1096,31 +1092,31 @@ const AG = ND.chart_age;
   <div class="g4" style="margin-bottom:14px">
     <div class="qc cur">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px"><div class="ql">Q1</div><span class="q-badge active">In Progress</span></div>
-      <div><span class="qd" id="q1-delivered">0</span><span style="font-size:14px;color:var(--text2)"> / <span id="q1-target-disp">160</span></span></div>
-      <div style="height:4px;background:var(--bg3);border-radius:2px;margin:8px 0"><div id="q1-bar" style="height:100%;border-radius:2px;background:var(--px);width:0%"></div></div>
-      <div class="qmeta">Due <span id="q1-due-disp">Jun 12, 2026</span></div>
-      <div class="qpace" id="q1-pace"></div>
+      <div><span class="qd">0</span><span style="font-size:14px;color:var(--text2)"> / 160</span></div>
+      <div style="height:4px;background:var(--bg3);border-radius:2px;margin:8px 0"></div>
+      <div class="qmeta">Due Jun 12, 2026</div>
+      <div class="qpace">40 POs / week · 2 wks remain</div>
     </div>
     <div class="qc">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px"><div class="ql" style="color:var(--text2)">Q2</div><span class="q-badge upcoming">Upcoming</span></div>
-      <div><span class="qd" id="q2-delivered" style="color:var(--text2)">0</span><span style="font-size:14px;color:var(--text3)"> / <span id="q2-target-disp">225</span></span></div>
-      <div style="height:4px;background:var(--bg3);border-radius:2px;margin:8px 0"><div id="q2-bar" style="height:100%;border-radius:2px;background:var(--px);width:0%"></div></div>
-      <div class="qmeta">Due <span id="q2-due-disp">Sep 11, 2026</span></div>
-      <div class="qpace" id="q2-pace">17 POs / week · 13 wks</div>
+      <div><span class="qd" style="color:var(--text2)">0</span><span style="font-size:14px;color:var(--text3)"> / 225</span></div>
+      <div style="height:4px;background:var(--bg3);border-radius:2px;margin:8px 0"></div>
+      <div class="qmeta">Due Sep 11, 2026</div>
+      <div class="qpace">17 POs / week · 13 wks</div>
     </div>
     <div class="qc">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px"><div class="ql" style="color:var(--text2)">Q3</div><span class="q-badge upcoming">Upcoming</span></div>
-      <div><span class="qd" id="q3-delivered" style="color:var(--text2)">0</span><span style="font-size:14px;color:var(--text3)"> / <span id="q3-target-disp">255</span></span></div>
-      <div style="height:4px;background:var(--bg3);border-radius:2px;margin:8px 0"><div id="q3-bar" style="height:100%;border-radius:2px;background:var(--px);width:0%"></div></div>
-      <div class="qmeta">Due <span id="q3-due-disp">Dec 11, 2026</span></div>
-      <div class="qpace" id="q3-pace">20 POs / week · 13 wks</div>
+      <div><span class="qd" style="color:var(--text2)">0</span><span style="font-size:14px;color:var(--text3)"> / 255</span></div>
+      <div style="height:4px;background:var(--bg3);border-radius:2px;margin:8px 0"></div>
+      <div class="qmeta">Due Dec 11, 2026</div>
+      <div class="qpace">20 POs / week · 13 wks</div>
     </div>
     <div class="qc">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px"><div class="ql" style="color:var(--text2)">Q4</div><span class="q-badge upcoming">Upcoming</span></div>
-      <div><span class="qd" id="q4-delivered" style="color:var(--text2)">0</span><span style="font-size:14px;color:var(--text3)"> / <span id="q4-target-disp">260</span></span></div>
-      <div style="height:4px;background:var(--bg3);border-radius:2px;margin:8px 0"><div id="q4-bar" style="height:100%;border-radius:2px;background:var(--px);width:0%"></div></div>
-      <div class="qmeta">Due <span id="q4-due-disp">Feb 20, 2027</span></div>
-      <div class="qpace" id="q4-pace">26 POs / week · 10 wks</div>
+      <div><span class="qd" style="color:var(--text2)">0</span><span style="font-size:14px;color:var(--text3)"> / 260</span></div>
+      <div style="height:4px;background:var(--bg3);border-radius:2px;margin:8px 0"></div>
+      <div class="qmeta">Due Feb 20, 2027</div>
+      <div class="qpace">26 POs / week · 10 wks</div>
     </div>
   </div>
 
@@ -1236,7 +1232,7 @@ const AG = ND.chart_age;
       <div style="flex-shrink:0">
         <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px">Revenue Formula</div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold)">POs x Avg VMs x $2,500</div>
-        <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);margin-top:4px">$2,500 = estimated revenue value per VM migrated</div>
+        <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);margin-top:4px">$2,500 = 1 VM migrated (program-standard assumption)</div>
       </div>
       <div style="flex:1;min-width:240px">
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
@@ -2025,9 +2021,6 @@ function lostPct(a,b){ return a===0?'—':Math.round(((a-b)/a)*100)+'%'; }
 
 /* ── POPULATE DATA BLOCK → DOM ───────────────────────────────────────────── */
 function populateFromData(){
-  // Auto-sum total delivered from quarters
-  T.total_delivered = T.q1_delivered + T.q2_delivered + T.q3_delivered + T.q4_delivered;
-
   // Meta
   set('tb-date', M.topbar_label);
 
@@ -2129,62 +2122,6 @@ function populateFromData(){
 
   // Targets hero sub (if present)
   set('targets-hero-sub', T.total_program_target+' total POs across 4 quarters \u00b7 '+T.total_delivered+' delivered \u00b7 '+T.q1_required_per_week+' POs/week required in Q1 \u00b7 '+M.q1_weeks_remaining+' weeks remain');
-
-  // Funnel spotlight cards (hardcoded ages)
-  set('spot-mel-age', AG.mel_h+'h');
-  set('spot-val-age', AG.validation_h+'h');
-
-  // Attrition % values (computed from attrition arrays)
-  const [u2ka,u2kb]=F.attrition_unknown_to_known;
-  const [k2va,k2vb]=F.attrition_known_to_validation;
-  const [v2ma,v2mb]=F.attrition_validation_to_mel;
-  const [m2pa,m2pb]=F.attrition_mel_to_po;
-  const aPct=(a,b)=>a===0?'—':Math.round((a-b)/a*100)+'%';
-  const el_u2k=document.getElementById('atr-u2k-pct'); if(el_u2k){el_u2k.textContent=aPct(u2ka,u2kb); el_u2k.style.color=aPct(u2ka,u2kb)==='—'?'var(--text3)':parseFloat(aPct(u2ka,u2kb))>30?'var(--red)':'var(--teal)';}
-  const el_k2v=document.getElementById('atr-k2v-pct'); if(el_k2v){el_k2v.textContent=aPct(k2va,k2vb);}
-  const el_v2m=document.getElementById('atr-v2m-pct'); if(el_v2m){el_v2m.textContent=aPct(v2ma,v2mb);}
-  const el_m2p=document.getElementById('atr-m2p-pct'); if(el_m2p){el_m2p.textContent=aPct(m2pa,m2pb);}
-  set('atr-m2p-txt', m2pb===0?'none converted':m2pb+' converted');
-
-  // AI pending fields
-  set('ai-avg-dur',   C.avg_duration_min===null ? '—' : C.avg_duration_min+'m');
-  set('ai-opt-outs',  C.opt_outs===null ? '—' : C.opt_outs);
-  set('ai-sentiment', C.avg_sentiment===null ? '—' : C.avg_sentiment);
-  set('ai-credits',   C.credits_used===null ? '—' : C.credits_used);
-
-  // Campaign pacing table
-  const fmtDollar = n => '$'+Number(n).toLocaleString();
-  set('camp-spend',         fmtDollar(CA.spend_to_date));
-  set('camp-spend-note',    CA.total_leads+' leads x $'+CA.cpl);
-  set('camp-budget-total',  fmtDollar(CA.budget_total));
-  set('camp-budget-rem',    fmtDollar(CA.budget_remaining));
-  set('camp-budget-rem-note', 'Covers '+Math.floor(CA.budget_remaining/CA.cpl)+' additional leads');
-
-  // Quarterly target cards
-  set('q1-delivered',    T.q1_delivered);
-  set('q1-target-disp',  T.q1_target);
-  set('q1-due-disp',     T.q1_due);
-  set('q1-pace',         T.q1_required_per_week+' POs / week \u00b7 '+M.q1_weeks_remaining+' wks remain');
-  const q1bar = document.getElementById('q1-bar');
-  if (q1bar) q1bar.style.width = T.q1_target > 0 ? Math.min(100, Math.round(T.q1_delivered/T.q1_target*100))+'%' : '0%';
-
-  set('q2-delivered',    T.q2_delivered);
-  set('q2-target-disp',  T.q2_target);
-  set('q2-due-disp',     T.q2_due);
-  const q2bar = document.getElementById('q2-bar');
-  if (q2bar) q2bar.style.width = T.q2_target > 0 ? Math.min(100, Math.round(T.q2_delivered/T.q2_target*100))+'%' : '0%';
-
-  set('q3-delivered',    T.q3_delivered);
-  set('q3-target-disp',  T.q3_target);
-  set('q3-due-disp',     T.q3_due);
-  const q3bar = document.getElementById('q3-bar');
-  if (q3bar) q3bar.style.width = T.q3_target > 0 ? Math.min(100, Math.round(T.q3_delivered/T.q3_target*100))+'%' : '0%';
-
-  set('q4-delivered',    T.q4_delivered);
-  set('q4-target-disp',  T.q4_target);
-  set('q4-due-disp',     T.q4_due);
-  const q4bar = document.getElementById('q4-bar');
-  if (q4bar) q4bar.style.width = T.q4_target > 0 ? Math.min(100, Math.round(T.q4_delivered/T.q4_target*100))+'%' : '0%';
 }
 
 /* ── INIT ─────────────────────────────────────────────────────────────────── */
@@ -2196,7 +2133,7 @@ window.addEventListener('load',()=>{
 });
 
 // Listen for show('glossary') and init search
-const origShow=window.show||show;
+const origShow=window.show;
 window.show=function(id){
   origShow.call(this,id);
   if(id==='glossary') initGlossarySearch();
@@ -2215,77 +2152,37 @@ const changelog = [];
 // path is dot-notation into ND, e.g. "funnel.total_in_funnel"
 // type: 'number' | 'text' | 'textarea'
 const EDIT_FIELDS = [
-  // ── META ──────────────────────────────────────────────────────────────
-  { id:'tb-date',             label:'Topbar Date Label',          path:'meta.topbar_label',                  type:'text' },
-  { id:'summary-hero-sub',    label:'Summary Hero Subtitle',      path:'gaps.summary_hero_subtitle',         type:'textarea' },
-
-  // ── SUMMARY KPI CARDS ─────────────────────────────────────────────────
-  { id:'kpi-funnel-vol',      label:'MET001 — Funnel Volume',     path:'funnel.total_in_funnel',             type:'number' },
-  // MET003 qual rate is computed — readonly
-  { id:'kpi-qual-rate',       label:'MET003 — Qual Rate',         path:'_computed.qual_rate',                type:'text', readonly:true },
-  // MET004 target progress is computed — readonly
-  { id:'kpi-target',          label:'MET004 — Target Progress',   path:'_computed.q1_progress',              type:'text', readonly:true },
-  { id:'kpi-pickup',          label:'MET056 — Pickup Rate %',     path:'calls.pickup_rate_pct',              type:'number' },
-  { id:'kpi-sla',             label:'MET062 — SLA Compliance %',  path:'calls.sla_compliance_pct',           type:'number' },
-  { id:'kpi-cs-leads',        label:'TechTarget — Total Leads',   path:'campaign.total_leads',               type:'number' },
-
-  // ── FUNNEL STAGE — WIP COUNTS ─────────────────────────────────────────
-  { id:'lf-known-wip',        label:'Known — WIP',                path:'funnel.stage_known_wip',             type:'number' },
-  { id:'lf-val-wip',          label:'Validation — WIP',           path:'funnel.stage_validation_wip',        type:'number' },
-  { id:'lf-mel-wip',          label:'MEL — WIP',                  path:'funnel.stage_mel_wip',               type:'number' },
-  { id:'lf-po-wip',           label:'PO — WIP',                   path:'funnel.stage_po_wip',                type:'number' },
-
-  // ── FUNNEL STAGE — AVG AGES ────────────────────────────────────────────
-  { id:'lf-known-age',        label:'Known — Avg Age (h)',         path:'funnel.stage_known_avg_age_h',       type:'number' },
-  { id:'lf-val-age',          label:'Validation — Avg Age (h)',    path:'funnel.stage_validation_avg_age_h',  type:'number' },
-  { id:'lf-mel-age',          label:'MEL — Avg Age (h)',           path:'funnel.stage_mel_avg_age_h',         type:'number' },
-
-  // ── FUNNEL SPOTLIGHT CARDS ────────────────────────────────────────────
-  { id:'spot-mel-age',        label:'Spotlight — MEL Age (h)',     path:'chart_age.mel_h',                    type:'number' },
-  { id:'spot-val-age',        label:'Spotlight — Validation Age (h)', path:'chart_age.validation_h',          type:'number' },
-
-  // ── FUNNEL RECYCLED / DQ ──────────────────────────────────────────────
-  { id:'funnel-recycled',     label:'Recycled to Nurture',         path:'funnel.recycled',                    type:'number' },
-  { id:'funnel-dq',           label:'Disqualified',                path:'funnel.disqualified',                type:'number' },
-
-  // ── PO / TARGETS ──────────────────────────────────────────────────────
-  { id:'hero-po',             label:'Total POs Delivered',         path:'targets.total_delivered',            type:'number', readonly:true },
-  { id:'q1-delivered',        label:'Q1 POs Delivered',            path:'targets.q1_delivered',               type:'number' },
-  { id:'q2-delivered',        label:'Q2 POs Delivered',            path:'targets.q2_delivered',               type:'number' },
-  { id:'q3-delivered',        label:'Q3 POs Delivered',            path:'targets.q3_delivered',               type:'number' },
-  { id:'q4-delivered',        label:'Q4 POs Delivered',            path:'targets.q4_delivered',               type:'number' },
-  { id:'q1-target-disp',      label:'Q1 Target',                   path:'targets.q1_target',                  type:'number' },
-  { id:'q2-target-disp',      label:'Q2 Target',                   path:'targets.q2_target',                  type:'number' },
-  { id:'q3-target-disp',      label:'Q3 Target',                   path:'targets.q3_target',                  type:'number' },
-  { id:'q4-target-disp',      label:'Q4 Target',                   path:'targets.q4_target',                  type:'number' },
-  { id:'q1-due-disp',         label:'Q1 Due Date',                 path:'targets.q1_due',                     type:'text' },
-  { id:'q2-due-disp',         label:'Q2 Due Date',                 path:'targets.q2_due',                     type:'text' },
-  { id:'q3-due-disp',         label:'Q3 Due Date',                 path:'targets.q3_due',                     type:'text' },
-  { id:'q4-due-disp',         label:'Q4 Due Date',                 path:'targets.q4_due',                     type:'text' },
-
-  // ── AI CALLS ──────────────────────────────────────────────────────────
-  { id:'ai-attempts',         label:'MET055 — Calls Attempted',    path:'calls.total_attempts',               type:'number' },
-  { id:'ai-pickup',           label:'MET056 — Pickup Rate %',      path:'calls.pickup_rate_pct',              type:'number' },
-  { id:'ai-sla',              label:'MET062 — SLA Compliance %',   path:'calls.sla_compliance_pct',           type:'number' },
-  { id:'ai-avg-dur',          label:'MET057 — Avg Call Duration',  path:'calls.avg_duration_min',             type:'text' },
-  { id:'ai-opt-outs',         label:'MET058 — Opt-Outs',           path:'calls.opt_outs',                     type:'text' },
-  { id:'ai-sentiment',        label:'MET059 — Avg Sentiment',      path:'calls.avg_sentiment',                type:'text' },
-  { id:'ai-credits',          label:'MET060 — Credits Used',       path:'calls.credits_used',                 type:'text' },
-  { id:'sig-strong',          label:'Signal — Strong',             path:'calls.signal_strong',                type:'number' },
-  { id:'sig-weak',            label:'Signal — Weak',               path:'calls.signal_weak',                  type:'number' },
-  { id:'sig-neg',             label:'Signal — Negative',           path:'calls.signal_negative',              type:'number' },
-  { id:'sig-nc',              label:'Signal — No Connect',         path:'calls.signal_no_connect',            type:'number' },
-
-  // ── CAMPAIGN ──────────────────────────────────────────────────────────
-  { id:'cs-clevel-tile',      label:'C-Level %',                   path:'campaign.c_level_pct',               type:'number' },
-  { id:'camp-spend',          label:'Spend to Date ($)',           path:'campaign.spend_to_date',             type:'number' },
-  { id:'camp-budget-total',   label:'Campaign Budget ($)',         path:'campaign.budget_total',              type:'number' },
-  { id:'camp-budget-rem',     label:'Budget Remaining ($)',        path:'campaign.budget_remaining',          type:'number' },
-
-  // ── OPEN GAPS NARRATIVE ────────────────────────────────────────────────
-  { id:'open-gaps-text',      label:'Open Gaps Text',              path:'gaps.open_gaps_text',                type:'textarea' },
-  { id:'po-bottleneck-note',  label:'PO Bottleneck Note',          path:'gaps.po_bottleneck_note',            type:'textarea' },
-  { id:'ai-hero-sub',         label:'AI Section Hero Subtitle',    path:'gaps.ai_section_hero_sub',           type:'textarea' },
+  // Meta
+  { id:'tb-date',             label:'Topbar Date Label',         path:'meta.topbar_label',              type:'text' },
+  // Summary hero
+  { id:'summary-hero-sub',    label:'Summary Hero Subtitle',     path:'gaps.summary_hero_subtitle',     type:'textarea' },
+  // KPI cards
+  { id:'kpi-funnel-vol',      label:'Funnel Volume',             path:'funnel.total_in_funnel',         type:'number' },
+  { id:'kpi-qual-rate',       label:'Qualification Rate',        path:'_computed.qual_rate',            type:'text', readonly:true },
+  { id:'kpi-target',          label:'Q1 Target Progress',        path:'_computed.q1_progress',          type:'text', readonly:true },
+  { id:'kpi-pickup',          label:'Pickup Rate %',             path:'calls.pickup_rate_pct',          type:'number' },
+  { id:'kpi-sla',             label:'SLA Compliance %',          path:'calls.sla_compliance_pct',       type:'number' },
+  // Funnel stages
+  { id:'lf-known-wip',        label:'Known — WIP Count',         path:'funnel.stage_known_wip',         type:'number' },
+  { id:'lf-val-wip',          label:'Validation — WIP Count',    path:'funnel.stage_validation_wip',    type:'number' },
+  { id:'lf-mel-wip',          label:'MEL — WIP Count',           path:'funnel.stage_mel_wip',           type:'number' },
+  { id:'lf-po-wip',           label:'PO — WIP Count',            path:'funnel.stage_po_wip',            type:'number' },
+  { id:'lf-known-age',        label:'Known — Avg Age (h)',        path:'funnel.stage_known_avg_age_h',   type:'number' },
+  { id:'lf-val-age',          label:'Validation — Avg Age (h)',   path:'funnel.stage_validation_avg_age_h', type:'number' },
+  { id:'lf-mel-age',          label:'MEL — Avg Age (h)',          path:'funnel.stage_mel_avg_age_h',    type:'number' },
+  // PO targets
+  { id:'hero-po',             label:'POs Delivered (Total)',     path:'targets.total_delivered',        type:'number' },
+  // Calls
+  { id:'ai-attempts',         label:'Total Call Attempts',       path:'calls.total_attempts',           type:'number' },
+  { id:'sig-strong',          label:'Signal: Strong',            path:'calls.signal_strong',            type:'number' },
+  { id:'sig-weak',            label:'Signal: Weak',              path:'calls.signal_weak',              type:'number' },
+  { id:'sig-neg',             label:'Signal: Negative',          path:'calls.signal_negative',          type:'number' },
+  { id:'sig-nc',              label:'Signal: No Connect',        path:'calls.signal_no_connect',        type:'number' },
+  // Campaign
+  { id:'cs-clevel-tile',      label:'C-Level %',                 path:'campaign.c_level_pct',           type:'number' },
+  // Open gaps narrative
+  { id:'open-gaps-text',      label:'Open Gaps Text',            path:'gaps.open_gaps_text',            type:'textarea' },
+  { id:'po-bottleneck-note',  label:'PO Bottleneck Note',        path:'gaps.po_bottleneck_note',        type:'textarea' },
 ];
 
 /* ── PATH HELPERS ─────────────────────────────────────────────────────────── */
@@ -2331,28 +2228,23 @@ function activateEditFields() {
     if (f.readonly) return;
     const el = document.getElementById(f.id);
     if (!el || el.querySelector('.ef')) return; // already wrapped
-    if (f.path.startsWith('_computed')) return;
     const raw = getPath(ND, f.path);
+    if (raw === null) return;
 
     const currentText = el.textContent.trim();
-    // Dollar-formatted fields: show raw number for editing
-    const editVal = (typeof raw === 'number' && currentText.startsWith('$'))
-      ? String(raw)
-      : (raw === null ? '' : currentText);
-
     const tag = f.type === 'textarea' ? 'textarea' : 'input';
     const input = document.createElement(tag);
     input.className = 'ef' + (f.type === 'number' ? ' ef-num' : '');
     if (tag === 'input') {
       input.type = 'text';
-      input.value = editVal;
+      input.value = currentText;
     } else {
-      input.value = editVal;
-      input.rows = Math.max(2, Math.ceil(editVal.length / 80));
+      input.value = currentText;
+      input.rows = Math.max(2, Math.ceil(currentText.length / 80));
     }
     input.dataset.path = f.path;
     input.dataset.label = f.label;
-    input.dataset.origVal = editVal;
+    input.dataset.origVal = currentText;
 
     el.textContent = '';
     el.appendChild(input);
@@ -2386,12 +2278,6 @@ function onFieldChange(e) {
   if (typeof raw === 'number') {
     parsed = parseFloat(newDisplay.replace(/[^0-9.-]/g, ''));
     if (isNaN(parsed)) { input.value = origDisplay; return; }
-  } else if (raw === null) {
-    // null fields: store as number if looks numeric, string otherwise, null if blank/dash
-    const stripped = newDisplay.replace(/[^0-9.-]/g, '');
-    if (newDisplay === '' || newDisplay === '—') { parsed = null; }
-    else if (stripped !== '' && !isNaN(parseFloat(stripped))) { parsed = parseFloat(stripped); }
-    else { parsed = newDisplay; }
   }
 
   // Update data object
