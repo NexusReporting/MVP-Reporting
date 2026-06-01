@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
+<html lang="en" data-theme="light"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Project Nexus - Measurement Dashboard</title>
@@ -61,7 +60,7 @@
 })();
 </script>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;family=DM+Mono:wght@400;500&amp;family=Bebas+Neue&amp;display=swap" rel="stylesheet">
 <style>
 /* ── TOKENS ─────────────────────────────────────────────────────────────── */
 :root{
@@ -518,8 +517,8 @@ body.edit-mode .ef:focus{background:rgba(99,102,241,.12);border-bottom:1.5px sol
   .gcall{border-color:#ddd}
 }
 </style>
-</head>
-<body>
+<script src="chrome-extension://mkdjegdakgimmckobdnfiimhgmabbido/log-layers.js" type="text/javascript" id="simple-data-layer-viewer-console" data-names="[&quot;dataLayer&quot;,&quot;digitalData&quot;,&quot;adobeDataLayer&quot;,&quot;digitalDataLayer&quot;,&quot;utag_data&quot;,&quot;tc_vars&quot;,&quot;udo&quot;]" data-interval="250" data-collapsed="true"></script></head>
+<body class="edit-mode">
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      NEXUS DASHBOARD - DATA BLOCK
@@ -533,137 +532,161 @@ body.edit-mode .ef:focus{background:rgba(99,102,241,.12);border-bottom:1.5px sol
 
      FIELD GUIDE - each field is annotated with where it appears
      ═══════════════════════════════════════════════════════════════════════ -->
-<script id="nexus-data" type="application/json">
-{
-  "_version": 15,
-
+<script id="nexus-data" type="application/json">{
+  "_version": 16,
   "meta": {
-    "version": 15,                        
-    "report_date": "May 26, 2026",        
-    "report_as_of": "As of May 26, 2026", 
-    "topbar_label": "MVP Launch \u00b7 As of May 26, 2026",
-    "q1_weeks_remaining": 2,              
-    "revenue_assumption_per_vm": 2500,    
+    "version": 16,
+    "report_date": "May 26, 2026",
+    "report_as_of": "As of May 26, 2026",
+    "topbar_label": "MVP Launch · As of May 26, 2026",
+    "q1_weeks_remaining": 2,
+    "revenue_assumption_per_vm": 2500,
     "revenue_assumption_label": "$2,500 = 1 VM migrated (program-standard assumption)"
   },
-
   "funnel": {
     "_note": "Source: Eloqua. Updated by Allison each week.",
-    "total_in_funnel": 264,               
-    "eloqua_pipeline": 169,               
-    "cs_intake_recent": 95,               
-    "cs_intake_label": "May 7\u201312",  
-
-    "stage_known_wip": 16,                
-    "stage_known_alltime": 71,            
-    "stage_known_avg_age_h": 19.2,        
-
-    "stage_validation_wip": 28,           
-    "stage_validation_alltime": 70,       
-    "stage_validation_avg_age_h": 28.8,   
-
-    "stage_mel_wip": 43,                  
-    "stage_mel_alltime": 41,              
-    "stage_mel_avg_age_h": 9.6,           
-
-    "stage_po_wip": 0,                    
-    "stage_po_alltime": 0,                
-
-    "recycled": 1,                        
-    "disqualified": 0,                    
-
-    "attrition_unknown_to_known": [153, 71],     
-    "attrition_known_to_validation": [71, 70],   
-    "attrition_validation_to_mel": [70, 41],     
-    "attrition_mel_to_po": [41, 0]               
+    "total_in_funnel": 264,
+    "eloqua_pipeline": 169,
+    "cs_intake_recent": 95,
+    "cs_intake_label": "May 7–12",
+    "stage_known_wip": 16,
+    "stage_known_alltime": 71,
+    "stage_known_avg_age_h": 19.2,
+    "stage_validation_wip": 28,
+    "stage_validation_alltime": 70,
+    "stage_validation_avg_age_h": 28.8,
+    "stage_mel_wip": 43,
+    "stage_mel_alltime": 41,
+    "stage_mel_avg_age_h": 9.6,
+    "stage_po_wip": 0,
+    "stage_po_alltime": 0,
+    "recycled": 1,
+    "disqualified": 0,
+    "attrition_unknown_to_known": [
+      153,
+      71
+    ],
+    "attrition_known_to_validation": [
+      71,
+      70
+    ],
+    "attrition_validation_to_mel": [
+      70,
+      41
+    ],
+    "attrition_mel_to_po": [
+      41,
+      0
+    ]
   },
-
   "targets": {
     "_note": "Contractual PO handoff targets. Source: Program agreement.",
     "q1_target": 160,
     "q1_due": "Jun 12, 2026",
-    "q1_delivered": 0,                    
-    "q1_required_per_week": 40,           
-
+    "q1_delivered": 0,
+    "q1_required_per_week": 40,
     "q2_target": 225,
     "q2_due": "Sep 11, 2026",
     "q2_delivered": 0,
-
     "q3_target": 255,
     "q3_due": "Dec 11, 2026",
     "q3_delivered": 0,
-
     "q4_target": 260,
     "q4_due": "Feb 20, 2027",
     "q4_delivered": 0,
-
     "total_program_target": 900,
     "total_delivered": 0
   },
-
   "calls": {
     "_note": "Source: NLPearl exports. Updated by Daniel each week.",
-    "total_attempts": 239,                
-    "best_week_label": "Apr 27 week",     
-    "best_week_attempts": 183,            
-    "best_week_connected": 44,            
-    "pickup_rate_pct": 24,                
-    "sla_compliance_pct": 100,            
-    "avg_duration_min": null,             
-
-    "signal_strong": 17,                  
-    "signal_weak": 20,                    
-    "signal_negative": 0,                 
-    "signal_no_connect": 6                
+    "total_attempts": 239,
+    "best_week_label": "Apr 27 week",
+    "best_week_attempts": 183,
+    "best_week_connected": 44,
+    "pickup_rate_pct": 24,
+    "sla_compliance_pct": 100,
+    "avg_duration_min": null,
+    "signal_strong": 17,
+    "signal_weak": 20,
+    "signal_negative": 0,
+    "signal_no_connect": 6
   },
-
   "campaign": {
     "_note": "Source: TechTarget/NetLine batch files. Updated by Justin when new batch arrives.",
     "total_leads": 940,
-    "report_period": "May 7\u201326, 2026",
+    "report_period": "May 7–26, 2026",
     "spend_to_date": 79900,
     "budget_total": 99960,
     "budget_remaining": 20060,
     "cpl": 85,
     "email_opted_out_flag": true,
     "email_opted_out_note": "Pending confirmation with Allison - all 438 Batch 2 contacts flagged TRUE",
-
     "offer_1_id": "w_awsi224",
     "offer_1_leads": 590,
     "offer_1_impressions": 173790,
-
     "offer_2_id": "w_awsi225",
     "offer_2_leads": 350,
     "offer_2_impressions": 46497,
-
     "consent_q5_pct": 100,
     "consent_q6_pct": 100,
     "c_level_pct": 66
   },
-
   "gaps": {
     "_note": "Free-text fields. Update when open items change status.",
-    "summary_hero_subtitle": "264 contacts in funnel \u00b7 0 POs delivered \u00b7 17 Strong AI call signals \u00b7 First ACE upload being prepped \u00b7 95 NetLine leads received May 7\u201312",
+    "summary_hero_subtitle": "264 contacts in funnel · 0 POs delivered · 17 Strong AI call signals · First ACE upload being prepped · 95 NetLine leads received May 7–12",
     "open_gaps_text": "0 POs to ACE as of May 26. 940 NetLine campaign leads received May 7-26, pending Eloqua intake and qualification routing. Finance spend feed unconfirmed; ROI, Cost Per PO, and all CPL/CPC metrics not yet calculable. Eloqua consent and scoring QA in progress, full program launch targeting June 1. Lead scoring interest/behavior layer not yet active; MVP runs on fit (demographic) scoring only.",
-    "ai_section_hero_sub": "239 total attempts \u00b7 24% peak pickup rate \u00b7 100% SLA compliance \u00b7 17 Strong signals, 0 converted to PO",
+    "ai_section_hero_sub": "239 total attempts · 24% peak pickup rate · 100% SLA compliance · 17 Strong signals, 0 converted to PO",
     "ace_upload_status": "In prep - Connor, Ian, Paulo",
     "po_bottleneck_note": "17 Strong signal calls, 0 POs. First ACE upload being prepped by Connor, Ian, and Paulo as of May 26. Execution will establish initial velocity and confirm structured data flow from NLPearl."
   },
-
   "chart_trend": {
     "_note": "Append one value to each array each week. weeks label = week starting date.",
-    "weeks": ["Apr 13", "Apr 20", "Apr 27", "May 4", "May 12"],
-    "mel":   [0, 0, 41, 41, 41],
-    "mqp":   [0, 30, 70, 70, 43],
-    "po":    [0, 0, 0, 0, 0]
+    "weeks": [
+      "Apr 13",
+      "Apr 20",
+      "Apr 27",
+      "May 4",
+      "May 12"
+    ],
+    "mel": [
+      0,
+      0,
+      41,
+      41,
+      41
+    ],
+    "mqp": [
+      0,
+      30,
+      70,
+      70,
+      43
+    ],
+    "po": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
   },
-
   "chart_pickup": {
     "_note": "Pickup rate % per week. Append each week. 0 = no data that week.",
-    "weeks": ["Apr 13", "Apr 20", "Apr 27", "May 4", "May 12"],
-    "rates": [0, 0, 24, 0, 0]
+    "weeks": [
+      "Apr 13",
+      "Apr 20",
+      "Apr 27",
+      "May 4",
+      "May 12"
+    ],
+    "rates": [
+      0,
+      0,
+      24,
+      0,
+      0
+    ]
   },
-
   "chart_age": {
     "_note": "Average hours per stage. Update weekly from Eloqua stage age report.",
     "known_h": 19.2,
@@ -671,8 +694,7 @@ body.edit-mode .ef:focus{background:rgba(99,102,241,.12);border-bottom:1.5px sol
     "mel_h": 9.6,
     "po_h": 0
   }
-}
-</script>
+}</script>
 
 <script>
 /* ── LOAD DATA BLOCK ─────────────────────────────────────────────────────── */
@@ -690,9 +712,9 @@ const AG = ND.chart_age;
 
 
 <!-- ═══════════════ MOBILE + TOOLTIP ═══════════════ -->
-<button class="sb-toggle" id="sb-toggle" aria-label="Toggle navigation">&#9776;</button>
+<button class="sb-toggle" id="sb-toggle" aria-label="Toggle navigation">☰</button>
 <div class="sb-overlay" id="sb-overlay"></div>
-<div class="chart-tip" id="chart-tip"><div class="tip-label"></div><div class="tip-val"></div></div>
+<div class="chart-tip" id="chart-tip" style="left: 574px; top: 457px;"><div class="tip-label">Unknown Stage</div><div class="tip-val" style="color: rgb(55, 65, 81);">No data</div></div>
 
 <!-- ═══════════════ SIDEBAR ═══════════════ -->
 <nav class="sb">
@@ -703,7 +725,7 @@ const AG = ND.chart_age;
 
   <div class="ns">
     <div class="nsl">Program Overview</div>
-    <div class="ni on" onclick="show('summary')">Summary</div>
+    <div class="ni" onclick="show('summary')">Summary</div>
     <div class="ni" onclick="show('targets')">Targets &amp; Pace</div>
   </div>
 
@@ -714,9 +736,9 @@ const AG = ND.chart_age;
 
   <div class="ns">
     <div class="nsl">Channel Data</div>
-    <div class="ni" onclick="show('ai')">AI Calls (NLPearl)<span class="nb g" id="sb-pickup-badge"></span></div>
+    <div class="ni" onclick="show('ai')">AI Calls (NLPearl)<span class="nb g" id="sb-pickup-badge">24%</span></div>
     <div class="ni" onclick="show('cs')">Campaign Reporting<span class="nb">940 Leads</span></div>
-    <div class="ni" onclick="show('email')">Email</div>
+    <div class="ni on" onclick="show('email')">Email</div>
     <div class="ni" onclick="show('web')">Web</div>
   </div>
 
@@ -732,11 +754,11 @@ const AG = ND.chart_age;
 <!-- ═══════════════ TOPBAR ═══════════════ -->
 <div class="tb">
   <span class="tb-t">Project Nexus - Measurement Dashboard</span>
-  <div class="srch"><span style="color:var(--text3);font-size:11px">&#128269;</span><input id="gs" placeholder="Search..." oninput="gSearch(this.value)" onblur="if(!this.value)document.querySelectorAll('.ni').forEach(n=>n.style.opacity='')"></div>
-  <span class="tb-m" id="tb-date"></span>
-  <button class="bsm" onclick="tDark()">&#9681; Theme</button>
-  <button class="bsm" id="edit-toggle-btn" onclick="toggleEditMode()">&#9998; Edit Mode</button>
-  <button class="bsm export-btn" id="export-btn" onclick="saveAndExport()">&#8681; Save &amp; Export</button>
+  <div class="srch"><span style="color:var(--text3);font-size:11px">🔍</span><input id="gs" placeholder="Search..." oninput="gSearch(this.value)" onblur="if(!this.value)document.querySelectorAll('.ni').forEach(n=&gt;n.style.opacity='')"></div>
+  <span class="tb-m" id="tb-date">MVP Launch · As of May 26, 2026</span>
+  <button class="bsm" onclick="tDark()">◑ Theme</button>
+  <button class="bsm edit-on" id="edit-toggle-btn" onclick="toggleEditMode()">✓ View Mode</button>
+  <button class="bsm export-btn" id="export-btn" onclick="saveAndExport()" style="display: inline-block;">⇩ Save &amp; Export</button>
   <button class="bsm pr" onclick="show('targets')">Targets</button>
 </div>
 <div id="toast">Exported successfully</div>
@@ -745,20 +767,20 @@ const AG = ND.chart_age;
 <main class="main">
 
 <!-- ═══════════════ SUMMARY ═══════════════ -->
-<section id="summary" class="sec on">
+<section id="summary" class="sec">
 
   <div class="shr">
     <div class="shr-ey">Project Nexus · VMware Migration Demand Program · Pilot Feb 2026 – Feb 2027</div>
     <div class="shr-t">Summary</div>
-    <div class="shr-s" id="summary-hero-sub"></div>
+    <div class="shr-s" id="summary-hero-sub">264 contacts in funnel · 0 POs delivered · 17 Strong AI call signals · First ACE upload being prepped · 95 NetLine leads received May 7–12</div>
     <div class="shr-ks">
-      <div class="shr-k"><div class="shr-kv" id="hero-funnel"></div><div class="shr-kl">Funnel Volume</div></div>
+      <div class="shr-k"><div class="shr-kv" id="hero-funnel">264</div><div class="shr-kl">Funnel Volume</div></div>
       <div class="shr-k" style="opacity:.3">|</div>
-      <div class="shr-k"><div class="shr-kv" id="hero-po"></div><div class="shr-kl">POs to ACE</div></div>
+      <div class="shr-k"><div class="shr-kv" id="hero-po">0</div><div class="shr-kl">POs to ACE</div></div>
       <div class="shr-k" style="opacity:.3">|</div>
-      <div class="shr-k"><div class="shr-kv" id="hero-pickup"></div><div class="shr-kl">AI Pickup Rate</div></div>
+      <div class="shr-k"><div class="shr-kv" id="hero-pickup">24%</div><div class="shr-kl">AI Pickup Rate</div></div>
       <div class="shr-k" style="opacity:.3">|</div>
-      <div class="shr-k"><div class="shr-kv" id="hero-sla"></div><div class="shr-kl">Speed-to-Call SLA</div></div>
+      <div class="shr-k"><div class="shr-kv" id="hero-sla">100%</div><div class="shr-kl">Speed-to-Call SLA</div></div>
       <div class="shr-k" style="opacity:.3">|</div>
       <div class="shr-k"><div class="shr-kv">~$20B</div><div class="shr-kl">Program TAM</div></div>
     </div>
@@ -767,42 +789,42 @@ const AG = ND.chart_age;
   <div class="g3">
     <div class="card">
       <div class="kpi-meta">MET001 <span class="dot ok"></span></div>
-      <div class="kv" id="kpi-funnel-vol"></div>
+      <div class="kv" id="kpi-funnel-vol">264</div>
       <div class="kl">Funnel Volume - WIP + CS Intake</div>
-      <div style="font-size:10px;color:var(--text3);margin-top:3px" id="kpi-funnel-sub"></div>
+      <div style="font-size:10px;color:var(--text3);margin-top:3px" id="kpi-funnel-sub">169 Eloqua pipeline + 95 new CS leads (May 7–12)</div>
       <div class="bm"><span class="bm-lbl">B2B lead-to-MQL benchmark</span><span class="bm-val">30–35%</span></div>
     </div>
     <div class="card">
       <div class="kpi-meta">MET003 <span class="dot gap"></span></div>
-      <div class="kv" id="kpi-qual-rate" style="color:var(--red)"></div>
+      <div class="kv" id="kpi-qual-rate" style="color:var(--red)">0%</div>
       <div class="kl">Qualification Rate</div>
-      <div style="font-size:10px;color:var(--text3);margin-top:3px" id="kpi-qual-sub"></div>
+      <div style="font-size:10px;color:var(--text3);margin-top:3px" id="kpi-qual-sub">0 POs from 41 MEL entries</div>
       <div class="bm"><span class="bm-lbl">B2B MQL-to-opp benchmark</span><span class="bm-val">30–50%</span></div>
     </div>
     <div class="card">
       <div class="kpi-meta">MET004 <span class="dot gap"></span></div>
-      <div class="kv" id="kpi-target" style="color:var(--red)"></div>
+      <div class="kv" id="kpi-target" style="color:var(--red)">0 / 160</div>
       <div class="kl">Target Progress - Q1</div>
-      <div style="font-size:10px;color:var(--text3);margin-top:3px" id="kpi-target-sub"></div>
+      <div style="font-size:10px;color:var(--text3);margin-top:3px" id="kpi-target-sub">40 POs / week needed · 2 weeks remain</div>
     </div>
     <div class="card">
       <div class="kpi-meta">MET056 <span class="dot ok"></span></div>
-      <div class="kv" id="kpi-pickup" style="color:var(--teal)"></div>
+      <div class="kv" id="kpi-pickup" style="color:var(--teal)">24%</div>
       <div class="kl">Pickup Rate</div>
       <div style="font-size:10px;color:var(--text3);margin-top:3px" id="kpi-pickup-sub"></div>
       <div class="bm"><span class="bm-lbl">B2B outbound connect avg</span><span class="bm-val">3–10%</span></div>
     </div>
     <div class="card">
       <div class="kpi-meta">MET062 <span class="dot ok"></span></div>
-      <div class="kv" id="kpi-sla" style="color:var(--teal)"></div>
+      <div class="kv" id="kpi-sla" style="color:var(--teal)">100%</div>
       <div class="kl">Speed-to-Call SLA</div>
       <div style="font-size:10px;color:var(--text3);margin-top:3px">All eligible transitions within 24h</div>
       <div class="bm"><span class="bm-lbl">Ideal speed-to-lead</span><span class="bm-val">&lt;1h (53% CVR)</span></div>
     </div>
     <div class="card">
       <div class="kpi-meta">TechTarget / NetLine <span class="dot ok"></span></div>
-      <div class="kv" id="kpi-cs-leads"></div>
-      <div class="kl" id="kpi-cs-label">Campaign Leads</div>
+      <div class="kv" id="kpi-cs-leads">95</div>
+      <div class="kl" id="kpi-cs-label">Campaign Leads - May 7–12</div>
       <div style="font-size:10px;color:var(--text3);margin-top:3px">98% C-Level · 100% US · All lead score 4</div>
     </div>
   </div>
@@ -810,11 +832,11 @@ const AG = ND.chart_age;
   <div class="g2">
     <div class="card">
       <div class="sl"><span>Weekly Volume Trend - MEL, MQP, PO</span></div>
-      <canvas id="c-trend" width="340" height="100" style="max-width:100%"></canvas>
+      <canvas id="c-trend" width="680" height="200" style="max-width:100%"></canvas>
     </div>
     <div class="card">
       <div class="sl"><span>Pickup Rate % - Weekly (MET056)</span></div>
-      <canvas id="c-pickup" width="340" height="100" style="max-width:100%"></canvas>
+      <canvas id="c-pickup" width="680" height="200" style="max-width:100%"></canvas>
     </div>
   </div>
 
@@ -822,7 +844,7 @@ const AG = ND.chart_age;
     <div class="gcall-dot"></div>
     <div>
       <div class="gcall-lbl">Open Measurement Gaps</div>
-      <div class="gcall-txt"><span id="open-gaps-text"></span></div>
+      <div class="gcall-txt"><span id="open-gaps-text">0 POs to ACE as of May 26. 940 NetLine campaign leads received May 7-26, pending Eloqua intake and qualification routing. Finance spend feed unconfirmed; ROI, Cost Per PO, and all CPL/CPC metrics not yet calculable. Eloqua consent and scoring QA in progress, full program launch targeting June 1. Lead scoring interest/behavior layer not yet active; MVP runs on fit (demographic) scoring only.</span></div>
     </div>
   </div>
 
@@ -834,7 +856,7 @@ const AG = ND.chart_age;
   <div class="shr">
     <div class="shr-ey" id="funnel-hero-ey">Eloqua Pipeline · As of May 26, 2026</div>
     <div class="shr-t">Funnel Stage Health + Age</div>
-    <div class="shr-s" id="funnel-hero-sub"></div>
+    <div class="shr-s" id="funnel-hero-sub">MET001 + MET002 - 169 contacts in pipeline · 28.8h avg Validation dwell (SLA ceiling) · 0 PO conversions</div>
   </div>
 
   <div class="card" style="margin-bottom:14px">
@@ -854,9 +876,9 @@ const AG = ND.chart_age;
         <div class="lf-box" style="border-top:2px solid var(--px2)">
           <div class="lf-code" style="color:var(--px2)">Stage 2</div>
           <div class="lf-name">Known / Consented</div>
-          <div><span class="age-badge age-warn" id="lf-known-age"></span></div>
-          <div class="lf-wip" style="color:var(--px2)" id="lf-known-wip"></div>
-          <div class="lf-sub" id="lf-known-sub"></div>
+          <div><span class="age-badge age-warn" id="lf-known-age">Avg 19.2h</span></div>
+          <div class="lf-wip" style="color:var(--px2)" id="lf-known-wip">16</div>
+          <div class="lf-sub" id="lf-known-sub">WIP · 71 all time</div>
         </div>
       </div>
       <div class="lf-arrow">›</div>
@@ -864,9 +886,9 @@ const AG = ND.chart_age;
         <div class="lf-box" style="border-top:2px solid var(--gold)">
           <div class="lf-code" style="color:var(--gold)">Stage 3</div>
           <div class="lf-name">Validation (MQP)</div>
-          <div><span class="age-badge age-hot" id="lf-val-age"></span></div>
-          <div class="lf-wip" style="color:var(--gold)" id="lf-val-wip"></div>
-          <div class="lf-sub" id="lf-val-sub"></div>
+          <div><span class="age-badge age-hot" id="lf-val-age">Avg 28.8h</span></div>
+          <div class="lf-wip" style="color:var(--gold)" id="lf-val-wip">28</div>
+          <div class="lf-sub" id="lf-val-sub">WIP · 70 all time</div>
         </div>
       </div>
       <div class="lf-arrow">›</div>
@@ -874,9 +896,9 @@ const AG = ND.chart_age;
         <div class="lf-box" style="border-top:2px solid var(--px)">
           <div class="lf-code" style="color:var(--px)">Stage 4</div>
           <div class="lf-name">MEL Classification</div>
-          <div><span class="age-badge age-ok" id="lf-mel-age"></span></div>
-          <div class="lf-wip" style="color:var(--px)" id="lf-mel-wip"></div>
-          <div class="lf-sub" id="lf-mel-sub"></div>
+          <div><span class="age-badge age-ok" id="lf-mel-age">Avg 9.6h</span></div>
+          <div class="lf-wip" style="color:var(--px)" id="lf-mel-wip">43</div>
+          <div class="lf-sub" id="lf-mel-sub">WIP · 41 all time</div>
         </div>
       </div>
       <div class="lf-arrow">›</div>
@@ -884,58 +906,58 @@ const AG = ND.chart_age;
         <div class="lf-box" style="border-top:2px solid var(--red)">
           <div class="lf-code" style="color:var(--red)">Stage 5</div>
           <div class="lf-name">Partner Opportunity (PO)</div>
-          <div><span class="age-badge age-hot" id="lf-po-age"></span></div>
-          <div class="lf-wip" style="color:var(--red)" id="lf-po-wip"></div>
-          <div class="lf-sub" id="lf-po-sub"></div>
+          <div><span class="age-badge age-hot" id="lf-po-age">0 delivered</span></div>
+          <div class="lf-wip" style="color:var(--red)" id="lf-po-wip">0</div>
+          <div class="lf-sub" id="lf-po-sub">WIP · 0 all time</div>
         </div>
       </div>
     </div>
     <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:12px">
       <div style="background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.22);border-radius:9px;padding:10px 14px;min-width:110px;text-align:center">
         <div style="font-family:'DM Mono',monospace;font-size:7.5px;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px">Recycled</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--gold)" id="funnel-recycled"></div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--gold)" id="funnel-recycled">1</div>
         <div style="font-size:9px;color:var(--text3);margin-top:2px">Returned to nurture</div>
       </div>
       <div style="background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.22);border-radius:9px;padding:10px 14px;min-width:110px;text-align:center">
         <div style="font-family:'DM Mono',monospace;font-size:7.5px;color:var(--red);letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px">DQ'd</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--red)" id="funnel-dq"></div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--red)" id="funnel-dq">0</div>
         <div style="font-size:9px;color:var(--text3);margin-top:2px">Disqualified</div>
       </div>
     </div>
-    <div class="note">Age interpretation: 19.2h dwell at Known and 28.8h at Validation are the primary optimization targets. 28.8h exceeds the 24h SLA ceiling - some contacts are breaching. MEL at 9.6h is fast, indicating NLPearl result processing is working correctly once a call resolves.</div>
+    <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note">Age interpretation: 19.2h dwell at Known and 28.8h at Validation are the primary optimization targets. 28.8h exceeds the 24h SLA ceiling - some contacts are breaching. MEL at 9.6h is fast, indicating NLPearl result processing is working correctly once a call resolves.</div>
   </div>
 
   <div class="g2">
     <div class="card">
       <div class="sl"><span>Average Age by Stage (hours)</span></div>
-      <canvas id="c-age" width="340" height="180" style="max-width:100%"></canvas>
+      <canvas id="c-age" width="680" height="360" style="max-width:100%"></canvas>
     </div>
     <div style="display:flex;flex-direction:column;gap:12px">
       <div class="card">
         <div class="sl"><span>Stage Attrition - All Time Entries</span></div>
         <div class="atr-row">
-          <div><div style="font-size:11px;color:var(--text)">Unknown to Known</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3)" id="atr-u2k-label"></div></div>
+          <div><div style="font-size:11px;color:var(--text)">Unknown to Known</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3)" id="atr-u2k-label">153 to 71</div></div>
           <div><div class="atr-pct" style="color:var(--gold)">54%</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);text-align:right">lost</div></div>
         </div>
         <div class="atr-row">
-          <div><div style="font-size:11px;color:var(--text)">Known to Validation</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3)" id="atr-k2v-label"></div></div>
+          <div><div style="font-size:11px;color:var(--text)">Known to Validation</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3)" id="atr-k2v-label">71 to 70</div></div>
           <div><div class="atr-pct" style="color:var(--teal)">1%</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);text-align:right">lost</div></div>
         </div>
         <div class="atr-row">
-          <div><div style="font-size:11px;color:var(--text)">Validation to MEL</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3)" id="atr-v2m-label"></div></div>
+          <div><div style="font-size:11px;color:var(--text)">Validation to MEL</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3)" id="atr-v2m-label">70 to 41</div></div>
           <div><div class="atr-pct" style="color:var(--gold)">41%</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);text-align:right">lost</div></div>
         </div>
         <div class="atr-row">
-          <div><div style="font-size:11px;color:var(--text)">MEL to Partner Opportunity</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3)" id="atr-m2p-label"></div></div>
+          <div><div style="font-size:11px;color:var(--text)">MEL to Partner Opportunity</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3)" id="atr-m2p-label">41 to 0</div></div>
           <div><div class="atr-pct" style="color:var(--red)">100%</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);text-align:right">none converted</div></div>
         </div>
       </div>
       <div class="card">
         <div style="font-family:'DM Mono',monospace;font-size:8.5px;color:var(--text3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px">Terminal / Recycled Counts</div>
         <div style="display:flex;gap:18px">
-          <div><div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--gold)" id="term-recycled"></div><div style="font-size:10px;color:var(--text3)">Recycled to Nurture</div></div>
-          <div><div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--red)" id="term-dq"></div><div style="font-size:10px;color:var(--text3)">Disqualified</div></div>
-          <div><div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--text)" id="term-po"></div><div style="font-size:10px;color:var(--text3)">POs to ACE</div></div>
+          <div><div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--gold)" id="term-recycled">1</div><div style="font-size:10px;color:var(--text3)">Recycled to Nurture</div></div>
+          <div><div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--red)" id="term-dq">0</div><div style="font-size:10px;color:var(--text3)">Disqualified</div></div>
+          <div><div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--text)" id="term-po">0</div><div style="font-size:10px;color:var(--text3)">POs to ACE</div></div>
         </div>
       </div>
     </div>
@@ -956,9 +978,9 @@ const AG = ND.chart_age;
     </div>
     <div class="card warn">
       <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--red);letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px">Primary Bottleneck</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--red)">&#8734;</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--red)">∞</div>
       <div style="font-size:11px;color:var(--text);margin-top:2px">PO Gate - 0 Conversions</div>
-      <div style="font-size:10px;color:var(--text3);margin-top:4px;line-height:1.6"><span id="po-bottleneck-note"></span></div>
+      <div style="font-size:10px;color:var(--text3);margin-top:4px;line-height:1.6"><span id="po-bottleneck-note">17 Strong signal calls, 0 POs. First ACE upload being prepped by Connor, Ian, and Paulo as of May 26. Execution will establish initial velocity and confirm structured data flow from NLPearl.</span></div>
     </div>
   </div>
 
@@ -1007,29 +1029,29 @@ const AG = ND.chart_age;
   <div class="shr">
     <div class="shr-ey">NLPearl AI Voice Agent · Apr 27 Week Peak</div>
     <div class="shr-t">AI Outbound Calls - NLPearl Performance</div>
-    <div class="shr-s" id="ai-hero-sub"></div>
+    <div class="shr-s" id="ai-hero-sub">239 total attempts · 24% peak pickup rate · 100% SLA compliance · 17 Strong signals, 0 converted to PO</div>
   </div>
 
   <div class="g4">
-    <div class="card"><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--px)" id="ai-attempts"></div><div style="font-size:11px;color:var(--text)">Calls Attempted</div><div style="font-size:10px;color:var(--text3);margin-top:2px">MET055 - all weeks</div><div class="bm"><span class="bm-lbl">Avg dials to reach DM</span><span class="bm-val">8 attempts</span></div></div>
-    <div class="card"><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--gold)" id="ai-pickup"></div><div style="font-size:11px;color:var(--text)">Pickup Rate</div><div style="font-size:10px;color:var(--text3);margin-top:2px">MET056 - peak week Apr 27</div><div class="bm"><span class="bm-lbl">B2B outbound avg</span><span class="bm-val">3–10%</span></div></div>
+    <div class="card"><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--px)" id="ai-attempts">239</div><div style="font-size:11px;color:var(--text)">Calls Attempted</div><div style="font-size:10px;color:var(--text3);margin-top:2px">MET055 - all weeks</div><div class="bm"><span class="bm-lbl">Avg dials to reach DM</span><span class="bm-val">8 attempts</span></div></div>
+    <div class="card"><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--gold)" id="ai-pickup">24%</div><div style="font-size:11px;color:var(--text)">Pickup Rate</div><div style="font-size:10px;color:var(--text3);margin-top:2px">MET056 - peak week Apr 27</div><div class="bm"><span class="bm-lbl">B2B outbound avg</span><span class="bm-val">3–10%</span></div></div>
     <div class="card"><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--text2)">-</div><div style="font-size:11px;color:var(--text)">Avg Call Duration</div><div style="font-size:10px;color:var(--text3);margin-top:2px">MET057 - data pending</div><div class="bm"><span class="bm-lbl">B2B avg productive call</span><span class="bm-val">3–5 min</span></div></div>
-    <div class="card"><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--teal)" id="ai-sla"></div><div style="font-size:11px;color:var(--text)">SLA Compliance</div><div style="font-size:10px;color:var(--text3);margin-top:2px">All calls within 24h SLA</div><div class="bm"><span class="bm-lbl">Ideal speed-to-lead</span><span class="bm-val">&lt;1h (53% CVR)</span></div></div>
+    <div class="card"><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--teal)" id="ai-sla">100%</div><div style="font-size:11px;color:var(--text)">SLA Compliance</div><div style="font-size:10px;color:var(--text3);margin-top:2px">All calls within 24h SLA</div><div class="bm"><span class="bm-lbl">Ideal speed-to-lead</span><span class="bm-val">&lt;1h (53% CVR)</span></div></div>
   </div>
 
   <div class="g2">
     <div class="card">
       <div class="sl"><span>MET055 + MET056 - Attempts vs Connected + Rate %</span></div>
-      <canvas id="c-calls" width="340" height="120" style="max-width:100%"></canvas>
+      <canvas id="c-calls" width="1322" height="466" style="max-width:100%"></canvas>
     </div>
     <div class="card">
       <div class="sl"><span>MET054 - Call Signal Distribution (Apr 27 Week)</span></div>
       <div style="margin-top:8px">
-        <div class="sig-row"><div class="sig-dot" style="background:var(--teal);box-shadow:0 0 5px var(--teal)"></div><div class="sig-name">Strong - PO Candidate</div><div class="sig-pts" style="color:var(--teal)" id="sig-strong"></div><div class="sig-tr"><div class="sig-fi" id="sig-strong-bar" style="background:var(--teal);opacity:.8"></div></div></div>
-        <div class="sig-row"><div class="sig-dot" style="background:var(--gold);box-shadow:0 0 5px var(--gold)"></div><div class="sig-name">Weak - Monitor</div><div class="sig-pts" style="color:var(--gold)" id="sig-weak"></div><div class="sig-tr"><div class="sig-fi" id="sig-weak-bar" style="background:var(--gold);opacity:.8"></div></div></div>
-        <div class="sig-row"><div class="sig-dot" style="background:var(--red);box-shadow:0 0 5px var(--red)"></div><div class="sig-name">Negative - Recycle</div><div class="sig-pts" style="color:var(--red)" id="sig-neg"></div><div class="sig-tr"><div class="sig-fi" id="sig-neg-bar" style="background:var(--red);opacity:.8"></div></div></div>
-        <div class="sig-row" style="margin-bottom:0"><div class="sig-dot" style="background:var(--text3);box-shadow:0 0 5px var(--text3)"></div><div class="sig-name">No Connect</div><div class="sig-pts" style="color:var(--text3)" id="sig-nc"></div><div class="sig-tr"><div class="sig-fi" id="sig-nc-bar" style="background:var(--text3);opacity:.8"></div></div></div>
-        <div class="note">17 Strong signals, 0 POs. First ACE upload is being prepared this week by Connor, Ian, and Paulo. Per the ACE Readiness gate (#2), a Strong signal requires 100+ VMs, migration timeline under 18mo, and sales + AI consent. Executing the first upload will confirm whether NLPearl structured data is flowing correctly to the ACE submission format.</div>
+        <div class="sig-row"><div class="sig-dot" style="background:var(--teal);box-shadow:0 0 5px var(--teal)"></div><div class="sig-name">Strong - PO Candidate</div><div class="sig-pts" style="color:var(--teal)" id="sig-strong">17</div><div class="sig-tr"><div class="sig-fi" id="sig-strong-bar" style="background: var(--teal); opacity: 0.8; width: 39.5%;"></div></div></div>
+        <div class="sig-row"><div class="sig-dot" style="background:var(--gold);box-shadow:0 0 5px var(--gold)"></div><div class="sig-name">Weak - Monitor</div><div class="sig-pts" style="color:var(--gold)" id="sig-weak">20</div><div class="sig-tr"><div class="sig-fi" id="sig-weak-bar" style="background: var(--gold); opacity: 0.8; width: 46.5%;"></div></div></div>
+        <div class="sig-row"><div class="sig-dot" style="background:var(--red);box-shadow:0 0 5px var(--red)"></div><div class="sig-name">Negative - Recycle</div><div class="sig-pts" style="color:var(--red)" id="sig-neg">0</div><div class="sig-tr"><div class="sig-fi" id="sig-neg-bar" style="background: var(--red); opacity: 0.8; width: 0%;"></div></div></div>
+        <div class="sig-row" style="margin-bottom:0"><div class="sig-dot" style="background:var(--text3);box-shadow:0 0 5px var(--text3)"></div><div class="sig-name">No Connect</div><div class="sig-pts" style="color:var(--text3)" id="sig-nc">6</div><div class="sig-tr"><div class="sig-fi" id="sig-nc-bar" style="background: var(--text3); opacity: 0.8; width: 14%;"></div></div></div>
+        <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note">17 Strong signals, 0 POs. First ACE upload is being prepared this week by Connor, Ian, and Paulo. Per the ACE Readiness gate (#2), a Strong signal requires 100+ VMs, migration timeline under 18mo, and sales + AI consent. Executing the first upload will confirm whether NLPearl structured data is flowing correctly to the ACE submission format.</div>
       </div>
     </div>
   </div>
@@ -1039,7 +1061,7 @@ const AG = ND.chart_age;
     <div class="sl"><span>AI Outbound Call Benchmarks - B2B 2025 (Nexus vs Industry)</span></div>
     <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);margin-bottom:14px;line-height:1.6">Sources: SalesHive B2B Cold Calling Benchmarks 2025, Martal Group Cold Call Statistics 2025, Optifai Pipeline Study 2026. NLPearl is an AI agent, not a human SDR - treat connect rate benchmarks as floor guidance.</div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px">
-      <div class="bmt" style="border-color:rgba(0,229,192,.3)"><div class="bmt-lbl">Nexus best week</div><div class="bmt-val" style="color:var(--teal)" id="bmt-best-pct"></div><div class="bmt-sub" id="bmt-best-sub">Pickup rate - Apr 27 week. 44 of 183 calls connected.</div></div>
+      <div class="bmt" style="border-color:rgba(0,229,192,.3)"><div class="bmt-lbl">Nexus best week</div><div class="bmt-val" style="color:var(--teal)" id="bmt-best-pct">24%</div><div class="bmt-sub" id="bmt-best-sub">Pickup rate - Apr 27 week. 44 of 183 calls connected.</div></div>
       <div class="bmt"><div class="bmt-lbl">B2B connect rate (avg)</div><div class="bmt-val">3–10%</div><div class="bmt-sub">US B2B outbound. Enterprise / C-suite skews lower end.</div></div>
       <div class="bmt" style="border-color:rgba(251,191,36,.3)"><div class="bmt-lbl">Top performer target</div><div class="bmt-val" style="color:var(--gold)">15–20%</div><div class="bmt-sub">AI-powered dialing with verified direct dials + targeted ICP.</div></div>
       <div class="bmt"><div class="bmt-lbl">Dial-to-meeting avg</div><div class="bmt-val">2.5%</div><div class="bmt-sub">~1 qualified meeting per 40 dials. Top performers reach 5–8%.</div></div>
@@ -1078,13 +1100,13 @@ const AG = ND.chart_age;
   <div class="shr">
     <div class="shr-ey">NetLine Content Syndication · May 7–26, 2026 · Report Date: May 26, 2026</div>
     <div class="shr-t">Campaign Reporting - Audience Intelligence</div>
-    <div class="shr-s" id="cs-hero-sub"></div>
+    <div class="shr-s" id="cs-hero-sub">VMware Migration HQL · 2 offers · 940 NetLine leads received · 66% C-Level · 100% dual consent · Program Q1 target: 160 POs by Jun 12, 2026</div>
   </div>
 
   <div class="g4">
-    <div class="card warn"><div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--red);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Q1 Program Target</div><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--red)" id="cs-q1-po-tile"></div><div style="font-size:11px;color:var(--text)">POs Delivered - Q1</div><div style="font-size:10px;color:var(--text3);margin-top:2px" id="cs-q1-sub-tile"></div><div class="bm"><span class="bm-lbl">Contractual handoff target</span><span class="bm-val">Behind</span></div></div>
-    <div class="card"><div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Full Program Target</div><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--px)" id="cs-total-po-tile"></div><div style="font-size:11px;color:var(--text)">Total POs - Program</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Q1–Q4 · Apr 2026 – Feb 2027</div><div class="bm"><span class="bm-lbl">Program commitment</span><span class="bm-val">900 POs total</span></div></div>
-    <div class="card"><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--gold)" id="cs-clevel-tile"></div><div style="font-size:11px;color:var(--text)">C-Level Contacts</div><div style="font-size:10px;color:var(--text3);margin-top:2px">623 C-Level · 191 Director · 70 VP</div><div class="bm"><span class="bm-lbl">C-suite prefers phone contact</span><span class="bm-val">57% of buyers</span></div></div>
+    <div class="card warn"><div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--red);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Q1 Program Target</div><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--red)" id="cs-q1-po-tile">0 / 160</div><div style="font-size:11px;color:var(--text)">POs Delivered - Q1</div><div style="font-size:10px;color:var(--text3);margin-top:2px" id="cs-q1-sub-tile">Due Jun 12, 2026 · 40 POs/week required</div><div class="bm"><span class="bm-lbl">Contractual handoff target</span><span class="bm-val">Behind</span></div></div>
+    <div class="card"><div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Full Program Target</div><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--px)" id="cs-total-po-tile">0 / 900</div><div style="font-size:11px;color:var(--text)">Total POs - Program</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Q1–Q4 · Apr 2026 – Feb 2027</div><div class="bm"><span class="bm-lbl">Program commitment</span><span class="bm-val">900 POs total</span></div></div>
+    <div class="card"><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--gold)" id="cs-clevel-tile">66%</div><div style="font-size:11px;color:var(--text)">C-Level Contacts</div><div style="font-size:10px;color:var(--text3);margin-top:2px">623 C-Level · 191 Director · 70 VP</div><div class="bm"><span class="bm-lbl">C-suite prefers phone contact</span><span class="bm-val">57% of buyers</span></div></div>
     <div class="card"><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--px)">100%</div><div style="font-size:11px;color:var(--text)">US-Only · AI Consent</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Q5 + Q6 - both consent fields TRUE · n=940</div><div class="bm"><span class="bm-lbl">Dual consent required for routing</span><span class="bm-val">Program standard</span></div></div>
   </div>
 
@@ -1118,7 +1140,7 @@ const AG = ND.chart_age;
           </div>
         </div>
       </div>
-      <div class="note" style="margin-top:12px">w_awsi224 (Guide) is the stronger performer at 63% of leads with a lower impression-to-lead ratio, indicating higher resonance. w_awsi225 (Solution Brief) captures the 37% less CFO-centric audience with heavier IT Infrastructure and DevOps job functions.</div>
+      <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note" style="margin-top:12px">w_awsi224 (Guide) is the stronger performer at 63% of leads with a lower impression-to-lead ratio, indicating higher resonance. w_awsi225 (Solution Brief) captures the 37% less CFO-centric audience with heavier IT Infrastructure and DevOps job functions.</div>
     </div>
     <div class="card">
       <div class="sl"><span>Consent Coverage - Q5 + Q6 (n=940)</span></div>
@@ -1134,7 +1156,7 @@ const AG = ND.chart_age;
           <div style="font-size:9px;color:var(--text3);margin-top:3px;line-height:1.5">Program partners may contact and share data between parties</div>
         </div>
       </div>
-      <div class="note">Full dual-consent coverage across all 940 leads. All are eligible for program outreach including NLPearl AI calls. No consent gaps to resolve before routing.</div>
+      <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note">Full dual-consent coverage across all 940 leads. All are eligible for program outreach including NLPearl AI calls. No consent gaps to resolve before routing.</div>
     </div>
   </div>
 
@@ -1148,7 +1170,7 @@ const AG = ND.chart_age;
       <div class="sig-row"><div class="sig-dot" style="background:var(--gold)"></div><div class="sig-name">CTO / Chief Technology Officer</div><div class="sig-pts" style="color:var(--gold)">83 (9%)</div><div class="sig-tr"><div class="sig-fi" style="width:24%;background:var(--gold);opacity:.8"></div></div></div>
       <div class="sig-row"><div class="sig-dot" style="background:var(--red)"></div><div class="sig-name">IT / IT Infrastructure</div><div class="sig-pts" style="color:var(--red)">69 (7%)</div><div class="sig-tr"><div class="sig-fi" style="width:20%;background:var(--red);opacity:.8"></div></div></div>
       <div class="sig-row" style="margin-bottom:0"><div class="sig-dot" style="background:var(--text3)"></div><div class="sig-name">Fin:Controller + IT:DevOps + Other</div><div class="sig-pts" style="color:var(--text3)">135 (14%)</div><div class="sig-tr"><div class="sig-fi" style="width:40%;background:var(--text3);opacity:.7"></div></div></div>
-      <div class="note">CFO still leads at 36%, but CIO (21%) and Cyber Security (12%) roles are more prominent than in the early batch - reflecting the addition of w_awsi225 which skews toward IT/Infrastructure. For NLPearl: CFOs get cost/ROI framing; CIOs and CTOs get architectural risk and migration path framing.</div>
+      <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note">CFO still leads at 36%, but CIO (21%) and Cyber Security (12%) roles are more prominent than in the early batch - reflecting the addition of w_awsi225 which skews toward IT/Infrastructure. For NLPearl: CFOs get cost/ROI framing; CIOs and CTOs get architectural risk and migration path framing.</div>
     </div>
     <div class="card">
       <div class="sl"><span>Revenue Size (n=940)</span></div>
@@ -1157,7 +1179,7 @@ const AG = ND.chart_age;
       <div class="sig-row"><div class="sig-dot" style="background:var(--teal);box-shadow:0 0 5px var(--teal)"></div><div class="sig-name">$1 – 4.99 Billion</div><div class="sig-pts" style="color:var(--teal)">240 (26%)</div><div class="sig-tr"><div class="sig-fi" style="width:72%;background:var(--teal);opacity:.8"></div></div></div>
       <div class="sig-row"><div class="sig-dot" style="background:var(--gold)"></div><div class="sig-name">$50 – 99.99 Million</div><div class="sig-pts" style="color:var(--gold)">43 (5%)</div><div class="sig-tr"><div class="sig-fi" style="width:13%;background:var(--gold);opacity:.8"></div></div></div>
       <div class="sig-row" style="margin-bottom:0"><div class="sig-dot" style="background:var(--text3)"></div><div class="sig-name">More than $5B + remaining</div><div class="sig-pts" style="color:var(--text3)">66 (7%)</div><div class="sig-tr"><div class="sig-fi" style="width:20%;background:var(--text3);opacity:.7"></div></div></div>
-      <div class="note">63% in the $100M–$999.9M band - strong mid-market concentration. The $1B+ cohort (240 leads, 26%) is notably larger than the early batch, indicating upmarket reach from the second offer.</div>
+      <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note">63% in the $100M–$999.9M band - strong mid-market concentration. The $1B+ cohort (240 leads, 26%) is notably larger than the early batch, indicating upmarket reach from the second offer.</div>
     </div>
   </div>
 
@@ -1170,7 +1192,7 @@ const AG = ND.chart_age;
       <div class="sig-row"><div class="sig-dot" style="background:var(--teal)"></div><div class="sig-name">500 – 999 employees</div><div class="sig-pts" style="color:var(--teal)">153 (16%)</div><div class="sig-tr"><div class="sig-fi" style="width:40%;background:var(--teal);opacity:.8"></div></div></div>
       <div class="sig-row"><div class="sig-dot" style="background:var(--gold)"></div><div class="sig-name">5,000 – 9,999 employees</div><div class="sig-pts" style="color:var(--gold)">67 (7%)</div><div class="sig-tr"><div class="sig-fi" style="width:17%;background:var(--gold);opacity:.8"></div></div></div>
       <div class="sig-row" style="margin-bottom:0"><div class="sig-dot" style="background:var(--text3)"></div><div class="sig-name">250 – 499 + 10k–19k + Other</div><div class="sig-pts" style="color:var(--text3)">51 (5%)</div><div class="sig-tr"><div class="sig-fi" style="width:13%;background:var(--text3);opacity:.7"></div></div></div>
-      <div class="note">71% in the 1,000–4,999 employee band - strong alignment with the Sub-Large Enterprise ICP. The 1,000–2,499 cohort (41%) remains the dominant segment and the best fit for the fewer-than-2k VM program criteria.</div>
+      <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note">71% in the 1,000–4,999 employee band - strong alignment with the Sub-Large Enterprise ICP. The 1,000–2,499 cohort (41%) remains the dominant segment and the best fit for the fewer-than-2k VM program criteria.</div>
     </div>
     <div class="card">
       <div class="sl"><span>Top Industries (n=940)</span></div>
@@ -1180,7 +1202,7 @@ const AG = ND.chart_age;
       <div class="sig-row"><div class="sig-dot" style="background:var(--gold)"></div><div class="sig-name">Education</div><div class="sig-pts" style="color:var(--gold)">71 (8%)</div><div class="sig-tr"><div class="sig-fi" style="width:38%;background:var(--gold);opacity:.8"></div></div></div>
       <div class="sig-row"><div class="sig-dot" style="background:var(--red)"></div><div class="sig-name">Insurance</div><div class="sig-pts" style="color:var(--red)">62 (7%)</div><div class="sig-tr"><div class="sig-fi" style="width:33%;background:var(--red);opacity:.8"></div></div></div>
       <div class="sig-row" style="margin-bottom:0"><div class="sig-dot" style="background:var(--text3)"></div><div class="sig-name">Manufacturing + Government + Other</div><div class="sig-pts" style="color:var(--text3)">433 (46%)</div><div class="sig-tr"><div class="sig-fi" style="width:46%;background:var(--text3);opacity:.7"></div></div></div>
-      <div class="note">Tech and Finance lead - consistent with the VMware migration buyer profile. Education (71) and Insurance (62) are significant new segments from the expanded campaign, both likely driven by regulatory and cost-driven migration intent.</div>
+      <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note">Tech and Finance lead - consistent with the VMware migration buyer profile. Education (71) and Insurance (62) are significant new segments from the expanded campaign, both likely driven by regulatory and cost-driven migration intent.</div>
     </div>
   </div>
 
@@ -1193,14 +1215,14 @@ const AG = ND.chart_age;
       <div class="sig-row"><div class="sig-dot" style="background:var(--teal)"></div><div class="sig-name">1,000–1,999 VMs</div><div class="sig-pts" style="color:var(--teal)">170 (18%)</div><div class="sig-tr"><div class="sig-fi" style="width:58%;background:var(--teal);opacity:.8"></div></div></div>
       <div class="sig-row"><div class="sig-dot" style="background:var(--gold)"></div><div class="sig-name">250–499 VMs</div><div class="sig-pts" style="color:var(--gold)">164 (17%)</div><div class="sig-tr"><div class="sig-fi" style="width:56%;background:var(--gold);opacity:.8"></div></div></div>
       <div class="sig-row" style="margin-bottom:0"><div class="sig-dot" style="background:var(--text3)"></div><div class="sig-name">2,000+ VMs</div><div class="sig-pts" style="color:var(--text3)">72 (8%)</div><div class="sig-tr"><div class="sig-fi" style="width:25%;background:var(--text3);opacity:.7"></div></div></div>
-      <div class="note">92% report environments under 2,000 VMs - all within the program criteria. The 500–999 VM cohort (31%) is the new plurality, a shift from the early batch which skewed 100–249. All five bands are in-scope; the 2,000+ cohort (72 leads) may need upmarket routing.</div>
+      <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note">92% report environments under 2,000 VMs - all within the program criteria. The 500–999 VM cohort (31%) is the new plurality, a shift from the early batch which skewed 100–249. All five bands are in-scope; the 2,000+ cohort (72 leads) may need upmarket routing.</div>
     </div>
     <div class="card">
       <div class="sl"><span>Q2 - Migration Timeline (n=940)</span></div>
       <div class="sig-row"><div class="sig-dot" style="background:var(--px)"></div><div class="sig-name">12–18 months</div><div class="sig-pts" style="color:var(--px)">536 (57%)</div><div class="sig-tr"><div class="sig-fi" style="width:100%;background:var(--px);opacity:.8"></div></div></div>
       <div class="sig-row"><div class="sig-dot" style="background:var(--teal)"></div><div class="sig-name">6–12 months</div><div class="sig-pts" style="color:var(--teal)">305 (32%)</div><div class="sig-tr"><div class="sig-fi" style="width:57%;background:var(--teal);opacity:.8"></div></div></div>
       <div class="sig-row" style="margin-bottom:0"><div class="sig-dot" style="background:var(--gold)"></div><div class="sig-name">0–6 months</div><div class="sig-pts" style="color:var(--gold)">99 (11%)</div><div class="sig-tr"><div class="sig-fi" style="width:18%;background:var(--gold);opacity:.8"></div></div></div>
-      <div class="note">99 leads targeting migration within 0–6 months are the highest-urgency group for NLPearl prioritization. The 6–12 month cohort (305 leads, 32%) is the active procurement window. Prioritize these two groups - 404 leads total - for first-wave outreach sequencing.</div>
+      <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note">99 leads targeting migration within 0–6 months are the highest-urgency group for NLPearl prioritization. The 6–12 month cohort (305 leads, 32%) is the active procurement window. Prioritize these two groups - 404 leads total - for first-wave outreach sequencing.</div>
     </div>
   </div>
 
@@ -1214,7 +1236,7 @@ const AG = ND.chart_age;
       <div class="sig-row"><div class="sig-dot" style="background:var(--gold)"></div><div class="sig-name">Cost optimization</div><div class="sig-pts" style="color:var(--gold)">154 (16%)</div><div class="sig-tr"><div class="sig-fi" style="width:96%;background:var(--gold);opacity:.8"></div></div></div>
       <div class="sig-row"><div class="sig-dot" style="background:var(--red)"></div><div class="sig-name">Performance / scalability needs</div><div class="sig-pts" style="color:var(--red)">116 (12%)</div><div class="sig-tr"><div class="sig-fi" style="width:73%;background:var(--red);opacity:.8"></div></div></div>
       <div class="sig-row" style="margin-bottom:0"><div class="sig-dot" style="background:var(--text3)"></div><div class="sig-name">Risk / compliance + Exploring options</div><div class="sig-pts" style="color:var(--text3)">196 (21%)</div><div class="sig-tr"><div class="sig-fi" style="width:46%;background:var(--text3);opacity:.7"></div></div></div>
-      <div class="note">Drivers are highly distributed - no single dominant signal at scale. Licensing/vendor changes (17%) is a strong active VMware exit intent indicator. Lead NLPearl scripts with a multi-angle opener that addresses cost, vendor risk, and infrastructure modernization simultaneously.</div>
+      <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note">Drivers are highly distributed - no single dominant signal at scale. Licensing/vendor changes (17%) is a strong active VMware exit intent indicator. Lead NLPearl scripts with a multi-angle opener that addresses cost, vendor risk, and infrastructure modernization simultaneously.</div>
     </div>
     <div class="card">
       <div class="sl"><span>Q4 - Role in Decision (n=940)</span></div>
@@ -1223,7 +1245,7 @@ const AG = ND.chart_age;
       <div class="sig-row"><div class="sig-dot" style="background:var(--teal)"></div><div class="sig-name">Influencer</div><div class="sig-pts" style="color:var(--teal)">136 (14%)</div><div class="sig-tr"><div class="sig-fi" style="width:26%;background:var(--teal);opacity:.8"></div></div></div>
       <div class="sig-row"><div class="sig-dot" style="background:var(--gold)"></div><div class="sig-name">Technical evaluator</div><div class="sig-pts" style="color:var(--gold)">75 (8%)</div><div class="sig-tr"><div class="sig-fi" style="width:14%;background:var(--gold);opacity:.8"></div></div></div>
       <div class="sig-row" style="margin-bottom:0"><div class="sig-dot" style="background:var(--text3)"></div><div class="sig-name">Researching / gathering information</div><div class="sig-pts" style="color:var(--text3)">50 (5%)</div><div class="sig-tr"><div class="sig-fi" style="width:10%;background:var(--text3);opacity:.7"></div></div></div>
-      <div class="note">55% are final decision makers - strong buying authority concentration. Combined with decision-team members (17%), 72% of contacts hold direct purchase influence. NLPearl should validate role on call for influencer and evaluator contacts before investing outreach depth.</div>
+      <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note">55% are final decision makers - strong buying authority concentration. Combined with decision-team members (17%), 72% of contacts hold direct purchase influence. NLPearl should validate role on call for influencer and evaluator contacts before investing outreach depth.</div>
     </div>
   </div>
 
@@ -1249,7 +1271,7 @@ const AG = ND.chart_age;
           <span style="color:var(--px2);font-weight:700">Total</span><span style="text-align:right;color:var(--px2);font-weight:700">590</span><span style="text-align:right;color:var(--teal);font-weight:700">350</span><span style="text-align:right;color:var(--text);font-weight:700">940</span>
         </div>
       </div>
-      <div class="note" style="margin-top:10px">Volume peaked May 21–22 (248 leads in 2 days). w_awsi225 surpassed w_awsi224 in the final period (May 23–26), indicating growing resonance for the migration timeline/path framing as the campaign matured.</div>
+      <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note" style="margin-top:10px">Volume peaked May 21–22 (248 leads in 2 days). w_awsi225 surpassed w_awsi224 in the final period (May 23–26), indicating growing resonance for the migration timeline/path framing as the campaign matured.</div>
     </div>
     <div class="card">
       <div class="sl"><span>Geographic Distribution - Top States (n=940, USA only)</span></div>
@@ -1267,7 +1289,7 @@ const AG = ND.chart_age;
         <div class="sig-name" style="font-size:10px">Pennsylvania</div><div style="text-align:right;font-weight:600;font-size:10px">28</div>
         <div class="sig-name" style="font-size:10px;color:var(--text3)">Remaining states</div><div style="text-align:right;font-size:10px;color:var(--text3)">348</div>
       </div>
-      <div class="note" style="margin-top:10px">CA (115), NY (99), and TX (86) form the top tier. VA (55) has a heavy federal contractor presence, a strong fit for the GovCloud migration angle. All 940 leads are US-only; no geographic consent issues.</div>
+      <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note" style="margin-top:10px">CA (115), NY (99), and TX (86) form the top tier. VA (55) has a heavy federal contractor presence, a strong fit for the GovCloud migration angle. All 940 leads are US-only; no geographic consent issues.</div>
     </div>
   </div>
 
@@ -1275,7 +1297,7 @@ const AG = ND.chart_age;
   <div class="card">
     <div class="sl"><span>NetLine Campaign Pacing · Lead Sourcing Only</span></div>
     <div class="al wa" style="margin-bottom:14px">
-      <span class="al-i">&#9432;</span>
+      <span class="al-i">ⓘ</span>
       <div class="al-t"><strong>This table reflects NetLine campaign-level lead sourcing pacing, not the contractual program handoff targets.</strong> Program PO delivery targets (Q1: 160, Q2: 225, Q3: 255, Q4: 260) are tracked separately under Targets &amp; Pace. These are leads entering the top of funnel, not qualified POs submitted to ACE.</div>
     </div>
     <div class="tw">
@@ -1308,7 +1330,7 @@ const AG = ND.chart_age;
   <div class="shr">
     <div class="shr-ey">Q1 Critical · Mar 16 – Jun 12, 2026</div>
     <div class="shr-t">Program Targets - Quarterly PO Pace</div>
-    <div class="shr-s" id="targets-hero-sub"></div>
+    <div class="shr-s" id="targets-hero-sub">900 total POs across 4 quarters · 0 delivered · 40 POs/week required in Q1 · 2 weeks remain</div>
   </div>
 
   <div class="g4" style="margin-bottom:14px">
@@ -1410,25 +1432,25 @@ const AG = ND.chart_age;
       </div>
     </div>
 
-    <div class="note">940 NetLine leads represent top-of-funnel sourcing volume. Of these, 169 are actively in the Eloqua pipeline and 41 have reached MEL classification, with 17 carrying Strong NLPearl signals ready for ACE submission. Closing the Q1 gap requires converting the existing MEL volume into POs and accelerating new contacts through qualification within the 2 remaining weeks. The 17% end-to-end conversion rate required (940 leads to 160 POs) is achievable but depends on completing the first ACE upload and clearing the MEL-to-PO handoff bottleneck.</div>
+    <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note">940 NetLine leads represent top-of-funnel sourcing volume. Of these, 169 are actively in the Eloqua pipeline and 41 have reached MEL classification, with 17 carrying Strong NLPearl signals ready for ACE submission. Closing the Q1 gap requires converting the existing MEL volume into POs and accelerating new contacts through qualification within the 2 remaining weeks. The 17% end-to-end conversion rate required (940 leads to 160 POs) is achievable but depends on completing the first ACE upload and clearing the MEL-to-PO handoff bottleneck.</div>
   </div>
 
   <div class="card" style="margin-bottom:14px">
     <div class="sl"><span>Q1 Burndown - Remaining POs Required vs Ideal Pace (Target: 160 by Jun 12)</span></div>
-    <canvas id="c-burndown" width="700" height="110" style="max-width:100%"></canvas>
-    <div class="note">Ideal pace line assumes 40 POs per week across 2 remaining weeks. Actual line starts at 160 remaining as of May 26. A widening gap between the two lines is the primary escalation signal for the program.</div>
+    <canvas id="c-burndown" width="1400" height="220" style="max-width:100%"></canvas>
+    <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note">Ideal pace line assumes 40 POs per week across 2 remaining weeks. Actual line starts at 160 remaining as of May 26. A widening gap between the two lines is the primary escalation signal for the program.</div>
   </div>
 
   <div class="g2">
     <div class="card">
       <div class="sl"><span>Weekly Velocity - POs Delivered per Week (Q1)</span></div>
-      <canvas id="c-velocity" width="340" height="100" style="max-width:100%"></canvas>
-      <div class="note">Required velocity is 40 POs per week across 2 remaining weeks. Current delivered: 0. First ACE upload is being prepared this week - execution is the immediate priority. A single strong week of 40–50 POs meets the pace target.</div>
+      <canvas id="c-velocity" width="680" height="200" style="max-width:100%"></canvas>
+      <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note">Required velocity is 40 POs per week across 2 remaining weeks. Current delivered: 0. First ACE upload is being prepared this week - execution is the immediate priority. A single strong week of 40–50 POs meets the pace target.</div>
     </div>
     <div class="card">
       <div class="sl"><span>Cumulative PO Target - Full Program (900 Total)</span></div>
-      <canvas id="c-targets-chart" width="340" height="100" style="max-width:100%"></canvas>
-      <div class="note">Total program commitment: 900 POs across 4 quarters through Feb 2027. Q1 at 160 POs requires 40/week across 2 remaining weeks. 0 delivered as of May 26. First ACE upload prep is active - the pipeline has 169 contacts in-flight and 17 Strong call signals ready for submission.</div>
+      <canvas id="c-targets-chart" width="680" height="200" style="max-width:100%"></canvas>
+      <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note">Total program commitment: 900 POs across 4 quarters through Feb 2027. Q1 at 160 POs requires 40/week across 2 remaining weeks. 0 delivered as of May 26. First ACE upload prep is active - the pipeline has 169 contacts in-flight and 17 Strong call signals ready for submission.</div>
     </div>
   </div>
 
@@ -1481,13 +1503,13 @@ const AG = ND.chart_age;
         </div>
       </div>
     </div>
-    <div class="note">Pipeline value is calculated as: number of POs delivered x average VMs per account x $2,500 per VM. Average VM count per account is drawn from qualification data captured during the NLPearl call and AEM form. Revenue figures will populate once PO delivery begins and ACE acceptance data is available. $2,500 per VM is the program-standard revenue assumption.</div>
+    <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note">Pipeline value is calculated as: number of POs delivered x average VMs per account x $2,500 per VM. Average VM count per account is drawn from qualification data captured during the NLPearl call and AEM form. Revenue figures will populate once PO delivery begins and ACE acceptance data is available. $2,500 per VM is the program-standard revenue assumption.</div>
   </div>
 
 </section>
 
 <!-- ═══════════════ EMAIL ═══════════════ -->
-<section id="email" class="sec">
+<section id="email" class="sec on">
 
   <div class="shr">
     <div class="shr-ey">Eloqua Email Performance · Nurture Stream</div>
@@ -1496,7 +1518,7 @@ const AG = ND.chart_age;
   </div>
 
   <div class="al wa" style="margin-bottom:16px">
-    <span class="al-i">&#9888;</span>
+    <span class="al-i">⚠</span>
     <div class="al-t"><strong>Data Not Yet Connected.</strong> Eloqua email series 2 is in final testing, targeting completion May 18–19. Consent and link testing for both series is targeting May 20. Full Eloqua launch - including consent orchestration, contact level security (CLS), and scoring QA - is gating at June 1. Once live, this tab will surface opens, CTR, nurture sequence conversion, and email-sourced form fills.</div>
   </div>
 
@@ -1518,7 +1540,7 @@ const AG = ND.chart_age;
       <div class="bmt"><div class="bmt-lbl">Email CVR (B2B Tech)</div><div class="bmt-val">2.5%</div><div class="bmt-sub">Click to desired action. Highly dependent on landing page quality.</div></div>
       <div class="bmt"><div class="bmt-lbl">MQL Rate (Email-sourced)</div><div class="bmt-val">43–46%</div><div class="bmt-sub">Email-sourced leads convert to MQL at higher rate than paid. (FirstPageSage)</div></div>
     </div>
-    <div class="note" style="margin-top:14px">Nexus email will be used primarily for nurture re-engagement of CS leads that did not qualify on intake. The key metric to watch will be nurture-to-form conversion rate. Track this as a distinct path and do not blend it with direct web traffic.</div>
+    <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note" style="margin-top:14px">Nexus email will be used primarily for nurture re-engagement of CS leads that did not qualify on intake. The key metric to watch will be nurture-to-form conversion rate. Track this as a distinct path and do not blend it with direct web traffic.</div>
   </div>
 
 </section>
@@ -1533,7 +1555,7 @@ const AG = ND.chart_age;
   </div>
 
   <div class="al wa" style="margin-bottom:16px">
-    <span class="al-i">&#9888;</span>
+    <span class="al-i">⚠</span>
     <div class="al-t"><strong>Adobe Analytics tagging handed off.</strong> All three AEM pages (landing page, form page, thank-you page) are live in A.COM production. Analytics tagging has been handed to Umesh for manual implementation - expected 1–2 days, potentially extended by custom coding on the pages.</div>
   </div>
 
@@ -1548,12 +1570,12 @@ const AG = ND.chart_age;
 
   <div class="card">
     <div class="sl"><span>Web Measurement Setup Checklist</span></div>
-    <div class="chk-row"><div style="color:var(--teal)">&#10003;</div><div style="color:var(--text2)">AEM form POST to Eloqua confirmed working (Miguel/Jose)</div><div><span class="pill p-ok">Complete</span></div></div>
-    <div class="chk-row"><div style="color:var(--gold)">&#10003;</div><div style="color:var(--text2)">Adobe Analytics tagging on L1, L2, form, and thank-you pages (Umesh/Givi)</div><div><span class="pill p-warn">Complete, Pending Verification</span></div></div>
-    <div class="chk-row"><div style="color:var(--teal)">&#10003;</div><div style="color:var(--text2)">Thank-you page creation (complete - handed off to A.COM; conversion pixel implementation still pending)</div><div><span class="pill p-warn">Complete, Pixel Pending</span></div></div>
-    <div class="chk-row"><div style="color:var(--gold)">&#10003;</div><div style="color:var(--text2)">UTM generation via M+C Plan / Minitab tool (Sophie / Patrick Quateman) - approved, UTMs shared with creative and Allison</div><div><span class="pill p-warn">Complete, Embedding</span></div></div>
-    <div class="chk-row"><div style="color:var(--red)">&#10005;</div><div style="color:var(--text2)">ECID to Eloqua contact ID join (AIP+ integration priority #1)</div><div><span class="pill p-gap">Not started</span></div></div>
-    <div class="chk-row" style="border-bottom:none"><div style="color:var(--teal)">&#10003;</div><div style="color:var(--text2)">Adobe Analytics data access for John LeMieux and Justin Johnson</div><div><span class="pill p-ok">Complete</span></div></div>
+    <div class="chk-row"><div style="color:var(--teal)">✓</div><div style="color:var(--text2)">AEM form POST to Eloqua confirmed working (Miguel/Jose)</div><div><span class="pill p-ok">Complete</span></div></div>
+    <div class="chk-row"><div style="color:var(--gold)">✓</div><div style="color:var(--text2)">Adobe Analytics tagging on L1, L2, form, and thank-you pages (Umesh/Givi)</div><div><span class="pill p-warn">Complete, Pending Verification</span></div></div>
+    <div class="chk-row"><div style="color:var(--teal)">✓</div><div style="color:var(--text2)">Thank-you page creation (complete - handed off to A.COM; conversion pixel implementation still pending)</div><div><span class="pill p-warn">Complete, Pixel Pending</span></div></div>
+    <div class="chk-row"><div style="color:var(--gold)">✓</div><div style="color:var(--text2)">UTM generation via M+C Plan / Minitab tool (Sophie / Patrick Quateman) - approved, UTMs shared with creative and Allison</div><div><span class="pill p-warn">Complete, Embedding</span></div></div>
+    <div class="chk-row"><div style="color:var(--red)">✕</div><div style="color:var(--text2)">ECID to Eloqua contact ID join (AIP+ integration priority #1)</div><div><span class="pill p-gap">Not started</span></div></div>
+    <div class="chk-row" style="border-bottom:none"><div style="color:var(--teal)">✓</div><div style="color:var(--text2)">Adobe Analytics data access for John LeMieux and Justin Johnson</div><div><span class="pill p-ok">Complete</span></div></div>
   </div>
 
   <div class="card" style="margin-top:14px">
@@ -1647,7 +1669,7 @@ const AG = ND.chart_age;
         </tbody>
       </table>
     </div>
-    <div class="note" style="margin-top:12px">Source: Project Nexus Continuous Improvement Plan - GTM, April 2026. Compliance lead ownership is pending confirmation. The Campaign Strategy sync starts weekly at launch and shifts to bi-weekly once cadence stabilizes.</div>
+    <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note" style="margin-top:12px">Source: Project Nexus Continuous Improvement Plan - GTM, April 2026. Compliance lead ownership is pending confirmation. The Campaign Strategy sync starts weekly at launch and shifts to bi-weekly once cadence stabilizes.</div>
   </div>
 
 </section>
@@ -1666,7 +1688,112 @@ const AG = ND.chart_age;
     <div class="tw">
       <table class="tbl">
         <thead><tr><th>ID</th><th>Metric</th><th>Calculation</th><th>Source</th><th>Priority</th><th>Audience</th></tr></thead>
-        <tbody id="mtr-body"></tbody>
+        <tbody id="mtr-body"><tr data-gs="MET001 Funnel Volume">
+      <td>MET001</td>
+      <td style="color:var(--text)">Funnel Volume</td>
+      <td>Count contacts in lifecycle stages Known through PO</td>
+      <td>Eloqua</td>
+      <td style="color:var(--red);font-family:'DM Mono',monospace;font-size:10px">P1</td>
+      <td>Program</td>
+    </tr><tr data-gs="MET002 Funnel Velocity (Avg Stage Age)">
+      <td>MET002</td>
+      <td style="color:var(--text)">Funnel Velocity (Avg Stage Age)</td>
+      <td>Avg hours contacts spend in each lifecycle stage</td>
+      <td>Eloqua</td>
+      <td style="color:var(--red);font-family:'DM Mono',monospace;font-size:10px">P1</td>
+      <td>Program</td>
+    </tr><tr data-gs="MET003 Qualification Rate">
+      <td>MET003</td>
+      <td style="color:var(--text)">Qualification Rate</td>
+      <td>POs created / MELs entered</td>
+      <td>Eloqua</td>
+      <td style="color:var(--red);font-family:'DM Mono',monospace;font-size:10px">P1</td>
+      <td>Program</td>
+    </tr><tr data-gs="MET004 Target Progress - Q1">
+      <td>MET004</td>
+      <td style="color:var(--text)">Target Progress - Q1</td>
+      <td>POs created / 160 target</td>
+      <td>Eloqua / ACE</td>
+      <td style="color:var(--red);font-family:'DM Mono',monospace;font-size:10px">P1</td>
+      <td>Leadership</td>
+    </tr><tr data-gs="MET018 Total Sessions">
+      <td>MET018</td>
+      <td style="color:var(--text)">Total Sessions</td>
+      <td>All sessions on L1, L2, form page</td>
+      <td>Adobe Analytics</td>
+      <td style="color:var(--red);font-family:'DM Mono',monospace;font-size:10px">P1</td>
+      <td>Media</td>
+    </tr><tr data-gs="MET035 CVR - Website">
+      <td>MET035</td>
+      <td style="color:var(--text)">CVR - Website</td>
+      <td>Form submits / total sessions</td>
+      <td>Adobe Analytics</td>
+      <td style="color:var(--red);font-family:'DM Mono',monospace;font-size:10px">P1</td>
+      <td>Media</td>
+    </tr><tr data-gs="MET037 Email CVR">
+      <td>MET037</td>
+      <td style="color:var(--text)">Email CVR</td>
+      <td>Desired actions / email visits</td>
+      <td>Eloqua</td>
+      <td style="color:var(--gold);font-family:'DM Mono',monospace;font-size:10px">P2</td>
+      <td>Media</td>
+    </tr><tr data-gs="MET054 AI Call Signal Distribution">
+      <td>MET054</td>
+      <td style="color:var(--text)">AI Call Signal Distribution</td>
+      <td>Count per outcome tag (Strong / Weak / Negative / No Connect)</td>
+      <td>NLPearl</td>
+      <td style="color:var(--red);font-family:'DM Mono',monospace;font-size:10px">P1</td>
+      <td>Program</td>
+    </tr><tr data-gs="MET055 AI Calls Attempted">
+      <td>MET055</td>
+      <td style="color:var(--text)">AI Calls Attempted</td>
+      <td>Total call attempts per week</td>
+      <td>NLPearl</td>
+      <td style="color:var(--red);font-family:'DM Mono',monospace;font-size:10px">P1</td>
+      <td>Program</td>
+    </tr><tr data-gs="MET056 Pickup Rate">
+      <td>MET056</td>
+      <td style="color:var(--text)">Pickup Rate</td>
+      <td>Connected calls / call attempts</td>
+      <td>NLPearl</td>
+      <td style="color:var(--red);font-family:'DM Mono',monospace;font-size:10px">P1</td>
+      <td>Program</td>
+    </tr><tr data-gs="MET057 Avg Call Duration">
+      <td>MET057</td>
+      <td style="color:var(--text)">Avg Call Duration</td>
+      <td>Total talk time / connected calls</td>
+      <td>NLPearl</td>
+      <td style="color:var(--gold);font-family:'DM Mono',monospace;font-size:10px">P2</td>
+      <td>Program</td>
+    </tr><tr data-gs="MET058 AI Call Opt-Outs">
+      <td>MET058</td>
+      <td style="color:var(--text)">AI Call Opt-Outs</td>
+      <td>Count of opt-out events per week</td>
+      <td>NLPearl</td>
+      <td style="color:var(--gold);font-family:'DM Mono',monospace;font-size:10px">P2</td>
+      <td>Compliance</td>
+    </tr><tr data-gs="MET059 Avg Sentiment Score">
+      <td>MET059</td>
+      <td style="color:var(--text)">Avg Sentiment Score</td>
+      <td>Avg sentiment score per connected call</td>
+      <td>NLPearl</td>
+      <td style="color:var(--text3);font-family:'DM Mono',monospace;font-size:10px">P3</td>
+      <td>Program</td>
+    </tr><tr data-gs="MET060 NLPearl Credits Consumed">
+      <td>MET060</td>
+      <td style="color:var(--text)">NLPearl Credits Consumed</td>
+      <td>Sum of credits consumed by call/minute/action</td>
+      <td>NLPearl</td>
+      <td style="color:var(--gold);font-family:'DM Mono',monospace;font-size:10px">P2</td>
+      <td>Finance</td>
+    </tr><tr data-gs="MET062 Speed-to-Call SLA">
+      <td>MET062</td>
+      <td style="color:var(--text)">Speed-to-Call SLA</td>
+      <td>% of MQPs called within 24h of stage entry</td>
+      <td>NLPearl / Eloqua</td>
+      <td style="color:var(--red);font-family:'DM Mono',monospace;font-size:10px">P1</td>
+      <td>Program</td>
+    </tr></tbody>
       </table>
     </div>
   </div>
@@ -1713,7 +1840,7 @@ const AG = ND.chart_age;
         <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:6px;text-align:center;color:var(--text3)">D3</div>
         <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:6px;text-align:center;color:var(--text3)">D4 Nurture</div>
       </div>
-      <div class="note">MVP status: Activity axis (columns 1–4) is not yet scored. All contacts land in column 1 by default until the behavior scoring layer is activated. Routing is driven entirely by fit criteria and qualification answers from the form or NLPearl call.</div>
+      <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note">MVP status: Activity axis (columns 1–4) is not yet scored. All contacts land in column 1 by default until the behavior scoring layer is activated. Routing is driven entirely by fit criteria and qualification answers from the form or NLPearl call.</div>
     </div>
 
     <div style="display:flex;flex-direction:column;gap:12px">
@@ -1725,7 +1852,7 @@ const AG = ND.chart_age;
         <div class="sig-row"><div class="sig-dot" style="background:var(--px);box-shadow:0 0 5px var(--px)"></div><div class="sig-name">Downloads / Event registration</div><div class="sig-pts" style="color:var(--px)">+3</div><div class="sig-tr"><div class="sig-fi" style="width:15%;background:var(--px);opacity:.8"></div></div></div>
         <div class="sig-row"><div class="sig-dot" style="background:var(--px2);box-shadow:0 0 5px var(--px2)"></div><div class="sig-name">Email CTA click</div><div class="sig-pts" style="color:var(--px2)">+1</div><div class="sig-tr"><div class="sig-fi" style="width:5%;background:var(--px2);opacity:.8"></div></div></div>
         <div class="sig-row" style="margin-bottom:0"><div class="sig-dot" style="background:var(--px2)"></div><div class="sig-name">Web views</div><div class="sig-pts" style="color:var(--px2)">+1</div><div class="sig-tr"><div class="sig-fi" style="width:5%;background:var(--px2);opacity:.8"></div></div></div>
-        <div class="note">Email opens are intentionally excluded. Eloqua's Auto Open adjustment helps filter privacy-enabled opens, but clicks carry more signal reliability.</div>
+        <button class="note-toggle"><span class="nt-arrow">▶</span> Insight</button><div class="note">Email opens are intentionally excluded. Eloqua's Auto Open adjustment helps filter privacy-enabled opens, but clicks carry more signal reliability.</div>
       </div>
       <div class="card">
         <div class="sl"><span>Negative / Reset Signals</span></div>
@@ -1785,9 +1912,9 @@ const AG = ND.chart_age;
 
 </section>
 <!-- ═══════════════ CHANGELOG ═══════════════ -->
-<div id="changelog-section">
+<div id="changelog-section" class="visible">
   <div class="card">
-    <div class="cl-header">&#9998; Edit Changelog - Changes Made This Session</div>
+    <div class="cl-header">✎ Edit Changelog - Changes Made This Session</div>
     <div id="cl-empty-msg" class="cl-empty">No changes recorded yet. Enter Edit Mode and update any field to begin tracking.</div>
     <div id="cl-table" style="display:none;border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
       <div class="cl-head-row"><span>Timestamp</span><span>Field</span><span>Previous Value</span><span>New Value</span></div>
@@ -1805,7 +1932,7 @@ const AG = ND.chart_age;
     <input id="gh-pat" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off" spellcheck="false">
     <div class="gh-note">
       Token is used once and never stored. Needs <code>repo</code> write scope.<br>
-      Generate at GitHub &rarr; Settings &rarr; Developer settings &rarr; <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">Personal access tokens</a>.
+      Generate at GitHub → Settings → Developer settings → <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">Personal access tokens</a>.
     </div>
     <div class="gh-btns">
       <button id="gh-cancel">Cancel</button>
@@ -1817,9 +1944,9 @@ const AG = ND.chart_age;
 
 <!-- ═══════════════ DATA FOOTER ═══════════════ -->
 <div class="data-footer" id="data-footer">
-  <div><span class="foot-dot"></span>Data as of <span id="footer-date"></span></div>
+  <div><span class="foot-dot"></span>Data as of <span id="footer-date">As of May 26, 2026</span></div>
   <div style="display:flex;gap:12px;align-items:center">
-    <span id="footer-version"></span>
+    <span id="footer-version">v15</span>
     <button onclick="window.print()" style="background:none;border:1px solid var(--border);border-radius:6px;padding:3px 10px;color:var(--text3);font-family:'DM Mono',monospace;font-size:8px;cursor:pointer;letter-spacing:.08em;text-transform:uppercase">Print Tab</button>
   </div>
 </div>
@@ -2914,5 +3041,6 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 3000);
 }
 </script>
-</body>
-</html>
+
+
+</body></html>
