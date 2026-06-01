@@ -480,27 +480,8 @@ body.edit-mode .ef:focus{background:rgba(99,102,241,.12);border-bottom:1.5px sol
   [style*="grid-template-columns: 1fr auto auto auto"],[style*="grid-template-columns:1fr auto auto auto"]{grid-template-columns:1fr auto!important}
 }
 
-/* ── GITHUB PUSH MODAL ───────────────────────────────────────────────────── */
-#gh-modal{position:fixed;inset:0;z-index:99998;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.55);backdrop-filter:blur(3px)}
-#gh-modal.on{display:flex}
-#gh-modal-box{background:var(--bg2);border:1px solid var(--border2);border-radius:14px;padding:28px 28px 24px;width:380px;max-width:92vw;box-shadow:0 8px 40px rgba(0,0,0,.4)}
-#gh-modal-box h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.06em;color:var(--text);margin-bottom:4px}
-#gh-modal-box .gh-sub{font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px}
-#gh-modal-box label{display:block;font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
-#gh-pat{width:100%;box-sizing:border-box;padding:10px 12px;border-radius:8px;border:1px solid var(--border2);background:var(--bg3);color:var(--text);font-family:'DM Mono',monospace;font-size:12px;outline:none;margin-bottom:6px;transition:border-color .15s}
-#gh-pat:focus{border-color:var(--px)}
-#gh-pat::placeholder{color:var(--text3)}
-.gh-note{font-size:10px;color:var(--text3);line-height:1.5;margin-bottom:16px}
-.gh-note a{color:var(--px2);text-decoration:none}
-.gh-note a:hover{text-decoration:underline}
-.gh-btns{display:flex;gap:8px;justify-content:flex-end}
-.gh-btns button{padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--border);transition:all .15s}
-#gh-cancel{background:var(--bg3);color:var(--text2)}
-#gh-cancel:hover{border-color:var(--border2)}
-#gh-push{background:var(--px);color:#fff;border-color:var(--px)}
-#gh-push:hover{opacity:.88}
-#gh-push:disabled{opacity:.45;cursor:not-allowed}
-#gh-status{font-family:'DM Mono',monospace;font-size:10px;margin-top:10px;min-height:16px;text-align:center}
+/* ── EXPORT ───────────────────────────────────────────────────────────────── */
+
 
 /* ── PRINT ───────────────────────────────────────────────────────────────── */
 @media print{
@@ -747,6 +728,8 @@ const AG = ND.chart_age;
     <div class="ni" onclick="show('cip')">Improvement Plan</div>
     <div class="ni" onclick="show('scoring')">Lead Scoring</div>
     <div class="ni" onclick="show('register')">Metric Register</div>
+    <div class="ni" onclick="show('allmetrics')">All Metrics</div>
+    <div class="ni" onclick="show('readme')">Read Me</div>
     <div class="ni" onclick="show('glossary')">Glossary</div>
   </div>
 </nav>
@@ -1923,24 +1906,1070 @@ const AG = ND.chart_age;
   </div>
 </div>
 
-<!-- ═══════════════ GITHUB PUSH MODAL ═══════════════ -->
-<div id="gh-modal" role="dialog" aria-modal="true" aria-labelledby="gh-modal-title">
-  <div id="gh-modal-box">
-    <h3 id="gh-modal-title">Push to GitHub</h3>
-    <div class="gh-sub">nexusreporting / Nexus &nbsp;·&nbsp; main branch</div>
-    <label for="gh-pat">GitHub Personal Access Token</label>
-    <input id="gh-pat" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off" spellcheck="false">
-    <div class="gh-note">
-      Token is used once and never stored. Needs <code>repo</code> write scope.<br>
-      Generate at GitHub → Settings → Developer settings → <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">Personal access tokens</a>.
+
+
+
+
+
+<!-- ═══════════════ ALL METRICS ═══════════════ -->
+<section id="allmetrics" class="sec">
+
+  <div class="shr">
+    <div class="shr-ey">All Workstreams · 64 Metrics · Full Register</div>
+    <div class="shr-t">All Metrics Register</div>
+    <div class="shr-s">Complete KPI inventory organized by workstream. Includes source system, dashboard placement, and business definition for all 64 formally defined metrics.</div>
+    <div class="shr-ks">
+      <div class="shr-k"><div class="shr-kv">64</div><div class="shr-kl">Total Metrics</div></div>
+      <div class="shr-k"><div class="shr-kv">15</div><div class="shr-kl">In Dashboard</div></div>
+      <div class="shr-k"><div class="shr-kv">49</div><div class="shr-kl">Not Yet Live</div></div>
+      <div class="shr-k"><div class="shr-kv">7</div><div class="shr-kl">Workstreams</div></div>
+      <div class="shr-k"><div class="shr-kv">$2,500</div><div class="shr-kl">Revenue / VM</div></div>
     </div>
-    <div class="gh-btns">
-      <button id="gh-cancel">Cancel</button>
-      <button id="gh-push">Push to GitHub</button>
-    </div>
-    <div id="gh-status"></div>
   </div>
-</div>
+
+  <style>
+  .am-filter-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;align-items:center}
+  .am-filter-btn{padding:4px 11px;border-radius:20px;font-family:'DM Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.06em;cursor:pointer;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--ws-c,var(--text3));transition:all .15s;text-transform:uppercase}
+  .am-filter-btn:hover,.am-filter-btn.active{background:rgba(255,255,255,.1);border-color:var(--ws-c,var(--px))}
+  .am-filter-btn.active{box-shadow:0 0 8px rgba(255,255,255,.08)}
+  .am-filter-lbl{font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-right:4px}
+  .am-search{background:var(--card);border:1px solid var(--border2);border-radius:9px;padding:7px 12px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:12px;outline:none;transition:border-color .2s;width:260px}
+  .am-search:focus{border-color:var(--px)}
+  .am-search::placeholder{color:var(--text3)}
+  .am-row.hidden,.am-group-hdr.hidden{display:none}
+  </style>
+
+  <div class="card" style="padding:14px 18px;margin-bottom:14px">
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+      <div class="am-filter-bar">
+        <span class="am-filter-lbl">Filter:</span>
+        <button class="am-filter-btn active" onclick="amFilter('all')" data-ws="all" style="--ws-c:var(--px)">All Workstreams</button>
+        <button class="am-filter-btn" onclick="amFilter('ACE / Pipeline')" data-ws="ACE / Pipeline" style="--ws-c:#a5b4fc">ACE / Pipeline</button>
+<button class="am-filter-btn" onclick="amFilter('Eloqua (Email)')" data-ws="Eloqua (Email)" style="--ws-c:#c084fc">Eloqua (Email)</button>
+<button class="am-filter-btn" onclick="amFilter('Eloqua (Program)')" data-ws="Eloqua (Program)" style="--ws-c:#a78bfa">Eloqua (Program)</button>
+<button class="am-filter-btn" onclick="amFilter('NLPearl (AI Voice)')" data-ws="NLPearl (AI Voice)" style="--ws-c:#00e5c0">NLPearl (AI Voice)</button>
+<button class="am-filter-btn" onclick="amFilter('Paid Media / TechTarget')" data-ws="Paid Media / TechTarget" style="--ws-c:#fbbf24">Paid Media / TechTarget</button>
+<button class="am-filter-btn" onclick="amFilter('Adobe Analytics (Web)')" data-ws="Adobe Analytics (Web)" style="--ws-c:#fca5a5">Adobe Analytics (Web)</button>
+<button class="am-filter-btn" onclick="amFilter('Program / Finance')" data-ws="Program / Finance" style="--ws-c:#6ee7b7">Program / Finance</button>
+
+      </div>
+      <input class="am-search" id="am-search" type="text" placeholder="Search metrics, IDs, definitions..." oninput="amSearch(this.value)">
+    </div>
+    <div style="margin-top:10px;font-family:'DM Mono',monospace;font-size:9px;color:var(--text3)">
+      Revenue basis: <strong style="color:var(--text)">$2,500 = 1 VM</strong> &nbsp;·&nbsp; Estimated Revenue = VM Count x $2,500 &nbsp;·&nbsp; Applied consistently across all Nexus revenue and ROI reporting
+    </div>
+  </div>
+
+  <div class="card" style="padding:0">
+    <div class="tw" style="border:none">
+      <table class="tbl" id="am-table" style="font-size:11px">
+        <thead>
+          <tr>
+            <th style="white-space:nowrap">ID</th>
+            <th>Metric Name</th>
+            <th>Calculation</th>
+            <th>Business Definition</th>
+            <th>Source System</th>
+            <th>Dashboard</th>
+            <th style="white-space:nowrap">Priority</th>
+            <th style="white-space:nowrap">In Dashboard</th>
+          </tr>
+        </thead>
+        <tbody id="am-body">
+
+  <tr class="am-group-hdr" data-ws="ACE / Pipeline">
+    <td colspan="8" style="padding:10px 12px 8px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#6366f1;box-shadow:0 0 6px #6366f1;flex-shrink:0"></div>
+        <span style="font-family:'DM Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a5b4fc">ACE / Pipeline</span>
+        <span style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);margin-left:4px">6 metrics</span>
+      </div>
+    </td>
+  </tr>  <tr class="am-row" data-ws="ACE / Pipeline">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET001</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Funnel Volume</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Count of Unique per Stage</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Program Health &amp; Scale | Total Unique Per Funnel Stage.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">AIP+ (Unique IDs &gt; Stage Values) &gt; Adobe Analytics &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">01 Summary, 02 Knowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#f87171;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P1</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(0,229,192,.12);color:#00e5c0;border:1px solid rgba(0,229,192,.3);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">In Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="ACE / Pipeline">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET002</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Duration Efficiency</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Avg ÷ Median Days Between Stage Timestamps</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Funnel Speed | Time taken to move through stages.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">AIP+ (Timestamps) &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">01 Summary, 02 Knowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#f87171;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P1</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(0,229,192,.12);color:#00e5c0;border:1px solid rgba(0,229,192,.3);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">In Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="ACE / Pipeline">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET003</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Qualification Rate</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">PO ÷ Eligible MQPs</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Quality Gate | % of eligible leads that qualifiy.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Eloqua &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">02 Knowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#f87171;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P1</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(0,229,192,.12);color:#00e5c0;border:1px solid rgba(0,229,192,.3);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">In Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="ACE / Pipeline">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET004</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Target Progress Outcome</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Actual ÷ Target</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Goal Progress | Actual Performance vs Commitment.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">01 Summary</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#f87171;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P1</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(0,229,192,.12);color:#00e5c0;border:1px solid rgba(0,229,192,.3);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">In Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="ACE / Pipeline">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET005</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">AAR Per PO</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Accepted Actions ÷ PO</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Post Qualification Acceptance | % of POs accepted downstream.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">02 Knowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#f87171;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P1</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="ACE / Pipeline">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET042</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Velocity</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">MQPs or POs ÷ Time Period</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Progression Speed | Volume advancing per time period.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">01 Summary, 02 Knowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#f87171;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P1</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+
+  <tr class="am-group-hdr" data-ws="Eloqua (Email)">
+    <td colspan="8" style="padding:10px 12px 8px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#a855f7;box-shadow:0 0 6px #a855f7;flex-shrink:0"></div>
+        <span style="font-family:'DM Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#c084fc">Eloqua (Email)</span>
+        <span style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);margin-left:4px">10 metrics</span>
+      </div>
+    </td>
+  </tr>  <tr class="am-row" data-ws="Eloqua (Email)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET021</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Visits – Email</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Email Sessions</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Email Traffic Volume | Sessions driven by email campaigns.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P3</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Eloqua (Email)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET022</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Email Sends</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Count of Emails Sent</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Distribution Volume | Total emails delivered.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Eloqua</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P3</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Eloqua (Email)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET023</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Email Open Rate</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Opens ÷ Sends</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Message Resonance | % of emails opened.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Eloqua</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P3</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Eloqua (Email)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET027</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Clicks – Email</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Email Clicks</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Email Engagement | Clicks generated from email sends.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Eloqua &gt; Adobe Analytics</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P3</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Eloqua (Email)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET028</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">CTOR</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Email Clicks ÷ Opens</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Content Effectiveness | Clicks among opened emails (Click‑to‑Open Rate).</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Eloqua</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P3</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Eloqua (Email)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET037</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">CVR – Email</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Desired Actions ÷ Email Sessions</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Nurture Effectiveness | Conversion from email‑driven traffic.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">01 Summary</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P3</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(0,229,192,.12);color:#00e5c0;border:1px solid rgba(0,229,192,.3);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">In Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Eloqua (Email)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET048</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Bounce Rate – Email</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Single‑Page Sessions ÷ Email Sessions</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Email Traffic Quality | % of email‑driven website sessions that exit after one page, indicating nurture‑to‑experience misalignment.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics (Filtered Email Sessions)</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">04 Health, 03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Eloqua (Email)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET049</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Email Bounce Rate</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Bounced Emails ÷ Sends</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Deliverability Health | % of emails not delivered to inbox.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Eloqua</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">04 Health</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Eloqua (Email)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET050</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Spam Complaint Rate</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Spam Complaints ÷ Sends</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Brand Risk Signal | % of recipients marking emails as spam.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Eloqua</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">04 Health</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Eloqua (Email)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET053</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Opt‑Out Rate – Email</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Opt‑Outs ÷ Sends</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Fatigue Indicator | Consent risk signal.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Eloqua</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">04 Health</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+
+  <tr class="am-group-hdr" data-ws="Eloqua (Program)">
+    <td colspan="8" style="padding:10px 12px 8px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#8b5cf6;box-shadow:0 0 6px #8b5cf6;flex-shrink:0"></div>
+        <span style="font-family:'DM Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a78bfa">Eloqua (Program)</span>
+        <span style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);margin-left:4px">4 metrics</span>
+      </div>
+    </td>
+  </tr>  <tr class="am-row" data-ws="Eloqua (Program)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET038</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">CPC</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Spend ÷ Clicks</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Media Efficiency | Cost to generate one click (Cost Per Click).</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Finance &gt; Adobe Analytics &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">01 Summary</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Eloqua (Program)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET040</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">CPL</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Spend ÷ MQLs</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Spend Efficiency | Cost to generate one lead (Cost Per Lead).</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Eloqua &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">01 Summary</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#fbbf24;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P2</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Eloqua (Program)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET043</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Unapproved UTM Rate</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Invalid UTM Sessions ÷ Total Tagged Sessions or Events</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Attribution Exception Rate | % of traffic with invalid UTMs.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">04 Health, 03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Eloqua (Program)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET044</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Page View Has Low Duration</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Low‑Duration Sessions ÷ Total Sessions</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Low‑Quality Engagement | Sessions below engagement threshold.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+
+  <tr class="am-group-hdr" data-ws="NLPearl (AI Voice)">
+    <td colspan="8" style="padding:10px 12px 8px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#00e5c0;box-shadow:0 0 6px #00e5c0;flex-shrink:0"></div>
+        <span style="font-family:'DM Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#00e5c0">NLPearl (AI Voice)</span>
+        <span style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);margin-left:4px">11 metrics</span>
+      </div>
+    </td>
+  </tr>  <tr class="am-row" data-ws="NLPearl (AI Voice)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET054</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Outbound Calls Attempted</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Count of Attempts</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Call Volume | Total outbound attempts.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">NL Pearl</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">02 Knowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(0,229,192,.12);color:#00e5c0;border:1px solid rgba(0,229,192,.3);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">In Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="NLPearl (AI Voice)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET055</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Outbound Calls Connected</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Count of Connected</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Live Connections | Calls successfully connected.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">NL Pearl</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">02 Knowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(0,229,192,.12);color:#00e5c0;border:1px solid rgba(0,229,192,.3);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">In Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="NLPearl (AI Voice)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET056</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Connected Rate</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Connected ÷ Attempted Calls</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Connection Success | % of attempts that connect.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">NL Pearl</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">02 Knowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P3</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(0,229,192,.12);color:#00e5c0;border:1px solid rgba(0,229,192,.3);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">In Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="NLPearl (AI Voice)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET057</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Call Duration</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Call End − Call Start</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Call Length | Time spent on connected calls.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">NL Pearl</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">02 Knowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(0,229,192,.12);color:#00e5c0;border:1px solid rgba(0,229,192,.3);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">In Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="NLPearl (AI Voice)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET058</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Call Completion Status</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Counts by Status</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Call Outcomes | Distribution by completion status.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">NL Pearl</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">02 Knowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(0,229,192,.12);color:#00e5c0;border:1px solid rgba(0,229,192,.3);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">In Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="NLPearl (AI Voice)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET059</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Validation Outcomes Met</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Validations Met ÷ Connected</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Rule Compliance | % of calls meeting qualification rules.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">NL Pearl</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">02 Knowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(0,229,192,.12);color:#00e5c0;border:1px solid rgba(0,229,192,.3);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">In Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="NLPearl (AI Voice)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET060</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Contact Rate</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Contacts ÷ Attempts</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Live Contact Rate | % of attempts reaching a contact.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">NL Pearl</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">02 Knowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(0,229,192,.12);color:#00e5c0;border:1px solid rgba(0,229,192,.3);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">In Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="NLPearl (AI Voice)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET061</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Validation Rate</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">PO ÷ Connected</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Qualification Yield | % of connected calls producing POs.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">NL Pearl &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">02 Knowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P3</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="NLPearl (AI Voice)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET062</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Speed to Call SLA</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Calls Within SLA ÷ Eligible Assignments (plus median/avg “time to first call” as companion stat)</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Response Speed Compliance | % of calls within SLA.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">NL Pearl &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">02 Knowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P3</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(0,229,192,.12);color:#00e5c0;border:1px solid rgba(0,229,192,.3);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">In Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="NLPearl (AI Voice)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET063</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Opt‑Outs</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Count of opt‑out events</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Consent Withdrawal | Opt‑out events recorded.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">NL Pearl &gt; Eloqua</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">04 Health</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="NLPearl (AI Voice)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET064</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Disqualification Reasons</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Count by Reason</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Failure Drivers | Reasons calls fail qualification.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">NL Pearl</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">02 Knowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+
+  <tr class="am-group-hdr" data-ws="Paid Media / TechTarget">
+    <td colspan="8" style="padding:10px 12px 8px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#f59e0b;box-shadow:0 0 6px #f59e0b;flex-shrink:0"></div>
+        <span style="font-family:'DM Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fbbf24">Paid Media / TechTarget</span>
+        <span style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);margin-left:4px">9 metrics</span>
+      </div>
+    </td>
+  </tr>  <tr class="am-row" data-ws="Paid Media / TechTarget">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET013</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Impressions – Paid Media</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Paid Impressions</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Exposure Volume | Paid ad views served.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Paid Media / TechTarget">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET014</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">CPM</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">(Spend ÷ Impressions) × 1,000</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Exposure Cost | Cost to deliver 1,000 ad impressions (Cost Per Million).</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics &gt; Finance &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">01 Summary</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P4</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Paid Media / TechTarget">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET015</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Impression Share Lost</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Lost IS (Budget / Rank)</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Scale Constraint Signal | % of impressions lost due to budget or ad rank.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Ad Platforms</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P4</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Paid Media / TechTarget">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET019</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Visits – Paid Media</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Paid Media Sessions</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Paid Traffic Volume | Sessions originating from paid channels.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics (UTM Channel = Paid)</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#fbbf24;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P2</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Paid Media / TechTarget">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET025</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Clicks – Paid Media</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Paid Clicks</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Ad Engagement | Clicks from paid ads.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#fbbf24;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P2</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Paid Media / TechTarget">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET030</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">CTR – Paid Media</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Paid Clicks ÷ Paid Impressions</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Creative Effectiveness | % of paid impressions resulting in clicks.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#fbbf24;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P2</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Paid Media / TechTarget">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET039</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">CPC – Paid Media</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Spend ÷ Paid Clicks</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Click Cost Efficiency | Cost per paid click.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Finance &gt; Adobe Analytics &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">01 Summary</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#fbbf24;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P2</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Paid Media / TechTarget">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET041</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">CPL – Paid Media</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Spend ÷ Paid MQPs</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Lead Cost Efficiency | Cost to generate a lead from paid channels.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Eloqua &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">01 Summary</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#fbbf24;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P2</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Paid Media / TechTarget">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET045</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Bounce Rate – Paid Media</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Single‑Page Sessions ÷ Paid Media Sessions</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Paid Traffic Quality | % of paid‑sourced website sessions that exit after a single page, indicating mismatch between ad intent and landing experience.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics (Filtered Paid Media Sessions)</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">04 Health, 03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+
+  <tr class="am-group-hdr" data-ws="Adobe Analytics (Web)">
+    <td colspan="8" style="padding:10px 12px 8px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#f87171;box-shadow:0 0 6px #f87171;flex-shrink:0"></div>
+        <span style="font-family:'DM Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fca5a5">Adobe Analytics (Web)</span>
+        <span style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);margin-left:4px">17 metrics</span>
+      </div>
+    </td>
+  </tr>  <tr class="am-row" data-ws="Adobe Analytics (Web)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET016</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Reach</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Unique Users Reached</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Unique Exposure | Deduplicated audience reached.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Adobe Analytics (Web)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET017</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Frequency</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Impressions ÷ Reach</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Exposure Intensity | Avg impressions per unique user.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Adobe Analytics (Web)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET018</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Visits (Total)</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Total Sessions</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Traffic Volume | Sessions to site or landing page.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Launch &gt; Adobe Analytics</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#fbbf24;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P2</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(0,229,192,.12);color:#00e5c0;border:1px solid rgba(0,229,192,.3);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">In Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Adobe Analytics (Web)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET020</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Visits – Website (Direct / Organic / Referral)</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Non‑Paid Sessions</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Owned Traffic Volume | Sessions from non‑paid site entry.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P3</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Adobe Analytics (Web)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET024</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Clicks</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Total Clicks</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Engagement Actions | Total Click Events</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Launch &gt; Adobe Analytics</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Adobe Analytics (Web)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET026</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Clicks – Website</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">On‑site Click Events</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">On‑Site Engagement | Click interactions on owned properties.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics (Event Tracking)</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Adobe Analytics (Web)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET029</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">CTR</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Clicks ÷ Impressions</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Messages Resonance | % of impressions that generate click (Click Through Rate).</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#fbbf24;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P2</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Adobe Analytics (Web)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET031</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Form Fill Rate</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Form Submits ÷ Visits</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Landing Effectiveness | % of visits resulting in form submits.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Eloqua &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Adobe Analytics (Web)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET032</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Form Abandon Rate</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Form Starts ÷ Form Submits</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Submission Friction | % of users who start but do not complete forms.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Launch &gt; Adobe Analytics</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Adobe Analytics (Web)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET033</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Form Fill Rate – Website</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Form Submits ÷ Website Visits</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Lead Capture Efficiency | % of visitors submitting forms.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Eloqua &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Adobe Analytics (Web)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET034</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Invalid Form Rate</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Invalid Submits ÷ Total Submits</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Lead Data Quality | % of submissions failing validation rules.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Eloqua &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns, 04 Health</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Adobe Analytics (Web)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET035</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">CVR</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Total Number of a Desired Action ÷ Visits</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Campaign Effectiveness | % of visits completing a desired action (Conversion Rate).</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">01 Summary</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#fbbf24;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P2</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(0,229,192,.12);color:#00e5c0;border:1px solid rgba(0,229,192,.3);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">In Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Adobe Analytics (Web)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET036</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">CVR – Website</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Desired Actions ÷ Website Visits</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Experience Effectiveness | Conversion performance of owned site.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">01 Summary</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#fbbf24;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P2</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Adobe Analytics (Web)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET046</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Bounce Rate – Website</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Single‑Page Sessions ÷ Website Sessions</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Engagement Failure | Early exits from site experiences.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">04 Health, 03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Adobe Analytics (Web)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET047</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Bounce Rate – Organic / Direct</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Single‑Page Sessions ÷ Organic &amp; Direct Sessions (Subset of Website Sessions)</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Owned Demand Quality | % of non‑paid website sessions that leave after one page, indicating content relevance or UX issues.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics (Organic &gt; Direct Sessions)</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">04 Health, 03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Adobe Analytics (Web)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET051</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Avg Session Duration – Website</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Total Session Time ÷ Sessions</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Engagement Depth | Time spent navigating content.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Adobe Analytics (Web)">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET052</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Pages per Session – Website</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Pageviews ÷ Sessions</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Navigation Depth | Content exploration intensity.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">03 Unknowns</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P5</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+
+  <tr class="am-group-hdr" data-ws="Program / Finance">
+    <td colspan="8" style="padding:10px 12px 8px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 6px #34d399;flex-shrink:0"></div>
+        <span style="font-family:'DM Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6ee7b7">Program / Finance</span>
+        <span style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);margin-left:4px">7 metrics</span>
+      </div>
+    </td>
+  </tr>  <tr class="am-row" data-ws="Program / Finance">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET006</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Marketing ROI</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">(Return - Spend) ÷ Spend</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Return on Spend | Business value generated per dollar spent (Return on Investment).</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics &gt; Finance &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">01 Summary</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#f87171;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P1</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Program / Finance">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET007</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Cost Per PO</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Total Spend ÷ POs</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Qualified Outcome Efficiency | Cost to generate a validated Program Outcome (PO).</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Finance &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">01 Summary</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P3</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Program / Finance">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET008</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">ROI – Paid Media</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">(Return − Paid Spend) ÷ Paid Spend</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Investment Return | ROI attributable to paid channels.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Adobe Analytics &gt; Finance &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">01 Summary</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#f87171;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P1</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Program / Finance">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET009</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Total Spend</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Sum of Media Costs</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Investment Baseline | Total paid media spend over a defined by Campaign, Channel &amp;/or Period.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Finance &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">01 Summary</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P3</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Program / Finance">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET010</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Planned vs Actual Spend</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Actual Spend ÷ Planned Spend</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Spend Variance | Measures budget adherence by comparing actual spend against planned allocation.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Finance &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">01 Summary</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P3</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Program / Finance">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET011</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Spend Pacing vs Target</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Actual Spend To‑Date ÷ Planned Spend To‑Date</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Pacing Health | Indicates whether spend is ahead of, on track with, or behind plan for the period.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Finance &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">01 Summary</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P3</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+  <tr class="am-row" data-ws="Program / Finance">
+    <td style="font-family:'DM Mono',monospace;color:var(--px2);font-size:10px;white-space:nowrap">MET012</td>
+    <td style="color:var(--text);font-weight:600;min-width:160px">Spend Pacing – Paid Media</td>
+    <td style="color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;min-width:200px">Actual Paid Spend ÷ Planned Paid Spend</td>
+    <td style="color:var(--text2);font-size:11px;min-width:240px;line-height:1.55">Paid Spend Control | Budget pacing by paid channel.</td>
+    <td style="color:var(--text3);font-size:10.5px;min-width:160px">Finance &gt; AIP+</td>
+    <td style="color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;min-width:130px">01 Summary</td>
+    <td style="white-space:nowrap"><span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#94a3b8;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:6px">P3</span></td>
+    <td style="white-space:nowrap"><span style="background:rgba(100,116,139,.1);color:#64748b;border:1px solid rgba(100,116,139,.2);font-family:'DM Mono',monospace;font-size:9px;padding:1px 7px;border-radius:6px">Not in Dashboard</span></td>
+  </tr>
+
+        </tbody>
+      </table>
+    </div>
+    <div style="padding:10px 14px;font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+      <span id="am-count">64 metrics shown</span>
+      <span>Revenue: VM count x $2,500 per VM</span>
+    </div>
+  </div>
+
+</section>
+
+<script>
+/* ── ALL METRICS FILTER + SEARCH ────────────────────────────────────────── */
+let amActiveWs = 'all';
+function amFilter(ws) {
+  amActiveWs = ws;
+  document.querySelectorAll('.am-filter-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.ws === ws);
+  });
+  amApply();
+}
+function amSearch(v) { amApply(); }
+function amApply() {
+  const q  = (document.getElementById('am-search')?.value || '').trim().toLowerCase();
+  const ws = amActiveWs;
+  let shown = 0;
+  document.querySelectorAll('#am-body .am-group-hdr').forEach(hdr => {
+    const hdrWs = hdr.dataset.ws;
+    const wsMatch = ws === 'all' || hdrWs === ws;
+    // Check if any rows under this header are visible
+    let anyVisible = false;
+    let sib = hdr.nextElementSibling;
+    while (sib && sib.classList.contains('am-row')) {
+      const rowWs    = sib.dataset.ws;
+      const wsOk     = ws === 'all' || rowWs === ws;
+      const text     = sib.textContent.toLowerCase();
+      const searchOk = !q || text.includes(q);
+      const vis      = wsOk && searchOk;
+      sib.classList.toggle('hidden', !vis);
+      if (vis) { anyVisible = true; shown++; }
+      sib = sib.nextElementSibling;
+    }
+    hdr.classList.toggle('hidden', !anyVisible);
+  });
+  const el = document.getElementById('am-count');
+  if (el) el.textContent = shown + ' metric' + (shown !== 1 ? 's' : '') + ' shown';
+}
+</script>
+
+
+<!-- ═══════════════ READ ME ═══════════════ -->
+<section id="readme" class="sec">
+
+  <div class="shr">
+    <div class="shr-ey">Project Nexus · Measurement Dashboard · How This Works</div>
+    <div class="shr-t">Read Me</div>
+    <div class="shr-s">A plain-language guide to what this dashboard is, what it tracks, how to navigate it, and how to keep it up to date.</div>
+  </div>
+
+  <style>
+  .rm-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  @media(max-width:900px){.rm-grid{grid-template-columns:1fr}}
+  .rm-section{margin-bottom:28px}
+  .rm-h{font-family:'DM Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--px);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .rm-h::before{content:'';display:block;width:22px;height:1px;background:var(--px);box-shadow:0 0 5px var(--px);flex-shrink:0}
+  .rm-p{font-size:12px;color:var(--text2);line-height:1.75;margin-bottom:10px}
+  .rm-p strong{color:var(--text)}
+  .rm-tab-list{display:grid;gap:8px}
+  .rm-tab-item{display:grid;grid-template-columns:140px 1fr;gap:12px;padding:10px 14px;background:var(--bg3);border:1px solid var(--border);border-radius:9px;align-items:start;transition:border-color .15s}
+  .rm-tab-item:hover{border-color:var(--border2)}
+  .rm-tab-name{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;color:var(--px2);cursor:pointer;transition:color .15s}
+  .rm-tab-name:hover{color:var(--px)}
+  .rm-tab-desc{font-size:11px;color:var(--text2);line-height:1.6}
+  .rm-note{background:var(--infer-bg);border:1px solid var(--infer-b);border-radius:9px;padding:12px 16px;font-size:11px;color:var(--text2);line-height:1.65;margin-bottom:10px}
+  .rm-note strong{color:var(--text)}
+  .rm-tip{background:var(--fact-bg);border:1px solid var(--fact-b);border-radius:9px;padding:12px 16px;font-size:11px;color:var(--text2);line-height:1.65;margin-bottom:10px}
+  .rm-tip strong{color:var(--text)}
+  .rm-step{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+  .rm-step:last-child{border-bottom:none}
+  .rm-step-n{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--px);line-height:1;flex-shrink:0;width:22px;text-align:center}
+  .rm-step-body{font-size:11px;color:var(--text2);line-height:1.65;padding-top:2px}
+  .rm-step-body strong{color:var(--text)}
+  .rm-dev-block{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:10px}
+  .rm-dev-h{font-family:'DM Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:10px}
+  .rm-code{font-family:'DM Mono',monospace;font-size:10px;color:var(--px2);background:rgba(99,102,241,.07);padding:2px 7px;border-radius:4px;white-space:nowrap}
+  .rm-kv-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:11px}
+  .rm-kv-row:last-child{border-bottom:none}
+  .rm-kv-label{color:var(--text2)}
+  .rm-kv-val{font-family:'DM Mono',monospace;font-size:10px;color:var(--px2)}
+  </style>
+
+  <!-- WHAT IS THIS -->
+  <div class="rm-section">
+    <div class="rm-h">What is this dashboard</div>
+    <div class="rm-grid">
+      <div class="card">
+        <div class="rm-p">This dashboard tracks the performance of <strong>Project Nexus</strong>, a demand generation program built for AWS by Accenture Song. The goal is to identify VMware customers who are likely to migrate to AWS and move them through a qualification process until they are ready to be handed to the AWS sales team.</div>
+        <div class="rm-p">The program runs a 12-month pilot from <strong>February 2026 to February 2027</strong>. The first major milestone is delivering 160 qualified leads to AWS by June 12, 2026.</div>
+        <div class="rm-p">This file is a self-contained HTML document. It works entirely offline, requires no server, and stores all data internally. To share an updated version, use the <strong>Save and Export</strong> button in the top bar, which saves a new copy of the file with the current version number.</div>
+      </div>
+      <div class="card">
+        <div class="rm-h" style="margin-top:0">Program at a glance</div>
+        <div class="rm-kv-row"><span class="rm-kv-label">Program name</span><span class="rm-kv-val">Project Nexus</span></div>
+        <div class="rm-kv-row"><span class="rm-kv-label">Client</span><span class="rm-kv-val">AWS (Amazon Web Services)</span></div>
+        <div class="rm-kv-row"><span class="rm-kv-label">Run by</span><span class="rm-kv-val">Accenture Song</span></div>
+        <div class="rm-kv-row"><span class="rm-kv-label">Pilot period</span><span class="rm-kv-val">Feb 2026 to Feb 2027</span></div>
+        <div class="rm-kv-row"><span class="rm-kv-label">Q1 target</span><span class="rm-kv-val">160 qualified leads by June 12</span></div>
+        <div class="rm-kv-row"><span class="rm-kv-label">Full year target</span><span class="rm-kv-val">900 qualified leads</span></div>
+        <div class="rm-kv-row"><span class="rm-kv-label">Revenue basis</span><span class="rm-kv-val">$2,500 per VM</span></div>
+        <div class="rm-kv-row"><span class="rm-kv-label">Target audience</span><span class="rm-kv-val">VMware customers under 2,000 VMs</span></div>
+        <div class="rm-kv-row"><span class="rm-kv-label">Password</span><span class="rm-kv-val">nexus2026</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW TO NAVIGATE -->
+  <div class="rm-section">
+    <div class="rm-h">How to navigate</div>
+    <div class="rm-p" style="margin-bottom:16px">Use the left sidebar to move between sections. Each section covers a different part of the program. On mobile, tap the menu icon in the top left to open the sidebar. You can also use the search bar at the top to jump directly to a section by keyword.</div>
+    <div class="rm-tab-list">
+      <div class="rm-tab-item">
+        <div class="rm-tab-name" onclick="show('summary')">Summary</div>
+        <div class="rm-tab-desc">The top-level view of how the program is performing. Start here for a quick read on funnel health, AI call performance, and progress toward the 160-lead target. This is the right view to share with leadership.</div>
+      </div>
+      <div class="rm-tab-item">
+        <div class="rm-tab-name" onclick="show('targets')">Targets and Pace</div>
+        <div class="rm-tab-desc">Tracks progress against quarterly delivery commitments. Shows how many leads have been delivered, how many remain, and whether the current pace is on track to hit each quarterly milestone.</div>
+      </div>
+      <div class="rm-tab-item">
+        <div class="rm-tab-name" onclick="show('funnel')">Funnel and Age</div>
+        <div class="rm-tab-desc">Shows how contacts move through the lead lifecycle from initial engagement to a qualified opportunity. Highlights where contacts are stalling and how long they are spending at each stage.</div>
+      </div>
+      <div class="rm-tab-item">
+        <div class="rm-tab-name" onclick="show('ai')">AI Calls (NLPearl)</div>
+        <div class="rm-tab-desc">Data from the AI-powered outbound calling system. Shows call volume, pickup rates, call outcomes, sentiment scores, and how quickly leads are being contacted after qualifying. This is the primary qualification engine.</div>
+      </div>
+      <div class="rm-tab-item">
+        <div class="rm-tab-name" onclick="show('cs')">Campaign Reporting</div>
+        <div class="rm-tab-desc">Lead intake data from content syndication campaigns run through TechTarget and NetLine. Shows how many leads have come in, their company profiles, job titles, industry mix, and VMware environment details.</div>
+      </div>
+      <div class="rm-tab-item">
+        <div class="rm-tab-name" onclick="show('email')">Email</div>
+        <div class="rm-tab-desc">Tracks email nurture performance once data from Eloqua is connected. Will show open rates, click rates, and how many email-engaged contacts convert to form submissions. Currently pending full data connection.</div>
+      </div>
+      <div class="rm-tab-item">
+        <div class="rm-tab-name" onclick="show('web')">Web</div>
+        <div class="rm-tab-desc">Web traffic and form performance from the landing pages. Will show total sessions, form starts, form completions, and conversion rates once Adobe Analytics data is flowing consistently.</div>
+      </div>
+      <div class="rm-tab-item">
+        <div class="rm-tab-name" onclick="show('cip')">Improvement Plan</div>
+        <div class="rm-tab-desc">A running list of optimization ideas and open action items. Tracks ownership, priority, and completion status for items across the team. Used in weekly reviews to keep open items moving.</div>
+      </div>
+      <div class="rm-tab-item">
+        <div class="rm-tab-name" onclick="show('scoring')">Lead Scoring</div>
+        <div class="rm-tab-desc">Documents how the Eloqua lead scoring model works. Shows the criteria used to assess whether a contact is a strong fit, including their company profile and how they have engaged with program content.</div>
+      </div>
+      <div class="rm-tab-item">
+        <div class="rm-tab-name" onclick="show('register')">Metric Register</div>
+        <div class="rm-tab-desc">A focused list of the metrics currently active or operationally necessary in the dashboard. Covers the 15 metrics that are live in this file, with their calculation, data source, and priority tier.</div>
+      </div>
+      <div class="rm-tab-item">
+        <div class="rm-tab-name" onclick="show('allmetrics')">All Metrics</div>
+        <div class="rm-tab-desc">The complete inventory of all 64 formally defined metrics across 7 workstreams. For each metric you can see the business definition, source system, which reporting dashboard it belongs to, and whether it is currently live in this file. Use the filter buttons and search box to find what you need.</div>
+      </div>
+      <div class="rm-tab-item">
+        <div class="rm-tab-name" onclick="show('glossary')">Glossary</div>
+        <div class="rm-tab-desc">Plain-language definitions for every acronym, term, and system name used across the program. If something in another section is unclear, check here first.</div>
+      </div>
+      <div class="rm-tab-item">
+        <div class="rm-tab-name" style="cursor:default;color:var(--text3)">Read Me (this page)</div>
+        <div class="rm-tab-desc">This guide. Covers how the dashboard works, how to update data, how to export and share the file, and notes for anyone maintaining or hosting it going forward.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW DATA GETS IN -->
+  <div class="rm-section">
+    <div class="rm-h">How data gets updated</div>
+    <div class="rm-p">All data in the dashboard is stored directly inside this HTML file. There is no live database connection. Updates happen through a structured JSON block embedded in the file, which feeds every number, label, and note you see on screen.</div>
+    <div class="rm-grid">
+      <div class="card">
+        <div class="rm-h" style="margin-top:0">For non-developers</div>
+        <div class="rm-step">
+          <div class="rm-step-n">1</div>
+          <div class="rm-step-body">Open the dashboard in a browser. Enter the password <strong>nexus2026</strong> when prompted.</div>
+        </div>
+        <div class="rm-step">
+          <div class="rm-step-n">2</div>
+          <div class="rm-step-body">Click <strong>Edit Mode</strong> in the top bar. Fields that can be edited will highlight. Click any number or label to change it.</div>
+        </div>
+        <div class="rm-step">
+          <div class="rm-step-n">3</div>
+          <div class="rm-step-body">When finished, click <strong>Save and Export</strong> in the top bar. This saves a new version of the file to your downloads folder with the version number incremented automatically.</div>
+        </div>
+        <div class="rm-step">
+          <div class="rm-step-n">4</div>
+          <div class="rm-step-body">Share the downloaded file with whoever needs it, or upload it to your shared drive or hosting location to replace the previous version.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="rm-h" style="margin-top:0">For developers</div>
+        <div class="rm-p">All program data lives in the <span class="rm-code">nexus-data</span> script block near the top of the HTML file. It is a single JSON object. Edit the values there directly and save the file.</div>
+        <div class="rm-p">Key fields to update each reporting cycle include <span class="rm-code">report_as_of</span>, lead counts per stage, call metrics from NLPearl, and campaign batch data. The <span class="rm-code">_version</span> field increments automatically on export but can also be set manually.</div>
+        <div class="rm-p">No build tools, frameworks, or dependencies are required. The file uses only vanilla HTML, CSS, and JavaScript. All fonts load from Google Fonts via CDN. The file works fully offline once the fonts have been cached by the browser.</div>
+        <div class="rm-p">To host the file, place it on any static file server or shared hosting location. No server-side logic is needed. The file can also be opened directly from a local drive or network share without a server.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW TO SHARE -->
+  <div class="rm-section">
+    <div class="rm-h">Saving and sharing</div>
+    <div class="rm-p">Use the <strong>Save and Export</strong> button in the top bar whenever you want to distribute an updated copy. It saves a complete, self-contained HTML file to your downloads folder. The filename includes the version number so previous copies are easy to identify.</div>
+    <div class="rm-tip"><strong>To share:</strong> Upload the exported file to your shared drive (SharePoint, Box, Google Drive, or any internal file store) and send the link. Anyone with the file and the password can open it in any modern browser. No special software is needed.</div>
+    <div class="rm-note"><strong>To host as a web page:</strong> Place the exported HTML file on any static web host or internal server. Rename it <span class="rm-code">index.html</span> if you want it to load at a root URL. No configuration is needed beyond uploading the file.</div>
+  </div>
+
+  <!-- WHAT THE NUMBERS MEAN -->
+  <div class="rm-section">
+    <div class="rm-h">Understanding the numbers</div>
+    <div class="rm-grid">
+      <div class="card">
+        <div class="rm-h" style="margin-top:0">Lead lifecycle</div>
+        <div class="rm-p">Every contact that enters the program moves through three stages before being handed to AWS.</div>
+        <div class="rm-step">
+          <div class="rm-step-n" style="color:var(--teal)">1</div>
+          <div class="rm-step-body"><strong>MEL (Marketing Engaged Lead)</strong> - A contact who has shown initial interest, typically through a form fill, content download, or response to outreach.</div>
+        </div>
+        <div class="rm-step">
+          <div class="rm-step-n" style="color:var(--gold)">2</div>
+          <div class="rm-step-body"><strong>MQP (Marketing Qualified Prospect)</strong> - A contact who meets the profile criteria and has enough engagement to be called by the AI voice agent.</div>
+        </div>
+        <div class="rm-step">
+          <div class="rm-step-n" style="color:var(--px)">3</div>
+          <div class="rm-step-body"><strong>PO (Partner Opportunity)</strong> - A fully qualified lead that meets all AWS criteria: 100 or more VMs, a migration timeline under 18 months, and consent from both sales and AI outreach. These are submitted to AWS via ACE.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="rm-h" style="margin-top:0">Revenue and ROI</div>
+        <div class="rm-p">All revenue estimates in the dashboard use a single consistent rate agreed at the program level.</div>
+        <div class="rm-kv-row"><span class="rm-kv-label">Rate</span><span class="rm-kv-val">$2,500 per VM</span></div>
+        <div class="rm-kv-row"><span class="rm-kv-label">Formula</span><span class="rm-kv-val">VM count x $2,500</span></div>
+        <div class="rm-kv-row"><span class="rm-kv-label">Example</span><span class="rm-kv-val">500 VMs = $1.25M</span></div>
+        <div class="rm-kv-row"><span class="rm-kv-label">Total addressable market</span><span class="rm-kv-val">~$20B</span></div>
+        <div class="rm-kv-row"><span class="rm-kv-label">Pilot ROI target</span><span class="rm-kv-val">10x or better</span></div>
+        <div style="margin-top:12px" class="rm-p">This rate is applied consistently across every revenue figure, ROI calculation, and pipeline value shown in the dashboard. If the rate changes, it needs to be updated in the data block and all derived figures recalculated.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VERSIONS AND OWNERSHIP -->
+  <div class="rm-section">
+    <div class="rm-h">Version history and ownership</div>
+    <div class="rm-p">Each exported file carries a version number in its filename (for example, <span class="rm-code">nexus_dashboard_v18.html</span>). The version number increments automatically each time you export. Keep the most recent version as the working copy and archive older versions for reference.</div>
+    <div class="rm-grid">
+      <div class="card">
+        <div class="rm-h" style="margin-top:0">Who owns what</div>
+        <div class="rm-kv-row"><span class="rm-kv-label">Dashboard and data</span><span class="rm-kv-val">Justin Johnson</span></div>
+        <div class="rm-kv-row"><span class="rm-kv-label">Eloqua and Martech</span><span class="rm-kv-val">Allison Melendez</span></div>
+        <div class="rm-kv-row"><span class="rm-kv-label">AI Voice (NLPearl)</span><span class="rm-kv-val">Daniel Campos</span></div>
+        <div class="rm-kv-row"><span class="rm-kv-label">ACE upload</span><span class="rm-kv-val">Connor and Ian</span></div>
+        <div class="rm-kv-row"><span class="rm-kv-label">Paid media</span><span class="rm-kv-val">Courtney Killmar</span></div>
+        <div class="rm-kv-row"><span class="rm-kv-label">Web and AEM pages</span><span class="rm-kv-val">Hannah / Miguel / Jose</span></div>
+        <div class="rm-kv-row"><span class="rm-kv-label">Adobe Analytics</span><span class="rm-kv-val">Umesh Bist / Cyle</span></div>
+        <div class="rm-kv-row"><span class="rm-kv-label">Program coordination</span><span class="rm-kv-val">Sarah Richter / Lino Gomez</span></div>
+        <div class="rm-kv-row"><span class="rm-kv-label">AIP+ data platform</span><span class="rm-kv-val">Paulo Faleiros</span></div>
+      </div>
+      <div class="card">
+        <div class="rm-h" style="margin-top:0">Open data gaps as of May 2026</div>
+        <div class="rm-step">
+          <div class="rm-step-n" style="color:var(--red);font-size:14px">!</div>
+          <div class="rm-step-body"><strong>Email tab:</strong> Eloqua email data is not yet connected. The tab is a placeholder until the email series completes testing and goes live.</div>
+        </div>
+        <div class="rm-step">
+          <div class="rm-step-n" style="color:var(--red);font-size:14px">!</div>
+          <div class="rm-step-body"><strong>Web tab:</strong> Adobe Analytics data is not yet flowing consistently. Session and form data will populate once tagging and ECID tracking are confirmed.</div>
+        </div>
+        <div class="rm-step">
+          <div class="rm-step-n" style="color:var(--gold);font-size:14px">!</div>
+          <div class="rm-step-body"><strong>ACE pipeline:</strong> The first ACE upload is being prepared. Partner Opportunity count will update once the upload process is confirmed and running.</div>
+        </div>
+        <div class="rm-step">
+          <div class="rm-step-n" style="color:var(--gold);font-size:14px">!</div>
+          <div class="rm-step-body"><strong>Finance data:</strong> Spend and ROI figures require a confirmed finance data feed. Cost-per-lead and marketing ROI are not yet calculable.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
 
 <!-- ═══════════════ DATA FOOTER ═══════════════ -->
 <div class="data-footer" id="data-footer">
@@ -1985,6 +3014,8 @@ const sectionIndex=[
   {id:'cip',       terms:'cip continuous improvement plan cadence governance retro compliance review weekly daily'},
   {id:'scoring',   terms:'lead scoring eloqua fit activity matrix a1 a4 b mql nurture weights decay reset behavior'},
   {id:'register',  terms:'metric register met001 met003 met004 met018 met035 met054 met055 met056 met062 priority p1 p2 p3'},
+  {id:'allmetrics',terms:'all metrics 64 workstream eloqua ace nlpearl adobe analytics paid media techTarget content syndication program finance kpi register business definition source system dashboard'},
+  {id:'readme',    terms:'read me about dashboard how to use navigation tabs sections password export save version update data edit mode summary funnel ai calls nlpearl campaign email web targets scoring metric register all metrics glossary'},
   {id:'glossary',  terms:'glossary mel mqp po ace aip nlpearl ecid map ctor hql sub-large enterprise terms acronyms'},
 ];
 
@@ -2905,7 +3936,6 @@ function prepareExportHTML() {
 function saveAndExport() {
   const html = prepareExportHTML();
 
-  // Trigger local download
   const blob = new Blob([html], { type: 'text/html' });
   const a = Object.assign(document.createElement('a'), {
     href: URL.createObjectURL(blob),
@@ -2916,122 +3946,9 @@ function saveAndExport() {
   document.body.removeChild(a);
   URL.revokeObjectURL(a.href);
 
-  // Show GitHub push modal
-  openGHModal(html);
-
+  showToast('v' + ND._version + ' saved');
   if (editMode) requestAnimationFrame(() => activateEditFields());
 }
-
-/* ── GITHUB PUSH MODAL ────────────────────────────────────────────────────── */
-let _ghHTML = null;
-
-function openGHModal(html) {
-  _ghHTML = html;
-  const modal = document.getElementById('gh-modal');
-  document.getElementById('gh-pat').value = '';
-  document.getElementById('gh-status').textContent = '';
-  document.getElementById('gh-status').style.color = '';
-  document.getElementById('gh-push').disabled = false;
-  document.getElementById('gh-push').textContent = 'Push to GitHub';
-  modal.classList.add('on');
-  setTimeout(() => document.getElementById('gh-pat').focus(), 80);
-}
-
-function closeGHModal() {
-  document.getElementById('gh-modal').classList.remove('on');
-  document.getElementById('gh-pat').value = '';
-  _ghHTML = null;
-}
-
-async function pushToGitHub() {
-  const pat   = document.getElementById('gh-pat').value.trim();
-  const btn   = document.getElementById('gh-push');
-  const status = document.getElementById('gh-status');
-
-  if (!pat) {
-    status.textContent = 'Please enter your token.';
-    status.style.color = 'var(--red)';
-    return;
-  }
-
-  const OWNER  = 'nexusreporting';
-  const REPO   = 'Nexus';
-  const PATH   = 'index.html';
-  const BRANCH = 'main';
-  const API    = 'https://api.github.com';
-
-  btn.disabled = true;
-  btn.textContent = 'Pushing...';
-  status.style.color = 'var(--text3)';
-  status.textContent = 'Fetching current file SHA...';
-
-  try {
-    // Step 1: Get current file SHA (required by GitHub API to update a file)
-    const getRes = await fetch(`${API}/repos/${OWNER}/${REPO}/contents/${PATH}?ref=${BRANCH}`, {
-      headers: {
-        'Authorization': 'token ' + pat,
-        'Accept': 'application/vnd.github+json'
-      }
-    });
-
-    if (getRes.status === 401) throw new Error('Invalid token. Check your PAT and try again.');
-    if (getRes.status === 404) throw new Error('Repo or file not found. Check OWNER/REPO/PATH.');
-    if (!getRes.ok) throw new Error('GitHub API error: ' + getRes.status);
-
-    const fileData = await getRes.json();
-    const sha = fileData.sha;
-
-    status.textContent = 'Uploading updated file...';
-
-    // Step 2: Base64-encode the HTML
-    const encoded = btoa(unescape(encodeURIComponent(_ghHTML)));
-
-    // Step 3: Commit the updated file
-    const putRes = await fetch(`${API}/repos/${OWNER}/${REPO}/contents/${PATH}`, {
-      method: 'PUT',
-      headers: {
-        'Authorization': 'token ' + pat,
-        'Accept': 'application/vnd.github+json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        message: 'Dashboard update: v' + ND._version + ' (' + (ND.meta.report_as_of || ND.meta.report_date) + ')',
-        content: encoded,
-        sha: sha,
-        branch: BRANCH
-      })
-    });
-
-    if (!putRes.ok) {
-      const err = await putRes.json();
-      throw new Error(err.message || 'Push failed: ' + putRes.status);
-    }
-
-    // Success
-    status.style.color = 'var(--teal)';
-    status.textContent = 'Pushed. GitHub Pages will redeploy in ~2 minutes.';
-    btn.textContent = 'Done';
-    setTimeout(closeGHModal, 2800);
-    showToast('v' + ND._version + ' pushed to GitHub');
-
-  } catch (err) {
-    status.style.color = 'var(--red)';
-    status.textContent = err.message;
-    btn.disabled = false;
-    btn.textContent = 'Push to GitHub';
-  } finally {
-    // Clear token from memory
-    document.getElementById('gh-pat').value = '';
-  }
-}
-
-/* ── GITHUB MODAL EVENT LISTENERS ────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('gh-cancel').addEventListener('click', closeGHModal);
-  document.getElementById('gh-push').addEventListener('click', pushToGitHub);
-  document.getElementById('gh-pat').addEventListener('keydown', e => { if (e.key === 'Enter') pushToGitHub(); });
-  document.getElementById('gh-modal').addEventListener('click', e => { if (e.target === document.getElementById('gh-modal')) closeGHModal(); });
-});
 
 /* ── TOAST ────────────────────────────────────────────────────────────────── */
 function showToast(msg) {
