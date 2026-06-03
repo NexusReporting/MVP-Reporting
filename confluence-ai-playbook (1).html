@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confluence AI — Sales & Lead Generation Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #ffffff;
+  --bg-soft:  #f6f8f7;
+  --bg-muted: #eef1ee;
+  --border:   #e0e4e1;
+  --ink:      #0f1a14;
+  --ink-2:    #2b3b31;
+  --ink-3:    #4d6057;
+  --ink-4:    #7a9183;
+  --ink-5:    #b0c0b8;
+  --river:    #1a6e8e;
+  --river-bg: #e8f4f9;
+  --timber:   #b56b1f;
+  --timber-bg:#fdf3e8;
+  --pine:     #2d5a3d;
+  --pine-bg:  #eaf2ec;
+  --danger:   #c04040;
+  --danger-bg:#fdf0f0;
+  --gold:     #8a6800;
+  --gold-bg:  #fdf8e8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{background:var(--bg);color:var(--ink-3);font-family:'DM Sans',sans-serif;font-weight:300;font-size:15px;line-height:1.68;-webkit-font-smoothing:antialiased}
+::selection{background:var(--river);color:#fff}
+a{color:var(--river);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,48px)}
+.nav-inner{max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:58px;gap:16px}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:var(--ink);white-space:nowrap}
+.nav-logo span{color:var(--river)}
+.nav-tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.nav-tabs::-webkit-scrollbar{display:none}
+.nav-tab{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;padding:7px 14px;color:var(--ink-4);border-radius:4px;white-space:nowrap;cursor:pointer;border:none;background:none;transition:all 0.2s}
+.nav-tab:hover{color:var(--ink);background:var(--bg-muted)}
+.nav-tab.active{color:var(--river);background:var(--river-bg)}
+
+/* ── HEADER ── */
+.page-header{background:var(--pine);padding:56px clamp(16px,4vw,48px)}
+.page-header-inner{max-width:1240px;margin:0 auto}
+.ph-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.ph-label::before{content:'';width:28px;height:1px;background:rgba(255,255,255,0.3)}
+.ph-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,4vw,48px);color:#fff;line-height:1.05;letter-spacing:-0.02em;margin-bottom:16px}
+.ph-sub{font-size:17px;color:rgba(255,255,255,0.55);max-width:620px;line-height:1.6}
+.ph-meta{display:flex;gap:28px;flex-wrap:wrap;margin-top:32px}
+.ph-meta-item{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35)}
+.ph-meta-item strong{display:block;font-family:'Syne',sans-serif;font-size:22px;color:rgba(110,207,160,0.9);letter-spacing:-0.01em;font-weight:700;margin-bottom:2px}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+.section{padding:72px 0}
+.section+.section{border-top:1px solid var(--border)}
+.section-alt{background:var(--bg-soft)}
+.section-alt-wrap{background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+
+.s-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:var(--river);margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.s-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.s-title{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(22px,3vw,36px);color:var(--ink);line-height:1.1;letter-spacing:-0.02em;margin-bottom:12px}
+.s-desc{font-size:16px;color:var(--ink-4);line-height:1.7;max-width:680px;margin-bottom:40px}
+
+/* ── CARDS ── */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
+.card{background:var(--bg);padding:32px 28px;position:relative}
+.card:hover{background:var(--bg-soft)}
+.card-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;padding:4px 10px;border-radius:3px;margin-bottom:14px}
+.tag-river{background:var(--river-bg);color:var(--river)}
+.tag-pine{background:var(--pine-bg);color:var(--pine)}
+.tag-timber{background:var(--timber-bg);color:var(--timber)}
+.tag-gold{background:var(--gold-bg);color:var(--gold)}
+.tag-danger{background:var(--danger-bg);color:var(--danger)}
+.card-title{font-family:'Syne',sans-serif;font-weight:700;font-size:18px;color:var(--ink);margin-bottom:8px;line-height:1.2}
+.card-text{font-size:14px;color:var(--ink-4);line-height:1.65}
+.card-url{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--river);margin-top:12px;display:block;word-break:break-all}
+.card-steps{margin-top:16px;list-style:none}
+.card-steps li{font-size:13px;color:var(--ink-3);padding:6px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start}
+.card-steps li:last-child{border-bottom:none}
+.step-n{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-5);margin-top:2px;flex-shrink:0;width:16px}
+
+/* ── PIPELINE FLOW ── */
+.pipeline{display:flex;flex-direction:column;gap:0}
+.pipeline-step{display:grid;grid-template-columns:48px 1fr;gap:0;position:relative}
+.pipeline-step:not(:last-child)::after{content:'';position:absolute;left:23px;top:48px;bottom:-1px;width:2px;background:var(--border);z-index:0}
+.ps-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:700;font-size:15px;flex-shrink:0;position:relative;z-index:1;margin-top:2px}
+.ps-icon.river{background:var(--river-bg);color:var(--river);border:2px solid var(--river)}
+.ps-icon.pine{background:var(--pine-bg);color:var(--pine);border:2px solid var(--pine)}
+.ps-icon.timber{background:var(--timber-bg);color:var(--timber);border:2px solid var(--timber)}
+.ps-icon.gold{background:var(--gold-bg);color:var(--gold);border:2px solid var(--gold)}
+.ps-body{padding:0 0 48px 28px}
+.ps-title{font-family:'Syne',sans-serif;font-weight:700;font-size:20px;color:var(--ink);margin-bottom:6px}
+.ps-meta{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--ink-5);text-transform:uppercase;margin-bottom:12px}
+.ps-text{font-size:15px;color:var(--ink-3);line-height:1.7;max-width:720px;margin-bottom:16px}
+
+/* ── TABLE ── */
+.data-table{width:100%;border-collapse:collapse;font-size:14px}
+.data-table th{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-5);padding:10px 14px;text-align:left;border-bottom:2px solid var(--border);background:var(--bg-soft)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--ink-3)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:hover td{background:var(--bg-soft)}
+.data-table td:first-child{font-weight:500;color:var(--ink-2)}
+.pill{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;padding:3px 8px;border-radius:3px}
+.pill-river{background:var(--river-bg);color:var(--river)}
+.pill-pine{background:var(--pine-bg);color:var(--pine)}
+.pill-timber{background:var(--timber-bg);color:var(--timber)}
+.pill-danger{background:var(--danger-bg);color:var(--danger)}
+
+/* ── SCRIPT BLOCKS ── */
+.script-block{background:#0f1a14;border-radius:6px;overflow:hidden;margin:24px 0;border:1px solid rgba(255,255,255,0.06)}
+.script-header{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(0,0,0,0.3);border-bottom:1px solid rgba(255,255,255,0.05)}
+.script-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.25em;text-transform:uppercase}
+.script-label.ai{color:#6ecfa0}
+.script-label.prospect{color:#ffc86e}
+.script-label.branch{color:#86b8d4}
+.script-label.instruction{color:#c8a0ff}
+.script-body{padding:20px 24px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.8;color:#c8d8cc}
+.script-line{margin-bottom:4px}
+.script-line.ai-say{color:#e8f8f0}
+.script-line.instruction{color:#c8a0ff;font-style:italic;opacity:0.8;font-size:12px}
+.script-line.branch{color:#86b8d4;margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05)}
+.script-line.prospect{color:#ffc86e;opacity:0.7}
+.script-divider{height:1px;background:rgba(255,255,255,0.05);margin:12px 0}
+
+/* ── CADENCE TIMELINE ── */
+.cadence{display:flex;flex-direction:column;gap:2px}
+.cadence-day{display:grid;grid-template-columns:80px 1fr;gap:0;background:var(--border)}
+.cd-day{background:var(--bg-soft);padding:20px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid var(--border);text-align:center}
+.cd-day-num{font-family:'Syne',sans-serif;font-weight:700;font-size:22px;color:var(--ink);line-height:1}
+.cd-day-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--ink-5);text-transform:uppercase;margin-top:3px}
+.cd-content{background:var(--bg);padding:20px 24px}
+.cd-action{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.cd-action-badge{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:4px 10px;border-radius:3px;white-space:nowrap}
+.cd-action-title{font-weight:500;color:var(--ink-2);font-size:14px}
+.cd-text{font-size:13px;color:var(--ink-4);line-height:1.6;max-width:700px}
+
+/* ── QUESTIONNAIRE ── */
+.form-preview{background:var(--bg-soft);border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.form-header{background:var(--pine);padding:24px 28px}
+.form-header-title{font-family:'Syne',sans-serif;font-weight:700;font-size:20px;color:#fff;margin-bottom:4px}
+.form-header-sub{font-size:13px;color:rgba(255,255,255,0.5)}
+.form-body{padding:24px 28px;display:flex;flex-direction:column;gap:18px}
+.form-q{background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:18px 20px}
+.form-q-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-5);margin-bottom:6px}
+.form-q-text{font-size:15px;color:var(--ink);font-weight:500;margin-bottom:8px}
+.form-q-input{width:100%;padding:10px 14px;border:1px solid var(--border-md,#cdd3c9);border-radius:4px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink-4);background:var(--bg-soft);outline:none}
+.form-q-options{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.form-q-opt{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;padding:6px 12px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4)}
+
+/* ── QUALIFICATION MATRIX ── */
+.qual-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+.qual-cell{background:var(--bg);padding:24px 22px}
+.qual-cell.header{background:var(--bg-soft)}
+.qual-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-5);margin-bottom:8px}
+.qual-value{font-size:15px;color:var(--ink-2);line-height:1.5}
+.qual-value.pass{color:var(--pine)}
+.qual-value.fail{color:var(--danger)}
+
+/* ── WEEKLY TARGETS ── */
+.targets-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.target-cell{background:var(--bg);padding:24px 20px;text-align:center}
+.target-num{font-family:'Syne',sans-serif;font-weight:700;font-size:40px;color:var(--ink);line-height:1;letter-spacing:-0.02em}
+.target-num.river{color:var(--river)}
+.target-num.pine{color:var(--pine)}
+.target-num.timber{color:var(--timber)}
+.target-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-5);margin-top:6px}
+.target-sub{font-size:12px;color:var(--ink-4);margin-top:4px}
+
+/* ── INLINE BADGE ── */
+.badge{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:4px 10px;border-radius:3px}
+.badge-river{background:var(--river-bg);color:var(--river)}
+.badge-pine{background:var(--pine-bg);color:var(--pine)}
+.badge-timber{background:var(--timber-bg);color:var(--timber)}
+.badge-gold{background:var(--gold-bg);color:var(--gold)}
+
+/* ── ALERT BOX ── */
+.alert{padding:16px 20px;border-radius:5px;border-left:3px solid;margin:20px 0;font-size:14px;line-height:1.6}
+.alert-river{background:var(--river-bg);border-color:var(--river);color:var(--river)}
+.alert-timber{background:var(--timber-bg);border-color:var(--timber);color:var(--timber)}
+.alert-pine{background:var(--pine-bg);border-color:var(--pine);color:var(--pine)}
+.alert strong{display:block;margin-bottom:4px;font-weight:600}
+
+/* ── CHECKLIST ── */
+.checklist{list-style:none;display:flex;flex-direction:column;gap:8px}
+.checklist li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--ink-3)}
+.check{width:18px;height:18px;border-radius:50%;background:var(--pine-bg);color:var(--pine);display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;margin-top:1px}
+
+/* ── CRM SCHEMA ── */
+.schema-section{margin-bottom:28px}
+.schema-section-title{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:var(--ink);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.field-row{display:grid;grid-template-columns:180px 100px 1fr;gap:12px;padding:8px 0;border-bottom:1px solid var(--border);align-items:start}
+.field-row:last-child{border-bottom:none}
+.field-name{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-2);font-weight:500}
+.field-type{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 8px;border-radius:3px;background:var(--bg-muted);color:var(--ink-4);text-align:center;width:fit-content}
+.field-desc{font-size:13px;color:var(--ink-4)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .card-grid{grid-template-columns:1fr}
+  .targets-grid{grid-template-columns:1fr 1fr}
+  .qual-grid{grid-template-columns:1fr}
+  .field-row{grid-template-columns:1fr 80px;gap:8px}
+  .field-desc{grid-column:1/-1}
+  .pipeline-step{grid-template-columns:40px 1fr}
+  .cadence-day{grid-template-columns:64px 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">confluence<span>.ai</span> — Playbook</div>
+    <div class="nav-tabs">
+      <button class="nav-tab active" onclick="scrollTo('#lead-sources')">Lead Sources</button>
+      <button class="nav-tab" onclick="scrollTo('#pipeline')">50/Month Pipeline</button>
+      <button class="nav-tab" onclick="scrollTo('#scripts')">AI Scripts</button>
+      <button class="nav-tab" onclick="scrollTo('#cadence')">Cadence</button>
+      <button class="nav-tab" onclick="scrollTo('#questionnaire')">Pre-Call Form</button>
+      <button class="nav-tab" onclick="scrollTo('#crm')">CRM Schema</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HEADER ── -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="ph-label">Confluence AI · Vancouver, WA · Ops Playbook v1</div>
+    <div class="ph-title">NLPearl AI Calling &<br>Lead Generation Playbook</div>
+    <div class="ph-sub">Cold prospecting scripts, follow-up cadences, appointment booking, pre-call questionnaire, lead sourcing from permit databases and contractor registries, and a weekly workflow to generate 50 qualified leads/month across Clark County and the Portland metro.</div>
+    <div class="ph-meta">
+      <div class="ph-meta-item"><strong>50</strong>Leads / month target</div>
+      <div class="ph-meta-item"><strong>3–5</strong>Closes / month goal</div>
+      <div class="ph-meta-item"><strong>5</strong>Lead sources mapped</div>
+      <div class="ph-meta-item"><strong>14-day</strong>Follow-up cadence</div>
+      <div class="ph-meta-item"><strong>NLPearl</strong>AI call platform</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     SECTION 1: LEAD SOURCES
+════════════════════════════════ -->
+<div id="lead-sources">
+<div class="wrap">
+<div class="section">
+  <div class="s-label">01 — Lead Sources</div>
+  <div class="s-title">Where to find your 50 leads/month</div>
+  <div class="s-desc">Five sourcing channels across Washington and Oregon. Each gives you publicly available contractor and project data — searchable, exportable, and fresh enough to be actionable.</div>
+
+  <div class="card-grid">
+
+    <div class="card">
+      <span class="card-tag tag-river">Primary · Washington</span>
+      <div class="card-title">WA L&I Contractor Registry</div>
+      <p class="card-text">The Washington State Department of Labor & Industries maintains a public database of every licensed contractor in the state. Searchable by business name, license number, UBI, or specialty. Includes contact info, bond status, and license type.</p>
+      <a class="card-url" href="https://secure.lni.wa.gov/verify/" target="_blank">secure.lni.wa.gov/verify</a>
+      <ul class="card-steps">
+        <li><span class="step-n">1.</span>Search by city: "Vancouver" or "Battle Ground" or "Camas"</li>
+        <li><span class="step-n">2.</span>Filter by license type: General Contractor, Specialty (electrical, framing, MEP)</li>
+        <li><span class="step-n">3.</span>Export name, phone, UBI, license status</li>
+        <li><span class="step-n">4.</span>Filter OUT sole proprietors under $1M — focus on companies with 5+ employees</li>
+        <li><span class="step-n">5.</span>~800 active GC licenses in Clark County alone</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="card-tag tag-pine">Primary · Clark County</span>
+      <div class="card-title">Clark County Permit Database (LMS)</div>
+      <p class="card-text">Clark County's public LMS permit system lets you search permits by contractor name, date range, or project type. Commercial permits over $500K filed in the last 90 days = active GCs with active projects = perfect timing for a Confluence AI pitch.</p>
+      <a class="card-url" href="https://permits.clark.wa.gov/pub/lms/Default.aspx" target="_blank">permits.clark.wa.gov/pub/lms</a>
+      <ul class="card-steps">
+        <li><span class="step-n">1.</span>Search by date range: last 60–90 days</li>
+        <li><span class="step-n">2.</span>Filter permit type: Commercial New Construction, Commercial TI</li>
+        <li><span class="step-n">3.</span>Filter by valuation: $250K+ projects</li>
+        <li><span class="step-n">4.</span>Cross-reference contractor name → L&I lookup → get phone</li>
+        <li><span class="step-n">5.</span>~15–20 qualified prospects/month from this source alone</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="card-tag tag-timber">Primary · Oregon</span>
+      <div class="card-title">Oregon CCB Registry</div>
+      <p class="card-text">Oregon's Construction Contractors Board maintains 45,000+ active licenses. The Open Data Portal syncs daily. ccblookup.com adds a trust score, bond/insurance expiry, and Google Business match on top of the raw state data.</p>
+      <a class="card-url" href="https://search.ccb.oregon.gov" target="_blank">search.ccb.oregon.gov</a>
+      <a class="card-url" href="https://www.ccblookup.com/county/" target="_blank">ccblookup.com (Multnomah, Washington, Clackamas counties)</a>
+      <ul class="card-steps">
+        <li><span class="step-n">1.</span>Filter by county: Multnomah, Washington, Clackamas</li>
+        <li><span class="step-n">2.</span>License type: Residential GC, Commercial GC, Developer</li>
+        <li><span class="step-n">3.</span>Use ccblookup.com Trust Score &gt;70 as baseline quality filter</li>
+        <li><span class="step-n">4.</span>Cross-reference with Oregon Secretary of State for company size signal</li>
+        <li><span class="step-n">5.</span>~20–25 qualifying prospects/month from Portland metro</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="card-tag tag-gold">Secondary · Intent Signal</span>
+      <div class="card-title">City of Vancouver Permit Portal</div>
+      <p class="card-text">Vancouver WA city permits (separate from Clark County unincorporated) tracked via Accela Citizen Access. Best for catching mid-size commercial projects inside city limits — these GCs are often overlooked by the larger data aggregators.</p>
+      <a class="card-url" href="https://www.cityofvancouver.us/permits" target="_blank">cityofvancouver.us/permits</a>
+      <ul class="card-steps">
+        <li><span class="step-n">1.</span>Search commercial permits $200K+ last 90 days</li>
+        <li><span class="step-n">2.</span>Extract contractor of record from each permit</li>
+        <li><span class="step-n">3.</span>This is the highest-intent signal: active project = active pain</li>
+        <li><span class="step-n">4.</span>~5–8 high-intent leads/month</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="card-tag tag-river">Secondary · Enrichment</span>
+      <div class="card-title">LinkedIn + Google Maps Enrichment</div>
+      <p class="card-text">After pulling raw lists from L&I and CCB, enrich with LinkedIn (find the owner or operations director) and Google Maps (verify company size, read reviews for pain-point signals like "disorganized," "slow invoicing"). Free, 10 min/prospect.</p>
+      <a class="card-url" href="https://linkedin.com/search/results/companies/?keywords=general+contractor+vancouver+washington" target="_blank">LinkedIn: GC search · Vancouver, WA</a>
+      <ul class="card-steps">
+        <li><span class="step-n">1.</span>Search "general contractor Vancouver WA" — filter 10–50 employees</li>
+        <li><span class="step-n">2.</span>Find: Owner, Operations Director, VP Construction, Project Controls</li>
+        <li><span class="step-n">3.</span>Google Maps reviews: look for "hard to get updates," "scheduling issues" = pain signal</li>
+        <li><span class="step-n">4.</span>Add direct name + title to CRM before AI call is made</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="card-tag tag-pine">Paid Option · Scale</span>
+      <div class="card-title">Dodge Data / ConstructConnect</div>
+      <p class="card-text">For when you want to scale beyond 50 leads/month. Dodge tracks every commercial project in design, permitting, and bidding phase across the Pacific Northwest — with contractor contact data pre-attached. ~$200–$400/month.</p>
+      <a class="card-url" href="https://www.dodgedata.com" target="_blank">dodgedata.com</a>
+      <ul class="card-steps">
+        <li><span class="step-n">1.</span>Filter: WA + OR, project value $500K–$20M, stage: Bidding or Awarded</li>
+        <li><span class="step-n">2.</span>GC and owner contact data pre-attached to each project</li>
+        <li><span class="step-n">3.</span>Best for developer/owner segment — harder to reach via permit data</li>
+        <li><span class="step-n">4.</span>Start free sources first; activate Dodge at 30+ leads/month</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+</div>
+</div>
+
+<!-- ════════════════════════════════
+     SECTION 2: 50/MONTH PIPELINE
+════════════════════════════════ -->
+<div id="pipeline" class="section-alt-wrap">
+<div class="wrap">
+<div class="section">
+  <div class="s-label">02 — 50 Leads / Month Workflow</div>
+  <div class="s-title">The weekly engine</div>
+  <div class="s-desc">50 qualified leads/month = ~13/week. Here's the exact weekly workflow to hit that number using the sources above — with qualification criteria so AI calling time isn't wasted on the wrong prospects.</div>
+
+  <div class="targets-grid" style="margin-bottom:48px">
+    <div class="target-cell">
+      <div class="target-num river">200</div>
+      <div class="target-label">Raw contacts pulled</div>
+      <div class="target-sub">per month from all sources</div>
+    </div>
+    <div class="target-cell">
+      <div class="target-num">100</div>
+      <div class="target-label">Pass initial filter</div>
+      <div class="target-sub">size, license type, geography</div>
+    </div>
+    <div class="target-cell">
+      <div class="target-num pine">50</div>
+      <div class="target-label">Qualified for AI call</div>
+      <div class="target-sub">enriched, verified, in CRM</div>
+    </div>
+    <div class="target-cell">
+      <div class="target-num timber">3–5</div>
+      <div class="target-label">Closed clients</div>
+      <div class="target-sub">at 6–10% close rate</div>
+    </div>
+  </div>
+
+  <div class="pipeline">
+
+    <div class="pipeline-step">
+      <div class="ps-icon river">M</div>
+      <div class="ps-body">
+        <div class="ps-meta">Monday · 60 minutes</div>
+        <div class="ps-title">Pull raw list (50 contacts)</div>
+        <p class="ps-text">Every Monday, pull ~50 new contacts across your sources. Clark County LMS (15 from new commercial permits), WA L&I Vancouver/Battle Ground search (20 new GC + sub licenses active in last 30 days), Oregon CCB Multnomah County (15 commercial GCs).</p>
+        <div style="margin-top:12px">
+          <table class="data-table" style="font-size:13px">
+            <thead><tr><th>Source</th><th>Weekly Target</th><th>Filter Criteria</th></tr></thead>
+            <tbody>
+              <tr><td>Clark County LMS Permits</td><td>15</td><td>Commercial, $250K+, last 30 days</td></tr>
+              <tr><td>WA L&I Registry</td><td>20</td><td>Vancouver / Battle Ground / Camas, active license, GC or specialty</td></tr>
+              <tr><td>Oregon CCB (Multnomah)</td><td>10</td><td>Commercial GC, active bond + insurance, 5+ years licensed</td></tr>
+              <tr><td>LinkedIn enrichment</td><td>5</td><td>Companies 10–100 employees, owner/ops director reachable</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="pipeline-step">
+      <div class="ps-icon pine">T</div>
+      <div class="ps-body">
+        <div class="ps-meta">Tuesday · 45 minutes</div>
+        <div class="ps-title">Qualify and filter to 13</div>
+        <p class="ps-text">Apply the qualification matrix below. Of your 50 raw contacts, aim to qualify ~13 for the AI calling queue. Disqualify: sole proprietors, residential-only licenses, companies with fewer than 3 active projects, anyone outside the I-5 corridor service area.</p>
+        <div class="qual-grid" style="margin-top:16px">
+          <div class="qual-cell header"><div class="qual-label">Signal</div><div class="qual-label" style="margin-top:4px">Qualified ✓</div></div>
+          <div class="qual-cell header"><div class="qual-label">Signal</div><div class="qual-label" style="margin-top:4px">Disqualified ✗</div></div>
+          <div class="qual-cell"><div class="qual-label">Annual volume</div><div class="qual-value pass">$3M–$50M/year</div></div>
+          <div class="qual-cell"><div class="qual-label">Annual volume</div><div class="qual-value fail">Under $1M or over $100M</div></div>
+          <div class="qual-cell"><div class="qual-label">Active projects</div><div class="qual-value pass">3+ concurrent projects</div></div>
+          <div class="qual-cell"><div class="qual-label">Active projects</div><div class="qual-value fail">Single-project or residential only</div></div>
+          <div class="qual-cell"><div class="qual-label">Software</div><div class="qual-value pass">Uses Procore, Sage, or Buildertrend</div></div>
+          <div class="qual-cell"><div class="qual-label">Software</div><div class="qual-value fail">No project management software</div></div>
+          <div class="qual-cell"><div class="qual-label">Geography</div><div class="qual-value pass">Clark County, Portland Metro, I-5 corridor</div></div>
+          <div class="qual-cell"><div class="qual-label">Geography</div><div class="qual-value fail">East of the Cascades, Seattle metro</div></div>
+          <div class="qual-cell"><div class="qual-label">License age</div><div class="qual-value pass">Licensed 3+ years, active bond + insurance</div></div>
+          <div class="qual-cell"><div class="qual-label">License age</div><div class="qual-value fail">Licensed under 1 year, suspended or lapsed</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pipeline-step">
+      <div class="ps-icon timber">W</div>
+      <div class="ps-body">
+        <div class="ps-meta">Wednesday · 30 minutes</div>
+        <div class="ps-title">Enrich + load into CRM + NLPearl queue</div>
+        <p class="ps-text">For each of the 13 qualified leads: (1) find direct phone number via Google Maps or LinkedIn, (2) add to CRM with all required fields filled, (3) add to NLPearl campaign queue with correct persona tag (GC, Sub, or Developer). Batch, don't do one-at-a-time.</p>
+        <div class="alert alert-river" style="margin-top:12px"><strong>NLPearl setup note</strong>Create three separate campaigns in NLPearl: one for GCs, one for Subcontractors, one for Developers. Each uses a different script and qualifying questions. Never mix them in the same campaign — the AI context is different for each.</div>
+      </div>
+    </div>
+
+    <div class="pipeline-step">
+      <div class="ps-icon river">Th</div>
+      <div class="ps-body">
+        <div class="ps-meta">Thursday–Friday · AI runs automatically</div>
+        <div class="ps-title">NLPearl AI calls run</div>
+        <p class="ps-text">NLPearl auto-dials your queue Thursday–Friday between 8–11am and 1–4pm (construction decision-makers are most reachable mid-morning and early afternoon). Calls are logged, outcomes tagged (Connected/Voicemail/No Answer/Booked), and pushed to CRM via webhook.</p>
+        <div class="alert alert-pine" style="margin-top:12px"><strong>Expected outcomes from 13 calls/week</strong>3–5 connections · 5–7 voicemails dropped · 1–2 appointments booked · 1–3 follow-up callbacks requested</div>
+      </div>
+    </div>
+
+    <div class="pipeline-step" style="padding-bottom:0">
+      <div class="ps-icon gold">F</div>
+      <div class="ps-body" style="padding-bottom:0">
+        <div class="ps-meta">Friday · 20 minutes</div>
+        <div class="ps-title">Review outcomes + prep next week</div>
+        <p class="ps-text">Review the week's NLPearl call log. Confirm booked appointments have pre-call questionnaires sent (automated). Move any "call back" requests into the Day 3 follow-up queue. Identify any "hot" leads for a personal call instead of AI follow-up.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+</div>
+
+<!-- ════════════════════════════════
+     SECTION 3: AI SCRIPTS
+════════════════════════════════ -->
+<div id="scripts">
+<div class="wrap">
+<div class="section">
+  <div class="s-label">03 — NLPearl AI Call Scripts</div>
+  <div class="s-title">Word-for-word scripts with branching</div>
+  <div class="s-desc">Three scripts: cold prospecting (GC version), voicemail drop, and re-engagement. Each is written for NLPearl's natural language format — no stiff IVR language. The AI sounds like a knowledgeable project coordinator, not a sales bot.</div>
+
+  <div class="alert alert-timber" style="margin-bottom:32px">
+    <strong>NLPearl Configuration Notes</strong>
+    Voice persona: Professional, calm, direct — not salesy. Name: "Alex from Confluence AI." Speed: slightly slower than default (construction decision-makers often are on a jobsite or in a truck). Interruption handling: ON. Call recording: ON. Webhook to Google Sheets + CRM: required. Max call length: 4 minutes for cold, 2 minutes for voicemail.
+  </div>
+
+  <!-- SCRIPT 1: COLD GC -->
+  <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:22px;color:var(--ink);margin-bottom:4px">Script 1 — Cold Prospecting · General Contractor</h3>
+  <p style="font-size:14px;color:var(--ink-4);margin-bottom:16px">Target: Owner, Operations Director, or VP of Construction at a GC running 3+ concurrent projects</p>
+
+  <div class="script-block">
+    <div class="script-header">
+      <span class="script-label instruction">// COLD CALL · GC VERSION · MAX 3.5 MIN</span>
+      <span class="script-label ai">NLPearl AI — "Alex"</span>
+    </div>
+    <div class="script-body">
+      <div class="script-line instruction">// OPENING — confident, not apologetic</div>
+      <div class="script-line ai-say">AI: "Hi, this is Alex calling from Confluence AI — is this [FIRST_NAME]?"</div>
+      <div class="script-divider"></div>
+
+      <div class="script-line branch">// BRANCH: Yes, this is them →</div>
+      <div class="script-line ai-say">AI: "Perfect. I'll keep this short. We work with general contractors in the Vancouver and Portland metro area — specifically helping them get real-time visibility into job costs and schedules across multiple projects. Most of the GCs we talk to are managing five, six, eight jobs and finding out about cost problems after the project closes. Does that sound familiar at all?"</div>
+      <div class="script-divider"></div>
+
+      <div class="script-line branch">// BRANCH: "Yes" / "Absolutely" / "Unfortunately" →</div>
+      <div class="script-line ai-say">AI: "That's exactly the problem we solve. We build what we call a Command Center — a live dashboard that connects your Procore, Sage, or whatever system you're using, and shows you margin, schedule, and subcontractor performance in real time. One of our clients caught a $180,000 overrun in week two of having it live — before it became a loss.
+
+I'm not trying to sell you anything on this call. I just want to find out if the timing makes sense for a 30-minute conversation with our founder. He's local — born and raised in Vancouver. Would sometime next week work?"</div>
+      <div class="script-divider"></div>
+
+      <div class="script-line branch">// BRANCH: "What software do you use / what exactly do you build?" →</div>
+      <div class="script-line ai-say">AI: "Great question. We build on top of whatever you already have — Procore, Sage 300, QuickBooks, Buildertrend. We don't replace anything, we connect it all so you can see the full picture. No new software to learn, no migration. The whole thing is typically live in 6–8 weeks on a fixed fee.
+
+Does it make sense to get 30 minutes on the calendar so our founder can show you what it looks like for a company your size?"</div>
+      <div class="script-divider"></div>
+
+      <div class="script-line branch">// BRANCH: "We already have Procore" →</div>
+      <div class="script-line ai-say">AI: "Yeah, Procore is great for project management — most of our clients use it. The problem is Procore doesn't give you a live margin picture across your whole portfolio, and it doesn't connect to your accounting system automatically. That's the gap we fill. Would it be worth 30 minutes to see what that looks like?"</div>
+      <div class="script-divider"></div>
+
+      <div class="script-line branch">// BRANCH: "Not interested" / "Too busy" →</div>
+      <div class="script-line ai-say">AI: "Completely understand — I'll let you go. Would it be alright if I send a quick email with what we do? No pitch, just two paragraphs and a case study so you have it if timing changes."</div>
+      <div class="script-divider"></div>
+
+      <div class="script-line branch">// BRANCH: "Sure, send an email" →</div>
+      <div class="script-line ai-say">AI: "Perfect. What's the best email? I'll have it to you within the hour. And just to make sure I send the most relevant info — roughly how many projects are you running right now?"</div>
+      <div class="script-divider"></div>
+
+      <div class="script-line branch">// BRANCH: Appointment booked →</div>
+      <div class="script-line ai-say">AI: "Excellent. I'm going to send you a calendar link and a short 5-question form right now — takes about 3 minutes. It just helps our founder prepare so the call is worth your time. You'll also get a reminder the day before. Does [NAME] at this number work for the confirmation text?"</div>
+      <div class="script-divider"></div>
+
+      <div class="script-line branch">// WRONG PERSON / GATEKEEPER →</div>
+      <div class="script-line ai-say">AI: "No problem at all. Who would be the right person to talk to about operations or project management systems? Is that the owner, or someone else?"</div>
+      <div class="script-line instruction">// If name given → "Great, I'll try [NAME] directly. Thank you." → log new contact in CRM</div>
+      <div class="script-line instruction">// If no name given → "Got it. I'll reach back out another time. Thanks for your help."</div>
+    </div>
+  </div>
+
+  <!-- SCRIPT 2: VOICEMAIL -->
+  <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:22px;color:var(--ink);margin:40px 0 4px">Script 2 — Voicemail Drop</h3>
+  <p style="font-size:14px;color:var(--ink-4);margin-bottom:16px">Fires automatically when NLPearl detects voicemail. Max 28 seconds.</p>
+
+  <div class="script-block">
+    <div class="script-header">
+      <span class="script-label instruction">// VOICEMAIL · 28 SECONDS MAX · NO CALLBACK NUMBER — use email only</span>
+    </div>
+    <div class="script-body">
+      <div class="script-line ai-say">AI: "Hi [FIRST_NAME], this is Alex from Confluence AI in Vancouver. We help general contractors in the Portland-Vancouver area get real-time visibility into job costs and schedules across multiple projects — most of our clients catch expensive overruns before they close. I'll send you a quick email in the next hour. No pitch, just a two-minute case study. Talk soon."</div>
+      <div class="script-divider"></div>
+      <div class="script-line instruction">// DO NOT leave a callback number — forces them to read the email, not call a number they'll ignore</div>
+      <div class="script-line instruction">// Trigger: send email within 5 minutes of voicemail drop (automated via NLPearl webhook → Gmail)</div>
+    </div>
+  </div>
+
+  <!-- SCRIPT 3: SUBCONTRACTOR -->
+  <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:22px;color:var(--ink);margin:40px 0 4px">Script 3 — Cold Prospecting · Subcontractor Version</h3>
+  <p style="font-size:14px;color:var(--ink-4);margin-bottom:16px">Different pain point emphasis — subs care about getting paid on time and winning more bids</p>
+
+  <div class="script-block">
+    <div class="script-header">
+      <span class="script-label instruction">// COLD CALL · SUBCONTRACTOR VERSION · MAX 3 MIN</span>
+    </div>
+    <div class="script-body">
+      <div class="script-line ai-say">AI: "Hi [FIRST_NAME], Alex from Confluence AI in Vancouver. I'll keep this quick — we work with specialty contractors in the Portland metro helping them track which GCs pay on time, which jobs are actually profitable, and how to use their past project data to bid smarter. Is that something that's on your radar right now?"</div>
+      <div class="script-divider"></div>
+      <div class="script-line branch">// BRANCH: "Yes, payment timing is always an issue" →</div>
+      <div class="script-line ai-say">AI: "Exactly. We build a simple dashboard that tracks every GC you've worked with — payment timing, project profitability, change order history. So the next time you're deciding whether to bid a job, you have data instead of gut feel. The whole thing connects to whatever accounting system you use — QuickBooks, Sage, whatever.
+
+Would it be worth 30 minutes to see what that looks like? Our founder is local — he's been on the other side of that phone call chasing payments."</div>
+      <div class="script-divider"></div>
+      <div class="script-line branch">// BRANCH: "How much does it cost?" →</div>
+      <div class="script-line ai-say">AI: "It's a fixed-fee engagement — we scope it out based on your setup in a free 30-minute call. Most sub-focused builds come in well under what a single slow-paying GC costs you in a year. Worth a conversation?"</div>
+    </div>
+  </div>
+
+  <!-- SCRIPT 4: FOLLOW-UP RE-ENGAGEMENT -->
+  <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:22px;color:var(--ink);margin:40px 0 4px">Script 4 — Re-engagement (Day 8 Follow-up)</h3>
+  <p style="font-size:14px;color:var(--ink-4);margin-bottom:16px">For contacts who were connected but didn't book. Reference the previous call.</p>
+
+  <div class="script-block">
+    <div class="script-header">
+      <span class="script-label instruction">// RE-ENGAGEMENT · DAY 8 · SHORT · REFERENCE PRIOR CONTACT</span>
+    </div>
+    <div class="script-body">
+      <div class="script-line ai-say">AI: "Hi [FIRST_NAME], Alex again from Confluence AI — we spoke briefly about a week ago about real-time cost visibility for your projects. I wanted to follow up quickly. We actually just wrapped a build for a Clark County GC — they caught a $180K overrun in the first two weeks. Thought that might be timely for you. Is 30 minutes still worth a look, or should I check back in a month or two?"</div>
+      <div class="script-divider"></div>
+      <div class="script-line branch">// BRANCH: "Check back in a few months" →</div>
+      <div class="script-line ai-say">AI: "Absolutely. I'll put a note to reach out in [MONTH+2]. Is there a specific project or timing that would make it more relevant — like the start of a new fiscal year or a big job kicking off?"</div>
+      <div class="script-line instruction">// Log future follow-up date in CRM. Move to "Nurture" pipeline stage.</div>
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
+
+<!-- ════════════════════════════════
+     SECTION 4: CADENCE
+════════════════════════════════ -->
+<div id="cadence" class="section-alt-wrap">
+<div class="wrap">
+<div class="section">
+  <div class="s-label">04 — Follow-Up Cadence</div>
+  <div class="s-title">14-day multi-touch sequence</div>
+  <div class="s-desc">Every lead that doesn't book on the first call enters this automated sequence. NLPearl handles the calls; Gmail (via Google Workspace) handles the emails. The sequence stops automatically when a lead books or explicitly opts out.</div>
+
+  <div class="cadence">
+
+    <div class="cadence-day">
+      <div class="cd-day"><div class="cd-day-num">1</div><div class="cd-day-label">Day</div></div>
+      <div class="cd-content">
+        <div class="cd-action">
+          <span class="cd-action-badge badge-river">AI Call</span>
+          <span class="cd-action-title">Cold prospecting call (Script 1 or 3)</span>
+        </div>
+        <p class="cd-text">NLPearl places the initial call. If voicemail → drops Script 2. If connected → runs full prospecting script. If booked → sequence stops, pre-call questionnaire fires. All outcomes logged to CRM via webhook.</p>
+      </div>
+    </div>
+
+    <div class="cadence-day">
+      <div class="cd-day"><div class="cd-day-num">1</div><div class="cd-day-label">Day +4h</div></div>
+      <div class="cd-content">
+        <div class="cd-action">
+          <span class="cd-action-badge badge-pine">Email</span>
+          <span class="cd-action-title">Follow-up email (auto-sent via Gmail after voicemail)</span>
+        </div>
+        <p class="cd-text"><strong style="color:var(--ink-2)">Subject:</strong> "Quick follow-up — Confluence AI · [COMPANY_NAME]"<br><br>Hi [FIRST_NAME], I just left you a voicemail. We help GCs in the Vancouver/Portland area get real-time visibility into project costs and schedules — the kind of view that catches overruns before they become losses. Here's a 2-minute case study from a Clark County GC: [LINK]. If timing is right, book 30 minutes here: [CAL_LINK]. No pitch — just a look at what it could mean for your operation. — Alex, Confluence AI</p>
+      </div>
+    </div>
+
+    <div class="cadence-day">
+      <div class="cd-day"><div class="cd-day-num">3</div><div class="cd-day-label">Day</div></div>
+      <div class="cd-content">
+        <div class="cd-action">
+          <span class="cd-action-badge badge-river">AI Call</span>
+          <span class="cd-action-title">Second attempt — short, reference email</span>
+        </div>
+        <p class="cd-text">AI: "Hi [FIRST_NAME], Alex from Confluence AI — sent you an email two days ago about project cost visibility for contractors in the area. Wanted to make sure it didn't get buried. Did you have a chance to take a look?" — If no answer: voicemail drop referencing the email.</p>
+      </div>
+    </div>
+
+    <div class="cadence-day">
+      <div class="cd-day"><div class="cd-day-num">5</div><div class="cd-day-label">Day</div></div>
+      <div class="cd-content">
+        <div class="cd-action">
+          <span class="cd-action-badge badge-pine">Email</span>
+          <span class="cd-action-title">Value email — "The Monday Problem"</span>
+        </div>
+        <p class="cd-text"><strong style="color:var(--ink-2)">Subject:</strong> "The Monday problem for GCs in the PNW"<br><br>Short editorial email (150 words). Describes the problem: every Monday, most GC owners spend 2+ hours collecting project updates from PMs to figure out where they stand. Poses the question: "What if you checked a dashboard instead?" Ends with booking link. No hard sell.</p>
+      </div>
+    </div>
+
+    <div class="cadence-day">
+      <div class="cd-day"><div class="cd-day-num">8</div><div class="cd-day-label">Day</div></div>
+      <div class="cd-content">
+        <div class="cd-action">
+          <span class="cd-action-badge badge-river">AI Call</span>
+          <span class="cd-action-title">Re-engagement call (Script 4) + new hook</span>
+        </div>
+        <p class="cd-text">Uses Script 4. References the Clark County case study. Introduces a new angle: "We just finished a build — happy to show you what it looks like in a live demo, no commitment." If still no interest, asks: "Is there a better time — start of Q3, new project kickoff?" Logs future date to CRM.</p>
+      </div>
+    </div>
+
+    <div class="cadence-day">
+      <div class="cd-day"><div class="cd-day-num">11</div><div class="cd-day-label">Day</div></div>
+      <div class="cd-content">
+        <div class="cd-action">
+          <span class="cd-action-badge badge-pine">Email</span>
+          <span class="cd-action-title">Social proof email — "What GCs are saying"</span>
+        </div>
+        <p class="cd-text"><strong style="color:var(--ink-2)">Subject:</strong> "What changed for a Vancouver GC after 8 weeks"<br><br>Share the full case study: the Clark County GC, the $180K overrun caught, the Monday meeting going from 2 hours to 20 minutes. Specific numbers. Real outcome. Ends: "If this sounds familiar, here's how to get a free assessment." Booking link.</p>
+      </div>
+    </div>
+
+    <div class="cadence-day">
+      <div class="cd-day"><div class="cd-day-num">14</div><div class="cd-day-label">Day</div></div>
+      <div class="cd-content">
+        <div class="cd-action">
+          <span class="cd-action-badge badge-timber">Final</span>
+          <span class="cd-action-title">Break-up email + AI call</span>
+        </div>
+        <p class="cd-text"><strong style="color:var(--ink-2)">Subject:</strong> "Closing the loop — [FIRST_NAME]"<br><br>AI call: "Hi [FIRST_NAME], last call from us for a while — just wanted to check one more time if a 30-minute conversation ever makes sense. If not, no worries at all — I'll close the loop on our end." Email same day: "Closing the loop — I'll leave you alone after this. If timing ever changes, here's how to reach us: [LINK]." Move lead to "Nurture/Future" CRM stage — reactivate in 90 days.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="alert alert-river" style="margin-top:32px">
+    <strong>Sequence stop conditions (any of these = sequence halts immediately)</strong>
+    Lead books an appointment · Lead replies to email with any response · Lead says "not interested" to AI call · Lead asks to be removed · Lead becomes a client
+  </div>
+
+</div>
+</div>
+</div>
+
+<!-- ════════════════════════════════
+     SECTION 5: QUESTIONNAIRE
+════════════════════════════════ -->
+<div id="questionnaire">
+<div class="wrap">
+<div class="section">
+  <div class="s-label">05 — Pre-Call Questionnaire</div>
+  <div class="s-title">Sent automatically after appointment booking</div>
+  <div class="s-desc">NLPearl fires a webhook when an appointment is booked → Google Forms link is sent via automated Gmail. The form takes 3 minutes to complete. Responses land in a Google Sheet that syncs to the CRM. Founder reviews answers before the call — no wasted 30 minutes asking basics.</div>
+
+  <div class="alert alert-pine" style="margin-bottom:32px">
+    <strong>Automation setup (Google Workspace)</strong>
+    NLPearl webhook → Google Apps Script → (1) send form link via Gmail, (2) create CRM contact, (3) add Google Calendar event with form response link in description. Use Cal.com or Google Calendar for scheduling — embed the link in NLPearl's booking confirmation message.
+  </div>
+
+  <div class="form-preview">
+    <div class="form-header">
+      <div class="form-header-title">Confluence AI — 30-Minute Assessment Prep</div>
+      <div class="form-header-sub">Takes 3 minutes · Helps us make the call worth your time · All responses are confidential</div>
+    </div>
+    <div class="form-body">
+
+      <div class="form-q">
+        <div class="form-q-label">Question 1 of 7</div>
+        <div class="form-q-text">What's the best way to describe your company?</div>
+        <div class="form-q-options">
+          <span class="form-q-opt">General Contractor</span>
+          <span class="form-q-opt">Specialty / Subcontractor</span>
+          <span class="form-q-opt">Real Estate Developer</span>
+          <span class="form-q-opt">Design-Build</span>
+          <span class="form-q-opt">Other</span>
+        </div>
+      </div>
+
+      <div class="form-q">
+        <div class="form-q-label">Question 2 of 7</div>
+        <div class="form-q-text">How many active projects are you managing right now?</div>
+        <div class="form-q-options">
+          <span class="form-q-opt">1–2</span>
+          <span class="form-q-opt">3–5</span>
+          <span class="form-q-opt">6–10</span>
+          <span class="form-q-opt">10+</span>
+        </div>
+      </div>
+
+      <div class="form-q">
+        <div class="form-q-label">Question 3 of 7</div>
+        <div class="form-q-text">What project management or accounting software do you currently use? (Select all that apply)</div>
+        <div class="form-q-options">
+          <span class="form-q-opt">Procore</span>
+          <span class="form-q-opt">Sage 300</span>
+          <span class="form-q-opt">Sage Intacct</span>
+          <span class="form-q-opt">Buildertrend</span>
+          <span class="form-q-opt">QuickBooks</span>
+          <span class="form-q-opt">Excel / Sheets</span>
+          <span class="form-q-opt">CoConstruct</span>
+          <span class="form-q-opt">Other</span>
+        </div>
+      </div>
+
+      <div class="form-q">
+        <div class="form-q-label">Question 4 of 7</div>
+        <div class="form-q-text">Which of these describes your biggest operational headache right now?</div>
+        <div class="form-q-options">
+          <span class="form-q-opt">Not knowing real-time job margin</span>
+          <span class="form-q-opt">Schedule visibility across projects</span>
+          <span class="form-q-opt">Subcontractor performance tracking</span>
+          <span class="form-q-opt">Equipment cost allocation</span>
+          <span class="form-q-opt">Manual reporting taking too much time</span>
+          <span class="form-q-opt">Change order management</span>
+        </div>
+      </div>
+
+      <div class="form-q">
+        <div class="form-q-label">Question 5 of 7</div>
+        <div class="form-q-text">How do you currently track job cost vs. budget? What's your process?</div>
+        <input type="text" class="form-q-input" placeholder="e.g. PM pulls Procore weekly, updates a shared spreadsheet..." readonly>
+      </div>
+
+      <div class="form-q">
+        <div class="form-q-label">Question 6 of 7</div>
+        <div class="form-q-text">Roughly what's your annual construction volume?</div>
+        <div class="form-q-options">
+          <span class="form-q-opt">Under $2M</span>
+          <span class="form-q-opt">$2M–$5M</span>
+          <span class="form-q-opt">$5M–$15M</span>
+          <span class="form-q-opt">$15M–$50M</span>
+          <span class="form-q-opt">$50M+</span>
+          <span class="form-q-opt">Prefer not to say</span>
+        </div>
+      </div>
+
+      <div class="form-q">
+        <div class="form-q-label">Question 7 of 7</div>
+        <div class="form-q-text">If we could solve one thing for you in the next 90 days, what would it be?</div>
+        <input type="text" class="form-q-input" placeholder="Be as specific as you want — this shapes the entire conversation..." readonly>
+      </div>
+
+      <div style="padding:16px 0;border-top:1px solid var(--border);font-size:13px;color:var(--ink-4)">
+        ✓ &nbsp;Responses are sent directly to our founder before your call &nbsp;·&nbsp; ✓ &nbsp;Fully confidential &nbsp;·&nbsp; ✓ &nbsp;Takes ~3 minutes
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
+
+<!-- ════════════════════════════════
+     SECTION 6: CRM SCHEMA
+════════════════════════════════ -->
+<div id="crm" class="section-alt-wrap">
+<div class="wrap">
+<div class="section">
+  <div class="s-label">06 — CRM Data Model</div>
+  <div class="s-title">Built from scratch · Google Sheets + HubSpot Free</div>
+  <div class="s-desc">Start with Google Sheets as your CRM (free, connects to everything in Google Workspace). Migrate to HubSpot Free when you hit 50+ active contacts. Below is the complete data schema — every field, its type, and why it exists.</div>
+
+  <div class="alert alert-river" style="margin-bottom:32px">
+    <strong>Recommended stack (all free to start)</strong>
+    Google Sheets as CRM → Google Apps Script for automation → NLPearl webhook for call data → Google Calendar for appointments → Gmail for email sequences. Graduate to HubSpot Free (1,000 contacts) when manual management takes more than 2 hours/week.
+  </div>
+
+  <!-- CONTACT FIELDS -->
+  <div class="schema-section">
+    <div class="schema-section-title">Contact Record</div>
+    <div class="field-row" style="background:var(--bg-soft);font-weight:500">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--ink-5)">FIELD NAME</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--ink-5)">TYPE</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--ink-5)">PURPOSE / SOURCE</div>
+    </div>
+    <div class="field-row"><div class="field-name">first_name</div><div class="field-type">Text</div><div class="field-desc">Decision-maker first name — from LinkedIn or Google Maps enrichment</div></div>
+    <div class="field-row"><div class="field-name">last_name</div><div class="field-type">Text</div><div class="field-desc">Decision-maker last name</div></div>
+    <div class="field-row"><div class="field-name">title</div><div class="field-type">Select</div><div class="field-desc">Owner / Operations Director / VP Construction / Project Controls Mgr</div></div>
+    <div class="field-row"><div class="field-name">company_name</div><div class="field-type">Text</div><div class="field-desc">Legal business name from L&I or CCB registry</div></div>
+    <div class="field-row"><div class="field-name">phone_direct</div><div class="field-type">Phone</div><div class="field-desc">Direct line — from Google Maps, website, or LinkedIn. Used by NLPearl.</div></div>
+    <div class="field-row"><div class="field-name">email</div><div class="field-type">Email</div><div class="field-desc">For email sequence. Format: [first]@[company].com if not found directly</div></div>
+    <div class="field-row"><div class="field-name">city</div><div class="field-type">Text</div><div class="field-desc">Primary office city — Vancouver, Portland, Battle Ground, Camas, etc.</div></div>
+    <div class="field-row"><div class="field-name">state</div><div class="field-type">Select</div><div class="field-desc">WA / OR</div></div>
+  </div>
+
+  <!-- COMPANY FIELDS -->
+  <div class="schema-section">
+    <div class="schema-section-title">Company Profile</div>
+    <div class="field-row"><div class="field-name">license_number</div><div class="field-type">Text</div><div class="field-desc">WA L&I UBI or OR CCB number — primary identifier for deduplication</div></div>
+    <div class="field-row"><div class="field-name">license_state</div><div class="field-type">Select</div><div class="field-desc">WA / OR / Both</div></div>
+    <div class="field-row"><div class="field-name">license_type</div><div class="field-type">Select</div><div class="field-desc">General Contractor / Specialty / Developer / Design-Build</div></div>
+    <div class="field-row"><div class="field-name">company_size_est</div><div class="field-type">Select</div><div class="field-desc">1–5 / 6–20 / 21–75 / 75+ employees — estimated from LinkedIn or Google Maps</div></div>
+    <div class="field-row"><div class="field-name">annual_volume_est</div><div class="field-type">Select</div><div class="field-desc">Under $2M / $2–5M / $5–15M / $15–50M / $50M+ — from questionnaire or estimation</div></div>
+    <div class="field-row"><div class="field-name">active_project_count</div><div class="field-type">Number</div><div class="field-desc">Estimated concurrent projects — from questionnaire or permit data</div></div>
+    <div class="field-row"><div class="field-name">software_stack</div><div class="field-type">Multi-select</div><div class="field-desc">Procore / Sage 300 / Sage Intacct / Buildertrend / QuickBooks / Excel / Other</div></div>
+    <div class="field-row"><div class="field-name">permit_source_url</div><div class="field-type">URL</div><div class="field-desc">Link to the Clark County / Vancouver permit that triggered this lead</div></div>
+    <div class="field-row"><div class="field-name">permit_project_value</div><div class="field-type">Currency</div><div class="field-desc">Valuation from permit — signals project size and budget capacity</div></div>
+  </div>
+
+  <!-- PIPELINE FIELDS -->
+  <div class="schema-section">
+    <div class="schema-section-title">Pipeline & Stage</div>
+    <div class="field-row"><div class="field-name">lead_source</div><div class="field-type">Select</div><div class="field-desc">Clark County LMS / WA L&I / OR CCB / LinkedIn / Referral / Website / Dodge</div></div>
+    <div class="field-row"><div class="field-name">lead_stage</div><div class="field-type">Select</div><div class="field-desc">New → AI Call Queue → Connected → Appointment Booked → Assessment Done → Proposal Sent → Negotiation → Closed Won → Closed Lost → Nurture</div></div>
+    <div class="field-row"><div class="field-name">disqualify_reason</div><div class="field-type">Select</div><div class="field-desc">Too small / Wrong geography / No software / Timing / Competitor / Budget / Other</div></div>
+    <div class="field-row"><div class="field-name">deal_value_est</div><div class="field-type">Currency</div><div class="field-desc">Estimated engagement value — from annual volume and service tier</div></div>
+    <div class="field-row"><div class="field-name">close_probability</div><div class="field-type">Percent</div><div class="field-desc">Auto-calculated by stage: Booked=25% / Assessment Done=50% / Proposal=65%</div></div>
+    <div class="field-row"><div class="field-name">follow_up_date</div><div class="field-type">Date</div><div class="field-desc">Next action date — set manually or by cadence automation</div></div>
+    <div class="field-row"><div class="field-name">reactivate_date</div><div class="field-type">Date</div><div class="field-desc">For "Nurture" contacts — date to re-enter into AI call queue</div></div>
+  </div>
+
+  <!-- CALL HISTORY FIELDS -->
+  <div class="schema-section">
+    <div class="schema-section-title">Call & Interaction History (auto-populated by NLPearl webhook)</div>
+    <div class="field-row"><div class="field-name">last_call_date</div><div class="field-type">DateTime</div><div class="field-desc">Auto-logged by NLPearl on each call attempt</div></div>
+    <div class="field-row"><div class="field-name">last_call_outcome</div><div class="field-type">Select</div><div class="field-desc">Connected / Voicemail / No Answer / Booked / Not Interested / Wrong Number</div></div>
+    <div class="field-row"><div class="field-name">call_count_total</div><div class="field-type">Number</div><div class="field-desc">Total AI call attempts across all campaigns</div></div>
+    <div class="field-row"><div class="field-name">call_transcript_url</div><div class="field-type">URL</div><div class="field-desc">NLPearl stores call recordings/transcripts — link here for review</div></div>
+    <div class="field-row"><div class="field-name">cadence_day</div><div class="field-type">Number</div><div class="field-desc">Current day in 14-day cadence (1–14). Set to 99 when sequence complete.</div></div>
+    <div class="field-row"><div class="field-name">email_opens</div><div class="field-type">Number</div><div class="field-desc">Total email opens (tracked via Gmail + Apps Script or HubSpot)</div></div>
+    <div class="field-row"><div class="field-name">last_reply_date</div><div class="field-type">DateTime</div><div class="field-desc">Any inbound reply — email, call, or booking. Stops cadence when set.</div></div>
+  </div>
+
+  <!-- QUALIFICATION FIELDS -->
+  <div class="schema-section">
+    <div class="schema-section-title">Qualification (auto-filled from pre-call questionnaire)</div>
+    <div class="field-row"><div class="field-name">biggest_pain</div><div class="field-type">Select</div><div class="field-desc">Cost visibility / Schedule / Subcontractor / Equipment / Reporting / Change orders</div></div>
+    <div class="field-row"><div class="field-name">current_process_notes</div><div class="field-type">Long text</div><div class="field-desc">Free-text answer from questionnaire Q5 — "how do you track job cost?"</div></div>
+    <div class="field-row"><div class="field-name">one_thing_to_fix</div><div class="field-type">Long text</div><div class="field-desc">Free-text answer from questionnaire Q7 — often the most valuable field</div></div>
+    <div class="field-row"><div class="field-name">qualified_flag</div><div class="field-type">Boolean</div><div class="field-desc">TRUE = passes all 5 qualification criteria. Manually set after enrichment.</div></div>
+    <div class="field-row"><div class="field-name">hot_lead_flag</div><div class="field-type">Boolean</div><div class="field-desc">TRUE = active permit pull + software confirmed + owner reachable. Priority for human follow-up vs AI.</div></div>
+  </div>
+
+</div>
+</div>
+</div>
+
+<!-- ════════════════════════════════
+     QUICK REFERENCE
+════════════════════════════════ -->
+<div class="wrap">
+<div class="section">
+  <div class="s-label">Quick Reference</div>
+  <div class="s-title">URLs, tools, and weekly checklist</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px">
+
+    <div style="background:var(--bg-soft);border:1px solid var(--border);padding:28px">
+      <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:var(--ink);margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border)">Lead Source URLs</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div><span class="badge badge-river" style="margin-bottom:4px">WA Primary</span><br><a href="https://secure.lni.wa.gov/verify/" style="font-family:'JetBrains Mono',monospace;font-size:11px">secure.lni.wa.gov/verify</a> — WA L&I contractor registry</div>
+        <div><span class="badge badge-pine" style="margin-bottom:4px">Clark County</span><br><a href="https://permits.clark.wa.gov/pub/lms/" style="font-family:'JetBrains Mono',monospace;font-size:11px">permits.clark.wa.gov/pub/lms</a> — permit search</div>
+        <div><span class="badge badge-pine" style="margin-bottom:4px">Clark County Alt</span><br><a href="https://clark.wa.gov/community-development/permit-status" style="font-family:'JetBrains Mono',monospace;font-size:11px">clark.wa.gov/community-development/permit-status</a></div>
+        <div><span class="badge badge-timber" style="margin-bottom:4px">Oregon</span><br><a href="https://search.ccb.oregon.gov" style="font-family:'JetBrains Mono',monospace;font-size:11px">search.ccb.oregon.gov</a> — official CCB search</div>
+        <div><span class="badge badge-timber" style="margin-bottom:4px">Oregon Enhanced</span><br><a href="https://www.ccblookup.com/county/" style="font-family:'JetBrains Mono',monospace;font-size:11px">ccblookup.com/county</a> — with trust scores</div>
+        <div><span class="badge badge-gold" style="margin-bottom:4px">Vancouver City</span><br><a href="https://www.cityofvancouver.us/permits" style="font-family:'JetBrains Mono',monospace;font-size:11px">cityofvancouver.us/permits</a></div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg-soft);border:1px solid var(--border);padding:28px">
+      <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:var(--ink);margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border)">Weekly Ops Checklist</div>
+      <ul class="checklist">
+        <li><span class="check">✓</span>Monday: Pull 50 raw contacts across all 4 sources</li>
+        <li><span class="check">✓</span>Tuesday: Apply qualification matrix → reduce to 13</li>
+        <li><span class="check">✓</span>Tuesday: LinkedIn enrich — find owner/ops director name</li>
+        <li><span class="check">✓</span>Wednesday: Load 13 contacts to CRM with all fields</li>
+        <li><span class="check">✓</span>Wednesday: Add to correct NLPearl campaign (GC/Sub/Dev)</li>
+        <li><span class="check">✓</span>Thu–Fri: NLPearl auto-dials 8–11am + 1–4pm</li>
+        <li><span class="check">✓</span>Friday: Review call outcomes in NLPearl dashboard</li>
+        <li><span class="check">✓</span>Friday: Confirm pre-call forms sent for all booked appts</li>
+        <li><span class="check">✓</span>Friday: Move "callback requested" to Day 3 queue</li>
+        <li><span class="check">✓</span>Friday: Flag any hot leads for personal outreach</li>
+        <li><span class="check">✓</span>Monthly: Review cadence open rates + call connect rates</li>
+        <li><span class="check">✓</span>Quarterly: Refresh permit pull with last 90 days of data</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div style="background:var(--pine);padding:36px;border-radius:4px">
+    <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:22px;color:#fff;margin-bottom:8px">Expected Monthly Results</div>
+    <p style="color:rgba(255,255,255,0.55);font-size:15px;margin-bottom:24px">At steady state (month 2+), these are the benchmarks to measure against.</p>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,0.1)">
+      <div style="background:rgba(255,255,255,0.05);padding:20px 16px;text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:32px;color:rgba(110,207,160,0.9)">50</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;color:rgba(255,255,255,0.3);margin-top:6px;text-transform:uppercase">Qualified leads<br>loaded to NLPearl</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);padding:20px 16px;text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:32px;color:rgba(110,207,160,0.9)">35%</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;color:rgba(255,255,255,0.3);margin-top:6px;text-transform:uppercase">Connect rate<br>(~17 live connects)</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);padding:20px 16px;text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:32px;color:rgba(110,207,160,0.9)">6–8</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;color:rgba(255,255,255,0.3);margin-top:6px;text-transform:uppercase">Appointments<br>booked / month</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);padding:20px 16px;text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:32px;color:rgba(196,132,60,0.9)">3–5</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;color:rgba(255,255,255,0.3);margin-top:6px;text-transform:uppercase">Proposals<br>sent / month</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);padding:20px 16px;text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:32px;color:rgba(196,132,60,0.9)">1–2</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;color:rgba(255,255,255,0.3);margin-top:6px;text-transform:uppercase">Closes<br>/ month</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<div style="background:var(--bg-muted);border-top:1px solid var(--border);padding:24px clamp(16px,4vw,48px)">
+  <div style="max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--ink-5)">CONFLUENCE AI · SALES PLAYBOOK · VANCOUVER, WA · v1.0 · JUNE 2026</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--ink-5)">hello@confluence-ai.co · confluence-ai.co</span>
+  </div>
+</div>
+
+<script>
+function scrollTo(id) {
+  document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+}
+window.addEventListener('scroll', () => {
+  const sections = ['#lead-sources','#pipeline','#scripts','#cadence','#questionnaire','#crm'];
+  const tabs = document.querySelectorAll('.nav-tab');
+  sections.forEach((id, i) => {
+    const el = document.querySelector(id);
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    if (rect.top <= 100 && rect.bottom > 100) {
+      tabs.forEach(t => t.classList.remove('active'));
+      if (tabs[i]) tabs[i].classList.add('active');
+    }
+  });
+});
+</script>
+</body>
+</html>
